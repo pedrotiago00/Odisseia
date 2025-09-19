@@ -1,0 +1,58 @@
+# ======================================
+# Python / Django
+# ======================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+*.log
+*.pot
+*.mo
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Django stuff
+/media/
+staticfiles/
+*.pid
+
+# ======================================
+# Node / React Native
+# ======================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.expo/
+.expo-shared/
+web-build/
+dist/
+
+# Metro bundler cache
+.expo/
+.expo-shared/
+.expo-go/
+.packager
+.bundle
+.haul
+
+# Mac / Linux / Windows
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+
+# ======================================
+# Others
+# ======================================
+.env
