@@ -1,19 +1,13 @@
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-const firebird = require("node-firebird");
+import mysql from "mysql2/promise";
 
-const options = {
-  host: '127.0.0.1', 
-  port: 3050,
-  database: 'C:\\Users\\pedro.tiago\\Desktop\\Banco de dados Projeto Integrador\\banco.fdb', 
-  user: 'SYSDBA',
-  password: 'masterkey',
-  lowercase_keys: false,
-  role: null,
-  pageSize: 4096,
-};
+const pool = await mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "99661720",
+  database: "projeto_integrador",
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
 
-const pool = firebird.pool(5, options);
-export default {
-  get: (callback) => pool.get(callback),
-};
+export default pool;

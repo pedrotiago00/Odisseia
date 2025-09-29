@@ -1,13 +1,8 @@
-import express from 'express';
+import pool from "./database.js";
 
-import usuariosRoutes from './routes/usuariosRotas.js';
+async function buscarUsuarios() {
+  const [rows] = await pool.query("SELECT * FROM usuarios");
+  console.log(rows);
+}
 
-const app = express();
-app.use(express.json());
-const PORT = 3000;
-
-app.use('/cadastrar', usuariosRoutes);
-
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
+buscarUsuarios();
