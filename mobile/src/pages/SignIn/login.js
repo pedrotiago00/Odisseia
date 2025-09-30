@@ -15,6 +15,22 @@ import { useNavigation } from "@react-navigation/native";
 
 export default function SignIn() {
   const navigation = useNavigation();
+
+  const [email, setEmail] = React.useState("");
+  const [senha, setSenha] = React.useState("");
+
+  const handleLogin = async () => {
+    try {
+      const response = await api.post("/login", {
+        email,
+        senha,
+      });
+      console.log("Login bem-sucedido:", response.data);
+    } catch (error) {
+      console.error("Erro ao logar:", error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <LinearGradient colors={["#243A73", "#2E4C8A"]} style={styles.container}>
@@ -28,14 +44,20 @@ export default function SignIn() {
         <TextInput 
           placeholder="Digite seu email..." 
           style={styles.input}
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
         />
         <Text style={styles.title}>Senha</Text>
         <TextInput 
           placeholder="Digite sua senha..." 
           style={styles.input}
+          value={senha}
+          onChangeText={setSenha}
+          secureTextEntry={true}
         />
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
 

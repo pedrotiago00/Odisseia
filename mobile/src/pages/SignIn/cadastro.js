@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import api from "../../servicers/api";
 
 import { LinearGradient } from "expo-linear-gradient";
 
 import * as Animatable from 'react-native-animatable';
 
 export default function Cadastro() {
+  const [nome, setNome] = React.useState("");
+  const [idade, setIdade] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [senha, setSenha] = React.useState("");
+
+  const handleCadastro = async () => {
+    try {
+      const response = await api.post("/cadastrar", {
+        nome,
+        idade,
+        email,
+        senha,
+      });
+      console.log("Usuário cadastrado com sucesso:", response.data);
+    } catch (error) {
+      console.error("Erro ao cadastrar usuário:", error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <LinearGradient colors={["#243A73", "#2E4C8A"]} style={styles.container}>
@@ -19,26 +39,34 @@ export default function Cadastro() {
         <TextInput 
           placeholder="Digite seu nome..." 
           style={styles.input}
+          value={nome}
+          onChangeText={setNome}
         />
 
         <Text style={styles.title}>Idade</Text>
         <TextInput 
           placeholder="Digite sua idade..." 
           style={styles.input}
+          value={idade}
+          onChangeText={setIdade}
         />
 
         <Text style={styles.title}>Email</Text>
         <TextInput 
           placeholder="Digite seu email..." 
           style={styles.input}
+          value={email}
+          onChangeText={setEmail}
         />
         <Text style={styles.title}>Senha</Text>
         <TextInput 
           placeholder="Digite sua senha..." 
           style={styles.input}
+          value={senha}
+          onChangeText={setSenha}
         />
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleCadastro}>
           <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
 
