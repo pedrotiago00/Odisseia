@@ -7,6 +7,8 @@ import {
   TouchableOpacity 
 } from "react-native";
 
+import api from "../../servicers/api";
+
 import { LinearGradient } from "expo-linear-gradient";
 
 import * as Animatable from 'react-native-animatable';
@@ -21,7 +23,7 @@ export default function SignIn() {
 
   const handleLogin = async () => {
     try {
-      const response = await api.post("/login", {
+      const response = await api.post("/cadastrar", {
         email,
         senha,
       });
@@ -57,7 +59,7 @@ export default function SignIn() {
           secureTextEntry={true}
         />
 
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('Jogo'); handleLogin(); }}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
 

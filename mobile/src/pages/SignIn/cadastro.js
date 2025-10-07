@@ -6,7 +6,11 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import * as Animatable from 'react-native-animatable';
 
+import { useNavigation } from "@react-navigation/native";
+
 export default function Cadastro() {
+  const navigation = useNavigation();
+
   const [nome, setNome] = React.useState("");
   const [idade, setIdade] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -66,7 +70,7 @@ export default function Cadastro() {
           onChangeText={setSenha}
         />
 
-        <TouchableOpacity style={styles.button} onPress={handleCadastro}>
+        <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('SignIn'); handleCadastro(); }}>
           <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
 
