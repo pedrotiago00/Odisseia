@@ -4,12 +4,11 @@ import {
   Text, 
   StyleSheet, 
   TextInput, 
-  TouchableOpacity 
+  TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 
 import api from "../../servicers/api";
-
-import { LinearGradient } from "expo-linear-gradient";
 
 import * as Animatable from 'react-native-animatable';
 
@@ -34,9 +33,7 @@ export default function SignIn() {
   };
 
   return (
-    <View style={styles.container}>
-      <LinearGradient colors={["#243A73", "#2E4C8A"]} style={styles.container}>
-
+    <ImageBackground source={require("../../assets/Background.jpeg")} style={styles.container} resizeMode="cover">    
       <Animatable.View animation="fadeInLeft" delay={500} style={styles.containerHeader}>
         <Text style={styles.message}>Bem-vindo ao Odisseia Card Game</Text>
       </Animatable.View>
@@ -68,8 +65,7 @@ export default function SignIn() {
         </TouchableOpacity>
 
       </Animatable.View>
-      </LinearGradient>
-    </View>
+    </ImageBackground>
   );
 }
 

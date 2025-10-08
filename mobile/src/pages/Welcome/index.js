@@ -4,7 +4,8 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Image
+  Image,
+  ImageBackground
 } from "react-native";
 
 import * as Animatable from 'react-native-animatable';
@@ -15,8 +16,7 @@ export default function Welcome() {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-
+    <ImageBackground source={require("../../assets/Background.jpeg")} style={styles.container} resizeMode="cover">
       <View style={styles.containerLogo}>
         <Animatable.Image
           animation="flipInY"
@@ -35,22 +35,19 @@ export default function Welcome() {
           <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
       </Animatable.View>
-
-    </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: '#243A73',
     justifyContent: 'center',
     alignItems: 'center'
   },
 
   containerLogo:{
     flex: 2,
-    backgroundColor: '#243A73',
     justifyContent: 'center',
     alignItems: 'center'
   },

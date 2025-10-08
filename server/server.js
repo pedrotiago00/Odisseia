@@ -1,10 +1,12 @@
 import express from "express";
+import dotenv from "dotenv";
 import usuariosRoutes from "./routes/usuariosRoutes.js";
 
+dotenv.config();
 const app = express();
 app.use(express.json());
 
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 app.use("/cadastrar", usuariosRoutes);
 

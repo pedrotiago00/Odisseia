@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput, BackHandler, Modal, FlatList } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    Image,
+    TextInput,
+    BackHandler,
+    Modal,
+    FlatList,
+    ImageBackground,
+} from 'react-native';
 
 const logoApp = require('../../assets/Logo.png');
 
@@ -107,7 +118,7 @@ export default function Jogo() {
     };
 
     return (
-        <View style={styles.container}>
+        <ImageBackground source={require("../../assets/Background.jpeg")} style={styles.container} resizeMode="cover">
             <Image source={logoApp} style={styles.logo} resizeMode="contain" />
 
             <View style={styles.quantidadeJogadoresContainer}>
@@ -196,7 +207,7 @@ export default function Jogo() {
                     </View>
                 </TouchableOpacity>
             </Modal>
-        </View>
+        </ImageBackground>
     );
 }
 
@@ -272,7 +283,7 @@ const styles = StyleSheet.create({
     },
     menuModalContainer: {
         position: 'absolute',
-        bottom: 90, // Posição acima do botão 'Ações'
+        bottom: 90,
         width: '60%',
         backgroundColor: '#FFF',
         borderRadius: 15,

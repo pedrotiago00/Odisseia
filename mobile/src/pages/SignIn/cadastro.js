@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 import api from "../../servicers/api";
-
-import { LinearGradient } from "expo-linear-gradient";
 
 import * as Animatable from 'react-native-animatable';
 
@@ -31,9 +36,7 @@ export default function Cadastro() {
   };
 
   return (
-    <View style={styles.container}>
-      <LinearGradient colors={["#243A73", "#2E4C8A"]} style={styles.container}>
-
+    <ImageBackground source={require("../../assets/Background.jpeg")} style={styles.container} resizeMode="cover">
       <Animatable.View animation="fadeInLeft" delay={500} style={styles.containerHeader}>
         <Text style={styles.message}>Cadastre-se</Text>
       </Animatable.View>
@@ -75,8 +78,7 @@ export default function Cadastro() {
         </TouchableOpacity>
 
       </Animatable.View>
-      </LinearGradient>
-    </View>
+    </ImageBackground>
   );
 }
 
