@@ -22,7 +22,7 @@ export default function SignIn() {
 
   const handleLogin = async () => {
     try {
-      const response = await api.post("/cadastrar", {
+      const response = await api.post("/login", {
         email,
         senha,
       });
