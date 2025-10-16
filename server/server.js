@@ -11,8 +11,7 @@ const SECRET_KEY = process.env.SECRET;
 
 const PORT = process.env.PORT;
 
-app.use("/cadastrar", usuariosRoutes);
-app.use("/login", usuariosRoutes);
+app.use("/usuarios", usuariosRoutes);
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);

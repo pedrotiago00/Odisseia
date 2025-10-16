@@ -22,13 +22,15 @@ export default function SignIn() {
 
   const handleLogin = async () => {
     try {
-      const response = await api.post("/login", {
+      const response = await api.post("/usuarios/login", {
         email,
         senha,
       });
       console.log("Login bem-sucedido:", response.data);
+      navigation.navigate('Jogo');
     } catch (error) {
       console.error("Erro ao logar:", error);
+      alert("Falha no login. Verifique suas credenciais.");
     }
   };
 
@@ -56,7 +58,7 @@ export default function SignIn() {
           secureTextEntry={true}
         />
 
-        <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('Jogo'); handleLogin(); }}>
+        <TouchableOpacity style={styles.button} onPress={() => { handleLogin(); }}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
 

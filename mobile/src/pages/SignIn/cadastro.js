@@ -23,15 +23,17 @@ export default function Cadastro() {
 
   const handleCadastro = async () => {
     try {
-      const response = await api.post("/cadastrar", {
+      const response = await api.post("/usuarios/cadastrar", {
         nome,
         idade,
         email,
         senha,
       });
       console.log("Usuário cadastrado com sucesso:", response.data);
+      navigation.navigate('SignIn');
     } catch (error) {
       console.error("Erro ao cadastrar usuário:", error);
+      alert("Falha no cadastro. Tente novamente.");
     }
   };
 
@@ -73,7 +75,7 @@ export default function Cadastro() {
           onChangeText={setSenha}
         />
 
-        <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('SignIn'); handleCadastro(); }}>
+        <TouchableOpacity style={styles.button} onPress={() => { handleCadastro(); }}>
           <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
 
