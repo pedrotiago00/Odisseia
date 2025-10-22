@@ -31,7 +31,7 @@ export default function Welcome() {
         <Text style={styles.title}>Odisseia Card Game - Late Pledge</Text>
         <Text style={styles.text}>Faça o login para começar a jogar</Text>
 
-        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('SignIn') }>
+        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Setup') }>
           <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
       </Animatable.View>
