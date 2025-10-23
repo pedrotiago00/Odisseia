@@ -27,7 +27,7 @@ export default function SignIn() {
         senha,
       });
       console.log("Login bem-sucedido:", response.data);
-      navigation.navigate('Jogo');
+      navigation.navigate('Menu');
     } catch (error) {
       console.error("Erro ao logar:", error);
       alert("Falha no login. Verifique suas credenciais.");
