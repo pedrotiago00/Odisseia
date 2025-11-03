@@ -37,10 +37,10 @@ export default function ContadorDeVida({ vida, aoAumentar, aoDiminuir, aoDefinir
             <TextInput
                 style={styles.vidaTextInput}
                 value={String(vida)} // Converte o número para string
-                onChangeText={aoDefinir} // Chama a função do GameScreen
+                onChangeText={aoDefinir} // Chama a função da Tela do Contador.
                 keyboardType="numeric"
                 autoFocus={true} // Foca automaticamente no input
-                onBlur={() => setEstaEditando(false)} // Sai do modo de edição ao perder o foco
+                onBlur={() => setEstaEditando(false)} 
                 maxLength={3} // Limite de 3 dígitos (999)
             />
         );

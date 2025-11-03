@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Modal, TouchableOpacity } from 'react-native';
 
-/**
- * Componente que renderiza um Modal para rolagem de dados (D6, D20, D100).
- */
+
+ // Componente que renderiza um Modal para rolagem de dados (D6, D20, D100).
+
 export default function DiceRoller({ visible, onClose }) {
   // Estado para armazenar o texto do resultado (ex: "D20: 15")
   const [result, setResult] = useState(null);
@@ -12,15 +12,15 @@ export default function DiceRoller({ visible, onClose }) {
   // Função que calcula um resultado aleatório com base no número de lados
   const rollDice = (sides) => {
     const roll = Math.floor(Math.random() * sides) + 1;
-    setResult(`D${sides}: ${roll}`); // Atualiza o texto do resultado
+    setResult(`D${sides}: ${roll}`);
   };
 
   return (
     <Modal
       animationType="fade"
       transparent={true}
-      visible={visible} // O Modal só é visível se a prop 'visible' for true
-      onRequestClose={onClose} // Permite fechar com o botão "Voltar" do Android
+      visible={visible} 
+      onRequestClose={onClose} // Permite fechar com o botão "Voltar" do Android.
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.7)', // Fundo escurecido
+    backgroundColor: 'rgba(0,0,0,0.7)', 
   },
   modalView: {
     margin: 20,
@@ -93,6 +93,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   closeButton: {
-    backgroundColor: '#444', // Cor diferente para o botão de fechar
+    backgroundColor: '#444', 
   },
 });

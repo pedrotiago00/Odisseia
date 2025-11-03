@@ -3,10 +3,10 @@ import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-na
 
 /**
  * Componente reutilizável para selecionar uma opção (ex: Jogadores, Vida).
- * @param {string} title - Título da seção (ex: "Jogadores").
- * @param {Array<string|number>} options - Array de opções (ex: [1, 2, 3] ou [20, 30, 40]).
- * @param {string|number} selected - O valor atualmente selecionado.
- * @param {Function} onSelect - Função para ser chamada quando uma opção é clicada.
+ * @param {string} title 
+ * @param {Array<string|number>} options 
+ * @param {string|number} selected - 
+ * @param {Function} onSelect 
  */
 const OptionSelector = ({ title, options, selected, onSelect }) => (
   <View style={styles.optionContainer}>
@@ -27,10 +27,7 @@ const OptionSelector = ({ title, options, selected, onSelect }) => (
   </View>
 );
 
-/**
- * Tela principal de Configuração do Jogo.
- * O usuário escolhe o número de jogadores e a vida inicial.
- */
+//Tela Principal de Configuração do Jogo
 export default function SetupScreen({ navigation }) {
   // Estado para armazenar o número de jogadores selecionado
   const [playerCount, setPlayerCount] = useState(2);

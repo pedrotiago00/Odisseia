@@ -7,11 +7,12 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
+// 1. IMPORTE O SECURESTORE (em vez do AsyncStorage)
+import * as SecureStore from 'expo-secure-store'; 
 
 import api from "../../servicers/api";
 
 import * as Animatable from 'react-native-animatable';
-
 import { useNavigation } from "@react-navigation/native";
 
 export default function SignIn() {
@@ -27,7 +28,17 @@ export default function SignIn() {
         senha,
       });
       console.log("Login bem-sucedido:", response.data);
+
+      const { token, usuario } = response.data;
+
+      // 3. SALVE O TOKEN E OS DADOS NO SECURESTORE
+      // Note que as funções são 'setItemAsync'
+      await SecureStore.setItemAsync('token', token);
++     await SecureStore.setItemAsync('usuario', JSON.stringify(usuario)); // Salva o usuário como texto
+      
+      // 4. SÓ DEPOIS DE SALVAR, NAVEGUE PARA O MENU
       navigation.navigate('Menu');
+
     } catch (error) {
       console.error("Erro ao logar:", error);
       alert("Falha no login. Verifique suas credenciais.");

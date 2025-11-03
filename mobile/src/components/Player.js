@@ -1,23 +1,19 @@
-// src/components/Player.js
+
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import ContadorDeVida from './ContadorDeVida'; // Importa o componente de contador
-import { iconesVida } from '../constants/iconesVida'; // Importa os ícones
+import ContadorDeVida from './ContadorDeVida'; 
+import { iconesVida } from '../constants/iconesVida'; 
 
-/**
- * Componente que renderiza a área de um único jogador.
- * Este é um componente "burro" (dumb component), pois recebe todos os dados
- * e funções de que precisa via props do 'GameScreen'.
- */
+
 export default function Player({
-    jogadorData,      // O objeto de estado completo para este jogador
-    onAlterarVida,    // Função para +1 ou -1 na vida
-    onDefinirVida,    // Função para definir a vida (via input)
-    onOpenMarkerModal, // Função para abrir o modal de marcadores
-    isFlipped         // Booleano que indica se o card deve ser rotacionado 180º
+    jogadorData,      
+    onAlterarVida,    
+    onDefinirVida,    
+    onOpenMarkerModal, 
+    isFlipped         
 }) {
     
-    // Busca a vida ATUAL com base no 'tipoAtual' (ex: 'vidatipo10' -> 40)
+    
     const valorVidaAtual = jogadorData.vidas[jogadorData.tipoAtual];
     // Busca o ícone/imagem correspondente ao 'tipoAtual'
     const iconeAtual = iconesVida[jogadorData.tipoAtual];
