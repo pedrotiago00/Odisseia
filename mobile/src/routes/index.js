@@ -9,7 +9,7 @@ import game from '../pages/Game/GameScreen';
 import setup from '../pages/Game/SetupScreen';
 import Menu from '../pages/Menu';
 import Deck from '../pages/Deck';
-import Campeonato from '../pages/campeonato';
+import Multiplayer from '../pages/multiplayer';
 
 // Cria a instância do navegador Stack (navegação em pilha)
 const Stack = createNativeStackNavigator();
@@ -63,8 +63,8 @@ export default function Routes() {
       />
 
       <Stack.Screen 
-        name="Campeonato"
-        component={Campeonato}
+        name="Multiplayer"
+        component={Multiplayer}
         options={{ headerShown: false, statusBarHidden: true }}
       />
     </Stack.Navigator>

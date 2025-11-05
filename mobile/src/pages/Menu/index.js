@@ -37,7 +37,7 @@ export default function Menu() {
     { label: "Iniciar Jogo", route: "Setup" },
     { label: "Marcador de Vida", route: "Setup" },
     { label: "Deck", route: "Deck" },
-    { label: "Campeonato", route: "Campeonato" },
+    { label: "Jogar com os amigos", route: "Multiplayer" },
     { label: "Modo Solo", route: "Setup" },
   ];
 
@@ -71,7 +71,9 @@ export default function Menu() {
       activeOpacity={0.8}
       onPress={() => navigation.navigate(btn.route)}
     >
+    <View>
       <Text style={styles.buttonText}>{btn.label}</Text>
+    </View>
     </TouchableOpacity>
   ))}
 
