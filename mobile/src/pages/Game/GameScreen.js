@@ -1,186 +1,193 @@
-// src/screens/GameScreen.js
 import React, { useState, useEffect } from 'react';
-import useTelaCheia from '../../hooks/TelaCheia';
-import { 
-  View, 
-  StyleSheet, 
-  SafeAreaView, 
-  TouchableOpacity, 
+import {
+  SafeAreaView,
+  View,
   Text,
-  Modal,
-  Image
+  TouchableOpacity,
 } from 'react-native';
 
-import Player from '../../components/Player';
-import DiceRoller from '../../components/RolagemDeDados';
-import { iconesVida, TIPO_VIDA_PADRAO } from '../../constants/iconesVida'; 
+// Importa os componentes visuais
+import PlayerSection from '../../components/PlayerSection';
+import ValueModal from '../../components/ValueModal';
+import IconModal from '../../components/IconModal';
 
-// Cria estado inicial do jogador
-const criarEstadoInicialJogador = (vidaInicial) => {
-  const vidas = {};
-  for (const tipo in iconesVida) vidas[tipo] = vidaInicial;
-  return { tipoAtual: TIPO_VIDA_PADRAO, vidas };
-};
+// Importa os dados e funções
+import { colors } from '../../constants/gameData';
+import { getInitialPlayerState } from '../../utils/helpers';
+import styles from './styles'; // Importa estilos locais
 
-export default function GameScreen({ route, navigation }) {
-  const { playerCount: initialPlayerCount, startingLife } = route.params;
+// Este é o componente "Inteligente" (Controlador de Estado)
+export default function GameScreen() {
+  
+  // --- Estados ---
+  const [player1, setPlayer1] = useState(getInitialPlayerState());
+  const [player2, setPlayer2] = useState(getInitialPlayerState());
+  const [activePlayer, setActivePlayer] = useState(1);
 
-  const [playerCount, setPlayerCount] = useState(initialPlayerCount);
-  const [jogadores, setJogadores] = useState([]);
-  const [isDiceModalVisible, setDiceModalVisible] = useState(false);
-  const [marcadorModalVisivel, setMarcadorModalVisivel] = useState(false);
-  const [jogadorAtual, setJogadorAtual] = useState(null); 
+  // Estados dos Modais
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [modalInputValue, setModalInputValue] = useState('');
+  const [modalTarget, setModalTarget] = useState(null); 
+  const [isIconModalVisible, setIconModalVisible] = useState(false);
+  const [iconModalTarget, setIconModalTarget] = useState(null);
 
-  useTelaCheia(); // fullscreen + oculta botões Android
-
-  // Atualiza jogadores quando muda playerCount ou startingLife
+  // --- Efeito do Cronômetro ---
   useEffect(() => {
-    setJogadores(current => {
-      const newArray = Array(playerCount).fill(null).map((_, i) => current[i] || criarEstadoInicialJogador(startingLife));
-      return newArray.slice(0, playerCount);
+    const timerInterval = setInterval(() => {
+      if (activePlayer === 1) {
+        setPlayer1((p) => ({ ...p, timer: p.timer > 0 ? p.timer - 1 : 0 }));
+      } else {
+        setPlayer2((p) => ({ ...p, timer: p.timer > 0 ? p.timer - 1 : 0 }));
+      }
+    }, 1000);
+    return () => {
+      clearInterval(timerInterval);
+    };
+  }, [activePlayer]);
+
+  // --- Funções de Jogo ---
+  const handleLifeChange = (playerNum, amount) => {
+    const setPlayer = playerNum === 1 ? setPlayer1 : setPlayer2;
+    setPlayer((prev) => {
+      const newLife = prev.life + amount;
+      if (newLife > 99) return { ...prev, life: 99 };
+      if (newLife < 0) return { ...prev, life: 0 };
+      return { ...prev, life: newLife };
     });
-  }, [playerCount, startingLife]);
-
-  // Modais e vida
-  const abrirMarcadorModal = (indice) => { setJogadorAtual(indice); setMarcadorModalVisivel(true); };
-  const fecharMarcadorModal = () => { setMarcadorModalVisivel(false); setJogadorAtual(null); };
-  const alterarTipoDeVida = (novoTipo) => { 
-    if (jogadorAtual === null) return; 
-    const novos = [...jogadores]; 
-    novos[jogadorAtual].tipoAtual = novoTipo; 
-    setJogadores(novos); 
-    fecharMarcadorModal();
   };
-  const alterarVida = (indice, valor) => {
-    const novos = [...jogadores]; 
-    const jogador = novos[indice]; 
-    const tipo = jogador.tipoAtual; 
-    jogador.vidas[tipo] = Math.max(0, Math.min(999, jogador.vidas[tipo] + valor)); 
-    setJogadores(novos);
+
+  const handlePassTurn = () => {
+    setActivePlayer((prev) => (prev === 1 ? 2 : 1));
   };
-  const definirVida = (indice, valorTexto) => {
-    const novos = [...jogadores];
-    const jogador = novos[indice]; 
-    const tipo = jogador.tipoAtual;
-    let val = parseInt(valorTexto, 10); 
-    if (isNaN(val)) val = 0;
-    jogador.vidas[tipo] = Math.max(0, Math.min(999, val));
-    setJogadores(novos);
+
+  const handleReset = () => {
+    setPlayer1(getInitialPlayerState());
+    setPlayer2(getInitialPlayerState());
+    setActivePlayer(1);
   };
-  const reiniciarVidas = () => setJogadores(Array(playerCount).fill(null).map(() => criarEstadoInicialJogador(startingLife)));
-  const adicionarJogador = () => setPlayerCount(c => Math.min(6, c + 1));
-  const removerJogador = () => setPlayerCount(c => Math.max(1, c - 1));
 
-  // Renderiza os players
-  const renderPlayers = () => {
-  if (!jogadores.length) return null;
+  // --- Funções do Modal de VALOR ---
+  const openModal = (playerNum, type, key, currentValue) => {
+    setModalTarget({ player: playerNum, type: type, key: key });
+    setModalInputValue(String(currentValue));
+    setModalVisible(true);
+  };
 
-  // Mapeia os jogadores para Player components
-  const players = jogadores.map((j, i) => (
-    <Player
-      key={i}
-      isFlipped={jogadores.length > 1 && i <= Math.ceil(jogadores.length / 2) - 1}
-      jogadorData={j}
-      onOpenMarkerModal={() => abrirMarcadorModal(i)}
-      onAlterarVida={(val) => alterarVida(i, val)}
-      onDefinirVida={(val) => definirVida(i, val)}
-    />
-  ));
+  const handleModalConfirm = () => {
+    const { player, type, key } = modalTarget;
+    let newValue = parseInt(modalInputValue, 10);
+    if (isNaN(newValue)) newValue = 0;
 
-  switch (jogadores.length) {
-    case 1:
-      return <View style={styles.row}>{players}</View>;
-    case 2:
-      return (
-        <>
-          <View style={styles.row}>{players.slice(0, 1)}</View>
-          <View style={styles.row}>{players.slice(1, 2)}</View>
-        </>
-      );
-    case 3:
-      return (
-        <>
-          <View style={styles.row}>{players.slice(0, 2)}</View>
-          <View style={styles.row}>{players.slice(2, 3)}</View>
-        </>
-      );
-    case 4:
-      return (
-        <>
-          <View style={styles.row}>{players.slice(0, 2)}</View>
-          <View style={styles.row}>{players.slice(2, 4)}</View>
-        </>
-      );
-    case 5:
-      return (
-        <>
-          <View style={styles.row}>{players.slice(0, 3)}</View>
-          <View style={styles.row}>{players.slice(3, 5)}</View>
-        </>
-      );
-    case 6:
-      return (
-        <>
-          <View style={styles.row}>{players.slice(0, 3)}</View>
-          <View style={styles.row}>{players.slice(3, 6)}</View>
-        </>
-      );
-    default:
-      return null;
-  }
-};
+    const setPlayer = player === 1 ? setPlayer1 : setPlayer2;
 
+    if (type === 'stat') {
+      setPlayer((prev) => {
+        const newStats = prev.stats.map(s => ({ ...s }));
+        newStats[key].value = newValue >= 0 ? newValue : 0;
+        return { ...prev, stats: newStats };
+      });
+    } else if (type === 'counter') {
+      setPlayer((prev) => {
+        const newCounters = [...prev.counters];
+        newCounters[key] = newValue >= 0 ? newValue : 0;
+        return { ...prev, counters: newCounters };
+      });
+    }
+    setModalVisible(false);
+    setModalTarget(null);
+  };
+
+  const handleModalClose = () => {
+    setModalVisible(false);
+    setModalTarget(null);
+  };
+
+  const adjustModalValue = (amount) => {
+    setModalInputValue((prev) => {
+      const newValue = (parseInt(prev, 10) || 0) + amount;
+      return String(newValue >= 0 ? newValue : 0);
+    });
+  };
+
+  // --- Funções do Modal de ÍCONE ---
+  const openIconModal = (playerNum, index, category) => {
+    setIconModalTarget({ player: playerNum, index: index, category: category });
+    setIconModalVisible(true);
+  };
+
+  const handleIconSelect = (selectedIconObject) => {
+    if (!iconModalTarget) return;
+    const { player, index } = iconModalTarget;
+    const setPlayer = player === 1 ? setPlayer1 : setPlayer2;
+
+    setPlayer((prev) => {
+      const newStats = prev.stats.map(s => ({ ...s }));
+      newStats[index].icon = selectedIconObject.icon || selectedIconObject;
+      return { ...prev, stats: newStats };
+    });
+
+    setIconModalVisible(false);
+    setIconModalTarget(null);
+  };
+
+  // --- Renderização Principal (JSX) ---
+  // Note como esta parte agora está limpa e legível
   return (
-    <SafeAreaView style={styles.container}>
-      <DiceRoller visible={isDiceModalVisible} onClose={() => setDiceModalVisible(false)} />
-
-      <Modal animationType="slide" transparent visible={marcadorModalVisivel} onRequestClose={fecharMarcadorModal}>
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalContainer}>
-            <Text style={styles.modalTitulo}>Escolha um Marcador</Text>
-            <View style={styles.modalIconList}>
-              {Object.keys(iconesVida).map(tipo => {
-                const icone = iconesVida[tipo];
-                return (
-                  <TouchableOpacity key={tipo} style={styles.modalIconeContainer} onPress={() => alterarTipoDeVida(tipo)}>
-                    {typeof icone === 'number' ? <Image source={icone} style={styles.modalIcone}/> : <Text style={styles.modalIcone}>{icone}</Text>}
-                  </TouchableOpacity>
-                )
-              })}
-            </View>
-            <TouchableOpacity style={styles.modalBotaoFechar} onPress={fecharMarcadorModal}>
-              <Text style={styles.modalBotaoFecharTexto}>Fechar</Text>
-            </TouchableOpacity>
-          </View>
+    <SafeAreaView style={styles.screen}>
+      <View style={styles.card}>
+        
+        {/* ---- JOGADOR 1 (VERMELHO) ---- */}
+        <View style={{ flex: 1, transform: [{ rotate: '180deg' }] }}>
+          <PlayerSection
+            playerNum={1}
+            gradientColors={colors.red}
+            {...player1}
+            isActive={activePlayer === 1}
+            onLifeChange={(amount) => handleLifeChange(1, amount)}
+            onPassTurn={handlePassTurn}
+            onOpenModal={(type, key, val) => openModal(1, type, key, val)}
+            onOpenIconModal={(index) => openIconModal(1, index, player1.stats[index].category)}
+          />
         </View>
-      </Modal>
 
-      <View style={styles.gameArea}>{renderPlayers()}</View>
+        {/* ---- DIVISOR E ÍCONE DE MENU ---- */}
+        <View style={styles.handleContainer}>
+          <TouchableOpacity onPress={handleReset} style={styles.resetButton}>
+            <Text style={styles.resetButtonText}>☰</Text>
+          </TouchableOpacity>
+        </View>
 
-      <View style={styles.menuBar}>
-        <TouchableOpacity style={styles.menuButton} onPress={() => navigation.goBack()}><Text style={styles.menuButtonText}>↩️</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.menuButton} onPress={removerJogador}><Text style={styles.menuButtonText}>-</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.menuButton} onPress={() => setDiceModalVisible(true)}><Text style={styles.menuButtonText}>🎲</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.menuButton} onPress={adicionarJogador}><Text style={styles.menuButtonText}>+</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.menuButton} onPress={reiniciarVidas}><Text style={styles.menuButtonText}>🔄</Text></TouchableOpacity>
+        {/* ---- JOGADOR 2 (AZUL) ---- */}
+        <PlayerSection
+          playerNum={2}
+          gradientColors={colors.blue}
+          {...player2}
+          isActive={activePlayer === 2}
+          onLifeChange={(amount) => handleLifeChange(2, amount)}
+          onPassTurn={handlePassTurn}
+          onOpenModal={(type, key, val) => openModal(2, type, key, val)}
+          onOpenIconModal={(index) => openIconModal(2, index, player2.stats[index].category)}
+        />
       </View>
+
+      {/* --- Modais (agora são componentes separados) --- */}
+      <ValueModal
+        visible={isModalVisible}
+        onClose={handleModalClose}
+        onConfirm={handleModalConfirm}
+        targetPlayer={modalTarget?.player}
+        inputValue={modalInputValue}
+        onInputChange={setModalInputValue}
+        onAdjustValue={adjustModalValue}
+      />
+      
+      <IconModal
+        visible={isIconModalVisible}
+        onClose={() => setIconModalVisible(false)}
+        onSelect={handleIconSelect}
+        targetPlayer={iconModalTarget?.player}
+        targetCategory={iconModalTarget?.category}
+      />
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#000' },
-  gameArea: { flex: 1 },
-  row: { flex: 1, flexDirection: 'row' },
-  menuBar: { position: 'absolute', bottom: 20, left:0, right:0, flexDirection: 'row', justifyContent:'center', alignItems:'center' },
-  menuButton: { backgroundColor:'rgba(50,50,50,0.8)', padding:15, borderRadius:50, marginHorizontal:10 },
-  menuButtonText: { fontSize:24 },
-  modalOverlay: { flex:1, justifyContent:'center', alignItems:'center', backgroundColor:'rgba(0,0,0,0.6)' },
-  modalContainer: { width:'90%', backgroundColor:'white', borderRadius:15, padding:20, alignItems:'center', shadowColor:'#000', shadowOffset:{width:0,height:2}, shadowOpacity:0.25, shadowRadius:4, elevation:5 },
-  modalTitulo: { fontSize:22, fontWeight:'bold', marginBottom:20, color:'#000' },
-  modalIconList: { flexDirection:'row', flexWrap:'wrap', justifyContent:'center', width:'100%' },
-  modalIconeContainer: { margin:8, padding:10, backgroundColor:'#eee', borderRadius:10 },
-  modalIcone: { width:40, height:40, fontSize:30 },
-  modalBotaoFechar: { marginTop:20, backgroundColor:'#A73636', borderRadius:8, paddingVertical:10, paddingHorizontal:30 },
-  modalBotaoFecharTexto: { color:'#fff', fontSize:16, fontWeight:'bold' },
-});
