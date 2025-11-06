@@ -9,32 +9,33 @@ export const colors = {
 // Imagens dos Selos (Contadores Circulares)
 export const sealIcons = {
   redPlayer: [
-    require('../assets/MarcadoresDeVida/TokenGelo.png'),
-    require('../assets/MarcadoresDeVida/TokenFogo.png'),
-    require('../assets/MarcadoresDeVida/TokenFuria.png'),
-    require('../assets/MarcadoresDeVida/TokenSilencio.png'),
+    require('../assets/Icones/ICONE_FORCA.png'),
+    require('../assets/Icones/ICONE_DESTREZA.png'),
+    require('../assets/Icones/ICONE_INTELIGENCIA.png'),
+    require('../assets/Icones/ICONE_ARCANO.png'),
   ],
   bluePlayer: [
-    require('../assets/MarcadoresDeVida/TokenGelo.png'),
-    require('../assets/MarcadoresDeVida/TokenFogo.png'),
-    require('../assets/MarcadoresDeVida/TokenFuria.png'),
-    require('../assets/MarcadoresDeVida/TokenSilencio.png'),
+    require('../assets/Icones/ICONE_FORCA.png'),
+    require('../assets/Icones/ICONE_DESTREZA.png'),
+    require('../assets/Icones/ICONE_INTELIGENCIA.png'),
+    require('../assets/Icones/ICONE_ARCANO.png'),
   ],
 };
 
 // Biblioteca de Ícones de Stats (Categorizada)
 export const iconCategories = {
   'Ataque': [
-    { name: 'Confuso', icon: require('../assets/MarcadoresDeVida/TokenConfuso.png') },
-    { name: 'Danificado', icon: require('../assets/MarcadoresDeVida/TokenDanificado.png') },
-    { name: 'Tesoura', icon: require('../assets/MarcadoresDeVida/TokenFogo.png') },
+    { name: 'Físico', icon: require('../assets/Icones/ICONE_ATK_FISICO_B.png') },
+    { name: 'híbrido', icon: require('../assets/Icones/ICONE_ATK_HIBRIDO_B.png') },
+    { name: 'Mágico', icon: require('../assets/Icones/ICONE_ATK_MAGICO_B.png') },
+  ],
+  'Dano': [
+    { name: 'Dano', icon: require('../assets/Icones/ICONE_DANO_B.png') },
+    
   ],
   'Defesa': [
-    { name: 'Fogo', icon: require('../assets/MarcadoresDeVida/TokenFogo.png') },
-    { name: 'Traço', icon: require('../assets/MarcadoresDeVida/TokenFuria.png') },
-  ],
-  'Resistência': [
-    { name: 'Estrela', icon: '⭐' },
-    { name: 'Círculo', icon: require('../assets/MarcadoresDeVida/TokenVeneno.png') },
+    { name: 'Defesa', icon: require('../assets/Icones/ICONE_DEFESA_B.png') },
+    
+ 
   ],
 };

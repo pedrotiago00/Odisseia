@@ -16,7 +16,7 @@ import * as SecureStore from 'expo-secure-store';
 export default function Welcome() {
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(true);
-
+navigation.replace('Menu');
   useEffect(() => {
     const checkToken = async () => {
       try {
