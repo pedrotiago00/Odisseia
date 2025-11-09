@@ -8,6 +8,7 @@ import cadastro from '../pages/SignIn/cadastro';
 import game from '../pages/Game/GameScreen';
 import setup from '../pages/Game/SetupScreen';
 import Menu from '../pages/Menu';
+import Editor from '../pages/GerenciarCartas/index.js';
 import Deck from '../pages/Deck';
 import Multiplayer from '../pages/multiplayer';
 
@@ -59,6 +60,12 @@ export default function Routes() {
       <Stack.Screen 
         name="Deck"
         component={Deck}
+        options={{ headerShown: false, statusBarHidden: true }}
+      />
+
+      <Stack.Screen 
+        name="Editor"
+        component={Editor}
         options={{ headerShown: false, statusBarHidden: true }}
       />
 

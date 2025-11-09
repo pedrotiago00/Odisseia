@@ -1,0 +1,42 @@
+[
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_afdce4e649f8466cbe83a4ae5f5ee472~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_afdce4e649f8466cbe83a4ae5f5ee472~mv2.png",
+        "texto_encontrado": "A Cenário.\n\n[TODOS] Durante a Etapa de Encerramento, o jogador do turno\nrecebe 1 Mana Vigorosa em sua Fonte de Mana (exceto caso tenha\natingido o limite da Fonte de Mana).\n\n[CONTROLADOR] Seus personagens não são afetados pela\ncondição de Confusão.\n\nei minha lealdade a uma amiga... Aqui, uma\nealdade a um povo Dainora\n\nOeisea Card Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_fb564628a2504cf0bd0d65f8281fea3d~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_fb564628a2504cf0bd0d65f8281fea3d~mv2.png",
+        "texto_encontrado": "[TODOS] Personagens só podem atacar um alvo que esteja em.\nUma mesmacolu to para reposicionar aumenta em+1. —\n\n[CONTROLADOR] No início de s\n\nFonte de Mana,\n\nn os historiadores qu\nm busca de um bem maior,\ncorceu o rumo de sets\n\nOeisea Card Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_c979473df4d0488281e832a14397a70a~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_c979473df4d0488281e832a14397a70a~mv2.png",
+        "texto_encontrado": "A Cenário.\n\n[TODOS] Durante a Etapa de Encerramento, se o jogador do turno\noptou por Sacar novas cartas e não sacou um Aliado. Ele pode\nrevelar as cartas sacadas, retornar 1 destas cartas de sua escolha.\nparao fundo do baralho e sacar 1 nova carta,\n\n[CONTROLADOR] Uma vez por turno, durante sua Etapa de\nGuerra, você pode reposicionar até dois de seus personagens sem.\n\nPagar mana por isso.\n\nNem tambores, nem trovões, mas o pisar da marcha do\n\naise Card Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_fe2e8e8770ca42d3bc89f6890b62cff3~mv2.png/v1/fill/w_342,h_97,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ODISSEIA-LOGO-NOMINAL%20(3).png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png/v1/fill/w_49,h_8,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_cc25deae203f45a19d49bcd593b462b4~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_cc25deae203f45a19d49bcd593b462b4~mv2.png",
+        "texto_encontrado": "+ Cenário\n\n[TODOS] Durante a Etapa de Encerramento, após a recompensa\ndo turno, role 1d6: Resultado PAR: Todos os personagens do\n\njogador do turno recebem 1 de dano de caos. Resultado IMPAR: O\njogadordo turno saca 1carta.\n\n[CONTROLADOR] Seus acessórios e artefatos que possuam\ncargas recebem 1$ Carga extra ao serem materializados.\n\nQuando os métodos ortodoxos me recusaram, o lar\ndaquele homem me abraçou... - Enkar\n\nLeer\nisa Card Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_dfed4761def34f6494dacb04b45adef6~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_dfed4761def34f6494dacb04b45adef6~mv2.png",
+        "texto_encontrado": "A Cenário.\n\n[TODOS] Todo início do turno do próximo jogador após o\ncontrolador: Todos os personagens e estruturas em campo\nrecebem Combustão 1\n\n[CONTROLADOR] Durante sua Etapa Técnica, você pode\nmaterializar de sua Reserva 1 item do subtipo acessório\nAcomum, pagando seu respectivo custo de mana. O Item\nmaterializado recebe Danificado.\n\nMas Zanael vai nos salvar... Não vai?\n\n4 bre\naise Card Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_e6a2a3ee72d64a4d9bb3e99b8892071a~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_e6a2a3ee72d64a4d9bb3e99b8892071a~mv2.png",
+        "texto_encontrado": "+ Cenário.\n\n[TODOS] O Custo de 6 mana para invocar personage\nem +1. Além disso, uma vez por partida,\ndevolver de sua cova para baralho 1 item qualquer.\n\n[CONTROLADOR] Ca\n(minimo 1) paraserem mi",
+        "status": "sucesso_com_texto"
+    }
+]

@@ -1,3 +1,5 @@
+// screens/Welcome/index.js
+
 import React, { useEffect, useState } from "react";
 import { 
   View, 
@@ -11,16 +13,22 @@ import {
 
 import * as Animatable from 'react-native-animatable';
 import { useNavigation } from "@react-navigation/native";
-import * as SecureStore from 'expo-secure-store';
+
+// 1. MUDANÇA: Removemos o SecureStore direto
+// import * as SecureStore from 'expo-secure-store';
+// 2. MUDANÇA: Importamos nosso adaptador 'storage'
+import storage from '../../servicers/storage'; 
 
 export default function Welcome() {
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(true);
-navigation.replace('Menu');
+
   useEffect(() => {
     const checkToken = async () => {
       try {
-        const token = await SecureStore.getItemAsync('token');
+        // 3. MUDANÇA: Usamos o storage.getItem ao invés do SecureStore
+        const token = await storage.getItem('token');
+
         if (token) {
           navigation.replace('Menu'); // Vai direto para o Menu
         } else {
@@ -72,6 +80,7 @@ navigation.replace('Menu');
   );
 }
 
+// Seus estilos continuam aqui (não precisam mudar)
 const styles = StyleSheet.create({
   container:{
     flex: 1,

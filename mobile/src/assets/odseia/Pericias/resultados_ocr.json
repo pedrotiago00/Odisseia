@@ -1,0 +1,237 @@
+[
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_8e463820115a416abfdfe2c2d1ddaa46~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_8e463820115a416abfdfe2c2d1ddaa46~mv2.png",
+        "texto_encontrado": "XX Defletir\n\nHabilidade de Defesa\n\n6 : Ative quando o Campeão receber um Ataque Físico (2º\nmomento), adicione a diferença de (apenas se a\nDestreza do Campeão for maior) entre o atacante e o\nCampeão ao valor de defesa. Se o ataque ainda assim\nobtiver sucesso, o dano infligido é reduzido em 2 pontos.\n(Por regra, todo ataque bem-sucedido causa no mínimo 1 de\ndano, não podendo ser reduzido a O por resistências, magias ou\nhabilidades)\n\nOs Anões de Irôb usam sua altura a seu Favor: seus escudos os\ncobrem por inteiro, e seus ataques vem de ângulos inesperados.\n\nA vitor pista",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_d19fdfa0039441a09db7237ce65bb637~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_d19fdfa0039441a09db7237ce65bb637~mv2.png",
+        "texto_encontrado": "(4) Retalhador\n\nHabilidade Passiva\n\nToda condição de Sangramento infligida a adversários\ncausará dano extra de +1.\n\nganam-se aqueles que acham que bárbaros são burros;\neles conhecem a anatomia de sua presa como ninguém.\n\n4 vor Ripinsta",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_356cca8f688e464d88aa05f40cc40364~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_356cca8f688e464d88aa05f40cc40364~mv2.png",
+        "texto_encontrado": "(4) Hemorragia\n\nHabilidade Passiva.\n\nCondições de Sangramento com duração igual ou superior\na 3 rodadas causam penalidade de -1 em todos os valores\nde Combate, em vezde apenas em um deles.\n\n- AAAHHHHI!! [paus:\n\nA Vitor pisa",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_c7a91ac38a134a758c5e10a829191837~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_c7a91ac38a134a758c5e10a829191837~mv2.png",
+        "texto_encontrado": "M Impacto Destrutível\n\nHabilidade de Efeito\n\n6: Se o Campeão desferiu um ataque utilizando uma arma\ncontundente (4º momento), cause Danificado a um escudo\nou equipamento do alvo, mesmo se o ataque não acertar\n(esta habilidade não funciona se o ataque for negado)\n\nTu\n\nA Vitor pin",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_fddf16eae85849a5b8f761c65b9de840~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_fddf16eae85849a5b8f761c65b9de840~mv2.png",
+        "texto_encontrado": "[3 Olho deCae-Lean\n\nMagia Passiva\n\nAdversários precisam pagar re mana extra para ativarem\narmadilhas contra o Campeão.\n\nDiz-se que Cae-Lean sacrificou a prój\n‘nunca mais ser surpreendi\n\nherda tanto sua clarividéncis\n\n= Professor Pe",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_6bd78779bf4a4175b91a2aff20f6af3b~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_6bd78779bf4a4175b91a2aff20f6af3b~mv2.png",
+        "texto_encontrado": "(4) Repelir\n\nHabilidade de Defesa\n\n6 : Ative quando o Campeão receber um Ataque Físico (2º\nmomento). Adicione a diferença de (apenas se a\ndo Campeão for maior) entre o atacante e o Campeão\nao seu valor de defesa. Se o ataque ainda assim obtiver\nsucesso, o dano infligido é reduzido em 1\n(Por regra, todo ataque bem-sucedido causa no mínimo 1 de\ndano, não podendo ser reduzido a O por resistências, magias ou\nhabilidades)\n\nA força de um gigante repele um ataque como quem afista,\ncom desdém, a mosca que ousa perturbá-lo.",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_e17c57497560480eb20bd19b4d08d24f~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_e17c57497560480eb20bd19b4d08d24f~mv2.png",
+        "texto_encontrado": "Parede de Gelo\n\nMagia de Defesa (Água)\n\n|: Ative quando um personagem adversário atacar seu\nCampeão ou um personagem adjacente a ele (3º\nmomento). Reduza o dano infligido em 1 para cada 2 pontos\nque o Campeão possua em (Exemplo: se o\nCampeão tem 2 de Arcano, reduz 1 do dano; se tem 4 de\nArcano, reduz 2 de dano. Além disso, por regra, todo ataque\nbem-sucedido causa no mínimo 1 de dano, não podendo ser\nreduzido a O por resistências, magias ou habilidades.)\n\nO Fogo devora... O Vento sussurra... Mas O gelo obedece.\n- Mago Louco em momentos de... Lucidez?",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_3de43210ec3a4c998089853efeee677c~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_3de43210ec3a4c998089853efeee677c~mv2.png",
+        "texto_encontrado": "Foros\nJO. Maestria com Armas\n\nHabilidade Passiva\n\nO Campeão recebe Ataque +1 e Dano +1 se estiver\nportando ao menos uma arma.\n\nTodos os efeito de “Uso Único” das armas do Campeão\npassam a ser consideradas como [Efeito], podendo serem\nutilizadas todos os turnos, porém seu custo de mana\naumentaem +16\n\nParece que chegou tarde demais, Kaedan!\nO Tesouro Real jfé meu.",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_b0444d5eb2644e6dac7fadbe6a1383bd~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_b0444d5eb2644e6dac7fadbe6a1383bd~mv2.png",
+        "texto_encontrado": "WW Montaria Destemida\n\nHabilidade Passiva\n\nA Montaria cujo Campeão estiver montado não é afetada\npor Medo. Além disso, você pode redirecionar todo ataque\ndesferido contra uma Montaria (sob seu controle) para io\npersonagem que a monta (1º momento).\n\navaleiros do continente.\n\n4 Vito pists",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_3a438f95d71a42bcb7a1c1b01ab13bc7~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_3a438f95d71a42bcb7a1c1b01ab13bc7~mv2.png",
+        "texto_encontrado": "XX Bloquear\n\nHabilidade de Defesa\n\n6: Ative quando o Campeão for alvo de um Ataque\nenquanto portar um Escudo (1º momento). Aumente em\nDefesa +2 o bônus de defesa do Escudo durante este\nataque. Após o final do ataque (4º momento), o escudo\nrecebe Danificado.\n\nA vor pinks",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_3871b6db62324f8c83e2e3c5331261e1~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_3871b6db62324f8c83e2e3c5331261e1~mv2.png",
+        "texto_encontrado": "o\nJO. Bastião\n\nHabilidade Passiva\n\nO Campeão pode portar um escudo (1M) mesmo\nenquanto estiver utilizando uma arma de duas mãos da\nsubcategoria Haste. Armas portadas pelo Campeão não\npodem ser largadas por ações de cartas de adversários.\n\nA postura de Bastião se tornou famosa no exército de\nReuhtor pela sua alta eficiência em formações de guerra.",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_277f7ed963174c5ba5e5df391d967f16~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_277f7ed963174c5ba5e5df391d967f16~mv2.png",
+        "texto_encontrado": "@) Esmagar Miolos\n\nHabilidade Passiva.\n\nSe seu campeão estiver portando uma arma contundente,\nele recebe bônus de Dano +1. Além disso, caso acerte um.\nataque contra um personagem (3º momento), escolha\naleatoriamente uma carta portada por esse personagem e\ncause Danificado a ela.\n\nEntão eu vi meus soldados caindo um a um perante a\nfiíria daquele Ogro Imbatível - Thelgrun\n\nJ Vitor pista",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_cfc49aaf9ee840b09e78b2118a4fcd28~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_cfc49aaf9ee840b09e78b2118a4fcd28~mv2.png",
+        "texto_encontrado": "(4) Frenesi\n\nHabilidade de Efeito\n\n—\n\n666: Adicione 1 marcador de raiva a seu Campeão.\n\nsociedade por sua ag\n\nanimais e aime é de cogumelos\nEm tempos de guerra, eram levados como fe:\npara serem soltos contra o inimigo — b\n\nVitor Ripinstã",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_692d014953ca447296f75eff2ead3855~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_692d014953ca447296f75eff2ead3855~mv2.png",
+        "texto_encontrado": "6: Ative apenas se não houver uma [montaria] em seu\nCampo ou nos inventários do Campeão ou de seus aliados.\nVocê pode adicionar uma montaria A comum do seu\nbaralho ou reserva para sua mão.\n\nOscaralos de Renhtor respond\nmais rápido que\n\nA Vitor Rips",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_c9675a9d68a743f4a74dd9aeee775166~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_c9675a9d68a743f4a74dd9aeee775166~mv2.png",
+        "texto_encontrado": "(GY Bola de Fogo\n\nMagia de Ataque (Fogo)\n\n6666: 0 Campeão recebe bônus de Ataque e Dano +3.\n\nEste ataque também pode atingir um alvo adjacente ao alvo\noriginal (personagem ou estrutura). Se houver mais de um\nalvo adjacente, você escolhe qual será o alvo. Cada alvo que\nfor acertado por este ataque recebe Combustão 2 (4º\nmomento).\n\n(A declaração do segundo alvo deve ser realizada junto do\nprimeiro no 12momento do combate)\n\nConsidero esta a minha magia assinatura. O que não sabia\nera quando teria de liberá-la em todo o seu poder.\n= Enkar, Punhos de Fogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_2e2fc5ab9aef43f2865f8540bfaf2320~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_2e2fc5ab9aef43f2865f8540bfaf2320~mv2.png",
+        "texto_encontrado": "GW) Supressão\n\nHabilidade Passiva.\n\nSeo Campeão possuir 3 ou mais marcadores de raiva, toda\ncondição de Combustão, Congelado, Constrição,\nEnvenenado e Sangramento recebida terá sua duração\nreduzida em 1 turno (mas isto não reduza 0)\n\nEsse €0 melhor que você,\n- Voghr para E\n\nA ito pinta",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_ef2df91552b14f52be7ae053a2bb2fed~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_ef2df91552b14f52be7ae053a2bb2fed~mv2.png",
+        "texto_encontrado": "EE Fletrificar\n\nMagia de Efeito (Raio)\n\n66: Escolha uma arma ou escudo no inventário de um\npersonagem adversário cujo o valor do maior atributo deste\npersonagem seja menor que seu valor de A\ncarta é largada e o Alvo recebe 1 de dano de raio.\n\nDesarmar seu oponente é a forma mais\n“ganhar vantagem no combate! - Professor Perc\n\nA vitor pista",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_7b2e22ac0f214417bb652b688bfbd11c~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_7b2e22ac0f214417bb652b688bfbd11c~mv2.png",
+        "texto_encontrado": "(6) Exceder Limites\n\nHabilidade Passiva\n\nAvida máxima do Campeão aumenta em +4.\n\nObs.: Aumentar a Vida Máxima de um Personagem não\nrecupera sua Vida atual. É necessário curá-lo para que sua\nVida atual alcance o novo valor máximo.\n\nUm verdadeiro Berse ate se mostra uma força\nimpardrel de destruição. - Soldado de Magnar",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_700de207f2a84f22a3d5f99f432d71c6~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_700de207f2a84f22a3d5f99f432d71c6~mv2.png",
+        "texto_encontrado": "(4) Ataque Desentreado\n\nHabilidade de Efeito\n\nAo atacar um Personagem e derrotá-lo (4º momento), você\npode remover 1 Marcador de Raiva. Se fizer isso, todo dano\nexcedente, além da Vida do alvo, é causado a um\nPersonagem Adjacente a ele que poderia ser acertado pelo\nataque originalmente desferido pelo seu Campeão.\n\nSó me sinto vivo quando estou usando a minha espada.\n- Gilborn Guston",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_ed80d157472b4c2a9f6f9a6aa52277e5~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_ed80d157472b4c2a9f6f9a6aa52277e5~mv2.png",
+        "texto_encontrado": "@) Gigantificar\n\nHabilidade de Efeito\n\n- ai\n666: Até o início de seu próximo turno, seu Campeão recebe\nosseguintes bônus e características:\n\n«O Campeão é tratado como Gigante;\n\n«Recebe bônus de Ataque +1 e Defesa +2;\n\n«Ataques realizados pelo Campeão contra estruturas recebem\nbônus de Dano +2;\n\n«O Campeão não é afetado pelas condições de Constrição e\nCongelado;\n\n«O Dano residual inflgido pelo Campeão aumenta em +1.\n\nOs bárbaros aprenderam com os gigantes de Arrkirr como\naumentar sua massa muscular para atingir novos picos de poder.",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_6c34e9e2ca854e5f9e2ba95118da33b6~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_6c34e9e2ca854e5f9e2ba95118da33b6~mv2.png",
+        "texto_encontrado": "XX Força Conjunta\n\nHabilidade de Efeito.\n\n—\n6: Até o fim deste turno, adicione bônus de Ataque igual à\nsoma dos valores de Ataque dos personagens adjacentes ao\nCampeão. Estes personagens não poderão realizar ataques\nnesteturno.\n\nAs forças de Liin são famosas por seu estilo de combate\nágil e acrobático, usando o terreno e aliados a seu favor.\n\n2 Vitor Ripinskt",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_c2140228255e46a7881e4b9fa6d13016~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_c2140228255e46a7881e4b9fa6d13016~mv2.png",
+        "texto_encontrado": "Relâmpago\n\nMagia de Ataque (Raio)\n\n666 : Substitua seu ataque por: Cause 2 de dano de raio a\num alvo adversário. Além disso, se o alvo possuir 8 Força ou\n«PDestreza (o valor maior será utilizado neste cálculo)\nmenor que o valor de do Campeão, cause\nConstrição 1 ao alvo.\n\nUm raio nunca caí duas vezesno mesmo lugar...\nA não ser que você queira! - Mago Lonco.\n\nA vitor pinta",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_5440ca9e9dd145438a643dadc692a81a~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_5440ca9e9dd145438a643dadc692a81a~mv2.png",
+        "texto_encontrado": "[ES Reserva detNana\n\nMagia de Efeito\n\n6: Adicione 1 Mana Vigorosa acoplada a esta carta.\n\nExceto no turno em que acoplou manas a esta magia, você\npode mover 1 ou mais Manas Vigorosas acopladas à esta\ncarta para sua Fonte de Mana (você não paga manas para\nmover as manas vigorosas - Além disso, manas acopladas a\nesta magia não podem ser utilizadas enquanto nesta magia\npermanecerem).\n\nMana fui pelo corpo, aprenda a\nJa! - Professor Percival\n\nA vitor pista",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_b13c7176f62546e9acb30d2428b4eed6~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_b13c7176f62546e9acb30d2428b4eed6~mv2.png",
+        "texto_encontrado": "(4) Sede de Sangue\n\nHabilidade Passiva.\n\nUma vez por turno: Ao atacar com seu Campeão um\npersonagem com marcadores de Sangramento (2º\nmomento), você pode remover até 2 marcadores de\nSangramento do alvo para causar imediatamente o dano\naplicável da condição (incluindo bônus de dano por outras\nperícias).\n\nMORREEE DESGRAÇAAA!\nBICHO DO INFERNO!\n\nA Vitor Ripiski",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_013cb51fab2241b2bdcbaeacc1551832~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_013cb51fab2241b2bdcbaeacc1551832~mv2.png",
+        "texto_encontrado": "IW Suprimentos do Exército\n\nHabilidade de Efeito\n\nibid\n\nE TEA\n\nl\n\n6: Ative apenas se não há um Escudo no Loot, no\ninventário do Campeão ou no inventário de aliados. Você\npode adicionar um Escudo. Acomum do seu baralho ou\nreserva para sua mão.\n\nOexército de Reuhtor é conhecido ni ó pelos.\n“mas também pelo investimento militar ex",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_7f38fa5d5fe44f73b6c45eb0dadedb31~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_7f38fa5d5fe44f73b6c45eb0dadedb31~mv2.png",
+        "texto_encontrado": "66: Se o Campeão está portando um escudo, ao atacar é\nacertar um personagem (3º momento) com valor de\n\nigual ou menor ao de seu Campeão, adicione ao\ndano causado o bônus de Defesa de seu escudo.\n\nO ancião Bard-aavijé dizia que\n\nmelhor defesa €0 ataque:\n\nA vor Rip",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_b65c7a3c901541e985cd5c2f0aad19d8~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_b65c7a3c901541e985cd5c2f0aad19d8~mv2.png",
+        "texto_encontrado": "O Campeão recebe bônus de Defesa +1 se estiver portando\nao menos 1 peça de equipamento qualquer. Além disso,\nEquipamentos portados pelo Campeão são tratados como\nReforcados.\n\n(Seus equipamentos quando tratados como Reforcados\nprecisam de 3 marcadores de Danificado para serem\ndestruídos ao invés de apenas 2).\n\n(Os paladinos da cidadela são soldados prateados,\narmadurados da ca rrado.\n\nA ito pinks",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_9ffd0424f0754ba79ace863a9d197ab2~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_9ffd0424f0754ba79ace863a9d197ab2~mv2.png",
+        "texto_encontrado": "(4) Inigualável\n\nHabilidade Passiva\n\nO Campeão possui Resistência (1) a um tipo de dano físico a\nsua escolha (Cortante, Perfurante ou Contundente) contra\nadversários que possuam um valor de igual ou\nmenor que o Campeão.\n\nSe o Campeão recebeu um ataque físico, você pode pagar\n1.6 mana para causar 2 de dano contundente ao atacante\n(4ºmomento).\n\nIron, a muralha, foi uma oberta da cabeça aos pés\n‘em aço e espinhos. Qualquer ataque contra e\nsignificava arriscar uma retaliação mortal.",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_0c690977ece24c97bef3ff0d1c842275~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_0c690977ece24c97bef3ff0d1c842275~mv2.png",
+        "texto_encontrado": "(4) Empalar\n\nHabilidade Passiva.\n\nSe o Campeão estiver portando uma arma Cortante ou\nPerfurante, ao atacar e acertar um alvo (3º momento) cujo\nvalorde @Forca ou (o maior) forigual oumenor\nque o valor de do seu Campeão: Cause\nSangramento 1 ao alvo.\n\nOs pescadores caçaram os peixes com arpões.\nntão os “peixes? revidaram com tridentes.\n\nA vor pista",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_d845473ea00f4d9eb9ccaeebc2bb3cdb~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_d845473ea00f4d9eb9ccaeebc2bb3cdb~mv2.png",
+        "texto_encontrado": "(Y Jato Acido\n\nMagia de Ataque (Terra)\nve\n\nvive we\n\n666: 0 Campeão recebe bônus de Ataque +2. Ao realizar\neste ataque, escolha imediatamente entre:\n\nE se acertar (3º momento), cause Danificado a até duas\ncartas diferentes no inventário do alvo.\n\nEH Se acertar (3º momento), o dano desta magia torna-se\nirrecuperável.\n\nAh... como eu gosto de ouvir a\ncarne borbulhando! - Elôrael\n\nA ito Ripinsta",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_765efca8041d4e839d8ac263382a8f34~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_765efca8041d4e839d8ac263382a8f34~mv2.png",
+        "texto_encontrado": "o\nJO. Fervor\n\nHabilidade de Efeito\n\n@:Ative quando declarar um ataque (1º momento) com o\nCampeão. Adicione 1$ Carga a esta habilidade ainda na\ndeclaração do ataque.\n\nPara cada $ Carga em Fervor, o Campeão recebe bônus de\nDano+1.\n\nSe o personagem receber qualquer quantia de dano (exceto\npor dano residual), remova todas as $ Cargas contidas\nnesta habilidade.\n\nOs cavaleiros também podem ceder à raiva quando\nperdem aqueles que amam - Zanael",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_e78eb0b61de34f4bb54b8527a657e332~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_e78eb0b61de34f4bb54b8527a657e332~mv2.png",
+        "texto_encontrado": "[3 Arma Elemental\n\n“Magia de Encantamento\n\nLy\n\n66: Escolha uma arma no inventário de um personagem\nem seu campo e a encante com: Durante os três próximos\nataques com esta arma, o portador recebe bônus de Dano\n+1. Além disso, escolha uma natureza entre Água, Fogo,\nTerra, Vento ou Raio, todo dano infligido pelos ataques\ndesta arma será considerada como da natureza escolhida (a\nnatureza escolhida deve ser 1 porencantamento).\n\nUma arma não pode ser encantada novamente enquanto o\nencantamento anterior não for extinto.\n\nÉ muito importante que um mago domine os elementos para\nimbuir corretamente suas armas em magia. - Professor Percival",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_19efa10715354d1bbaa7a7151cb92074~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_19efa10715354d1bbaa7a7151cb92074~mv2.png",
+        "texto_encontrado": "[65 Combustão Acelerada\n\nMagia de Efeito (Fogo)\n\nx6: Remova até duas condições de Combustão de um\npersonagem em campo. Após isso, cause dano ao alvo igual\nao valor de dano acumulado de todas as condições\nremovidas. O Custo desta magia é igual ao valor de\ncondições removidas (1 ou 2).\n\n(Remover 1 condição causará 2 de dano imediatamente,\nassim como remover 2 condições causará 4 de dano)\n\nO calor é a energia do vibrar das partículas, Para explodir\nalgo quente, basta segurar essa vibração... e\nsoleá-la de uma vez só! - Professor Percival",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_902ef986321b4fefbd75186efd40da2e~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_902ef986321b4fefbd75186efd40da2e~mv2.png",
+        "texto_encontrado": "[E Contra-IMágica\n\nMagia Contra\n\nx6: Ative quando o Campeão ou um personagem\nadjacente for alvo de uma magia conjurada por um\nadversário, negue a magia. O Custo desta magia é igual ao\nvalor da magia conjurada +1 (ou seja, o valor de custo da\nmagia, sem considerar modificadores de outras cartas).\n\nA magia negada por este efeito não pode ser utilizada\nnovamente neste turno - Caso você ative esta magia em\nresposta a uma magia de ataque, deve ativá-la no mesmo\nmomento da ativação da magia-alvo.\n\nUm mago precisa estar preparado para caso joguem\nfogo, raios ou um elefante nele... - O Mago Louco.",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_f9400f0d50144051856c9948b4fef07d~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_f9400f0d50144051856c9948b4fef07d~mv2.png",
+        "texto_encontrado": "(EY Magia Perfurante\n\nMagia Passiva\n\nMagias de ataque do Campeão ignoram o bônus de Defesa\nde Z escudo ou equipamento a sua escolha (2º momento)\n\nNem os melhores escudos de Reuhtor, nem as armaduras mais\nbem construídas faziam frente à magia da dama de\nPara ela, eles estavam vestindo nada mais do q!\ndetecido..- Relatos de Cecilia sobre o ataque à Capital.\n\nA vitor pista",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_a708965a2c41454891b0dc7513dc238d~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_a708965a2c41454891b0dc7513dc238d~mv2.png",
+        "texto_encontrado": "x6:Escolha uma arma mística no inventário de seu\nCampeão e a destrua. Materialize no inventário do seu\nCampeão uma arma mística #épica de sua reserva.\nDurante a Etapa de Encerramento de seu próximo turno,\nretorne a arma materializada à sua reserva. O Custo desta\nmagia é de acordo com a raridade da arma destruída, sendo\npara arma comum: 4 manas, para uma arma incomum: 3\nmanas e para uma arma rara: 2 manas.\n\nO poder dos Tesouros Reais pode ser acessado\n“pelos indignos por um tempo limitado,\nmas requer sacrifício. - Mago Louco\n\nA vor pisa",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_fe2e8e8770ca42d3bc89f6890b62cff3~mv2.png/v1/fill/w_342,h_97,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ODISSEIA-LOGO-NOMINAL%20(3).png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_29305daa6eb44229873aafc40520c499~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_29305daa6eb44229873aafc40520c499~mv2.png",
+        "texto_encontrado": "5. Coragem Avida\n\nHabilidade Passiva.\n\nO Campeão e personagens adjacentes a ele recebem\nResistência (1) contra um tipo de dano físico de sua\nescolha (Cortante, Contundente ou Perfurante).\n\nSe todos os aliados que você controla são Guerreiros,\nCavaleiros ou Cavalos, o Campeão também recebe bônus\nde Ataque +1. Além disso, condições de Medo infligidas ao\nCampeão têm sua duração reduzida em 1 (podendo ser\nreduzida a 0).\n\nA Legião de Ilron tem grandes formações de combate,\n“com seu escudo sempre protegendo o soldado à sua esquerda.\n\n/ itr Ripinsks",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_e09407d4b66a482fa87e3e3b92687dae~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_e09407d4b66a482fa87e3e3b92687dae~mv2.png",
+        "texto_encontrado": "[EN Escudo de Mana\n\nMagia de Defesa\nLE fa\n\na\n\nKaw\n\n66 : Ative quando receber um ataque mágico (3º\nmomento) ou efeito mágico que cause dano. Reduza o dano\n\ninfligido ao Campeão em 1 + a diferença de entre\no Campeão e o personagem adversário (se o atributo do\nadversário for maior, considere O para a diferença e reduza\napenas 1 ponto de dano).\n\n‘Mana contra Mana... Pena que a minha infinita.\nl6rael para Enkar",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_290ea9f275d44d1bb103a13d251c41a4~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_290ea9f275d44d1bb103a13d251c41a4~mv2.png",
+        "texto_encontrado": "(4) Aura Fervente\n\nHabilidade Passiva.\n\nUma vez por turno, ao remover uma quantia qualquer de\nmarcadores de raiva do seu Campeão, adicione 1 Mana\nigorosa à sua Fonte de Mana\n\nA raiva devidamente canalizada pode se\nconverter em uma verdadeira força para um bárbaro.\n\nA Vitor pin",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_e2842f4b9db2410b888b85854dfd9808~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_e2842f4b9db2410b888b85854dfd9808~mv2.png",
+        "texto_encontrado": "[3 Armadura Arcana\n\nMagia de Encantamento\n\n66: Escolha um personagem no seu campo para receber\nbônus de Defesa +2 até o início de seu próximo turno.\n\nSe o personagem recebeu dois ataques com sucesso antes\ndo seu próximo turno (4º momento), remova este bônus de\nDefesa.\n\nVocê pode utilizar esta magia até 2 vezes por turno, mas\ndeve ser em alvos diferentes.\n\n= Veja só! Uma armadura feita de magia condensada! Vamos,\nJovem do Cotovelo de Fogo, pode lançar contra mim\numa Bola de Fogo! ro Louco, em uma de suas aulas.",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png/v1/fill/w_49,h_8,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_d21b2e24025b45b48681c9dbe8b8aa15~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_d21b2e24025b45b48681c9dbe8b8aa15~mv2.png",
+        "texto_encontrado": "a\nJO. Proteger\n\nHabilidade Contra\n\n66: Quando um personagem adjacente for alvo de um ataque\n(42 momento). Você pode trocar a posição dele em campo coma\ndo seu Campeão e redirecionar o ataque para o Campeão.\n\n“As lendas contam que nas montanhas ao norte de\nReuhtor repousa Kirthmir, o Tirano.\n\nA vor pisa",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_57739f6b0efd4f83b590abcc563a8001~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_57739f6b0efd4f83b590abcc563a8001~mv2.png",
+        "texto_encontrado": "(4) Pressionar\n\nHabilidade Passiva.\n\nSe o Campeão atacou e não conseguiu superar o valor de\ndefesa de um alvo que possua valor de 8 Força igual ou\nmenor que a do Campeão (4º momento), esse personagem\nreceberá penalidade de Defesa -2 até O próximo ataque\nrealizado ou até o fim deste turno, o que ocorrer primeiro.\n\nSeo escudo não quebrar, o braço quebra!\n\nA Vo pin",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_7b0e6d93c6384ad79fe9f7bb8c43cc13~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_7b0e6d93c6384ad79fe9f7bb8c43cc13~mv2.png",
+        "texto_encontrado": "(Y Barreira de Fogo\n\nMagia Efeito (Fogo)\n\n— = a\n66 : Escolha uma zona de campo, até o início de seu\npróximo turno, qualquer personagem que atacar um\npersonagem na zona escolhida receberá 1 de dano e\nCombustão 1 (2º momento).\n\nIrônico que, após ter sido rejeitado como pupilo da\n\nCriomante, à primeira magia que o Mago Louco me ensina\nseja justamente uma imensa muralha de chan\n= Enkas, em seu primeiro dia na Torre do Mago\n\n2 Vitor Ripinskt",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_246fa09618a6456890b6ef0cb5ad84f7~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_246fa09618a6456890b6ef0cb5ad84f7~mv2.png",
+        "texto_encontrado": "MK Ordens de Formação\n\nHabilidade Passiva\n\nNo Início da sua Etapa de Guerra, escolha e ative um dos\nseguintes efeitos:\n\nFZ Personagens adjacentes ao Campeão recebem bônus de\nAtaque +2 e Dano +1 e penalidade de Defesa -2 até o início\ndeseu próximo turno.\n\nEB Personagens adjacentes ao Campeão recebem bônus\nde Defesa +2 e penalidade de Ataque -1 e Dano -1 até o\ninício de seu próximo turno.\n\nEB Personagens adjacentes ao Campeão causam Dano\nResidual 2, e recebem penalidade de Ataque -1, Dano -1 e\nDefesa=2 até o início de seu próximo turno.\n\nA vitor pista",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_3f97a09d37164b2493309a71459d575a~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_3f97a09d37164b2493309a71459d575a~mv2.png",
+        "texto_encontrado": "(4) Grito de Guerra\n\nHabilidade de Efeito\n\n6: ho ativar, os personagens adjacentes ao Campeão\nrecebem bônus de Ataque +2 até o fim deste turno\n\nSntão en 0s vi, saindo de dentro da floresta, gritando e\naos outros, o conflito era imine: Thelgran\n\nA itor pista",
+        "status": "sucesso_com_texto"
+    }
+]

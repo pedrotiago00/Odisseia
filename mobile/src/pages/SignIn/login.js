@@ -7,8 +7,9 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-// 1. IMPORTE O SECURESTORE (em vez do AsyncStorage)
-import * as SecureStore from 'expo-secure-store'; 
+// REMOVIDO: import * as SecureStore from 'expo-secure-store'; 
+// IMPORTADO: Nosso adaptador de storage
+import storage from "../../servicers/storage"; 
 
 import api from "../../servicers/api";
 
@@ -22,6 +23,10 @@ export default function SignIn() {
   const [senha, setSenha] = React.useState("");
 
   const handleLogin = async () => {
+    if (!email || !senha) {
+        alert("Por favor, preencha o email e a senha.");
+        return;
+    }
     try {
       const response = await api.post("/usuarios/login", {
         email,
@@ -31,17 +36,17 @@ export default function SignIn() {
 
       const { token, usuario } = response.data;
 
-      // 3. SALVE O TOKEN E OS DADOS NO SECURESTORE
-      // Note que as funções são 'setItemAsync'
-      await SecureStore.setItemAsync('token', token);
-+     await SecureStore.setItemAsync('usuario', JSON.stringify(usuario)); // Salva o usuário como texto
+      // CORRIGIDO: Salva o token e os dados usando o 'storage'
+      await storage.setItem('token', token);
+      await storage.setItem('usuario', JSON.stringify(usuario)); // Salva o usuário como texto
       
       // 4. SÓ DEPOIS DE SALVAR, NAVEGUE PARA O MENU
       navigation.navigate('Menu');
 
     } catch (error) {
-      console.error("Erro ao logar:", error);
-      alert("Falha no login. Verifique suas credenciais.");
+      console.error("Erro ao logar:", error.response?.data || error.message);
+      // Informa o erro específico do backend (ex: "Email ou senha inválidos")
+      alert(`Falha no login: ${error.response?.data?.message || 'Verifique suas credenciais.'}`);
     }
   };
 
@@ -59,6 +64,7 @@ export default function SignIn() {
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
+          autoCapitalize="none" // Desativa o auto-capitalize
         />
         <Text style={styles.title}>Senha</Text>
         <TextInput 
@@ -69,12 +75,13 @@ export default function SignIn() {
           secureTextEntry={true}
         />
 
-        <TouchableOpacity style={styles.button} onPress={() => { handleLogin(); }}>
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.buttonRegister} onPress={ () => navigation.navigate('Cadastro') }>
-          <Text style={styles.buttonText}>Não possui uma conta? Cadastre-se</Text>
+          {/* Este Text estava com o estilo errado, corrigi */}
+          <Text style={styles.buttonRegisterText}>Não possui uma conta? Cadastre-se</Text>
         </TouchableOpacity>
 
       </Animatable.View>
@@ -86,19 +93,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-
   containerHeader: {
     marginTop: '14%',
     marginBottom: '8%',
     paddingStart: '5%',
   },
-
   message: {
     fontSize: 28,
     fontWeight: 'bold',
     color: '#FFFFFF',
   },
-
   containerForm: {
     backgroundColor: '#FFFFFF',
     flex: 1,
@@ -107,19 +111,16 @@ const styles = StyleSheet.create({
     paddingStart: '5%',
     paddingEnd: '5%',
   },
-
   title: {
     fontSize: 20,
     marginTop: 28,
   },
-
   input: {
     borderBottomWidth: 1,
     height: 40,
     marginBottom: 12,
     fontSize: 16,
   },
-
   button: {
     backgroundColor: '#243A73',
     width: '100%',
@@ -129,18 +130,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
   buttonText: {
     color: '#FFFFFF',
     fontSize: 18,
     fontWeight: 'bold',
   },
-
   buttonRegister: {
     marginTop: 14,
     alignSelf: 'center',
   },
-  buttonText: {
+  // Corrigido: Havia dois 'buttonText', renomeei este
+  buttonRegisterText: {
     color: '#a1a1a1',
   }
 });

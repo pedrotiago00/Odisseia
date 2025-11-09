@@ -55,4 +55,13 @@ Desktop.ini
 # ======================================
 # Others
 # ======================================
-.env
+*.env
+
+#Tela(Screen)
+src/components/GameScreenBackup.js
+src/pages/Game/GameScreenFullCode.js
+
+src/components/ContadorDeVida.js
+server/test.js
+src/components/RolagemDeDados.js
+src/components/Player.js

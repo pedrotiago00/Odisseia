@@ -1,0 +1,77 @@
+[
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_830c5274fb714e8e839fe96a56013995~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_830c5274fb714e8e839fe96a56013995~mv2.png",
+        "texto_encontrado": "[Passiva] Se você utilizar a ação de reposicionar e mover o portador,\npode escolher uma zona de campo adversária não ocupada. Até o\ninício do seu próximo turno, qualquer personagem reposicionado ou\ninvocado na zona escolhida recebe 1 de dano de fogo.\n\nSeus pés deixavam pegadas queimadas no chão, raser\nde carvão e cinzas, e uma cauda de fogo acompanhava\nseus passos alados! - Relatos sobre O Facho de Luz\n\nitor int PRLOS7\nSats Cor Game Prólogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png/v1/fill/w_49,h_8,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_67733a1124e74272a8d3a38ebf89d183~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_67733a1124e74272a8d3a38ebf89d183~mv2.png",
+        "texto_encontrado": "[Passiva] Se o portador possuir ao menos 2 outros equipamentos,\netodos forem equipamentos pesados, ele recebe Resistência (1) a\ndanos Contundentes e Cortantes.\n\nA guarda real de Mithrian emprega vecnolo\njunto dos projetos humanos, o metal alaranjado\né pesado e resistente, como a guarda.\n\n“7 Brno desu Prost\nOeiseia Card Game Prólogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_38d3419f72ec446380d70e09ad19f484~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_38d3419f72ec446380d70e09ad19f484~mv2.png",
+        "texto_encontrado": "[Passiva] O portador recebe bônus de Ataque +1 durante um\n‘combate em que atacar um personagem com valor de\nmenor que a sua.\n\nEstas manoplas me acompanham desde meus tempos e;\niin. O único presente que recebi, passado de geração\nem geração entre os membros da minha família.\n\nZ itor pisa prosa\nOoisea Cor Game Prólogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_5d0cda0bbaca41ae8cb95596b7a55087~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_5d0cda0bbaca41ae8cb95596b7a55087~mv2.png",
+        "texto_encontrado": "[Passiva] Se todos os equipamentos do portador forem\ns, ele recebe bônus de «) Destreza +1.\n\nitor int\nSats Cor Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_62f2e41466504cc99ecf52abec35dac8~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_62f2e41466504cc99ecf52abec35dac8~mv2.png",
+        "texto_encontrado": "[Passiva] Se o portador possuir ao menos outro Equipamento.\nPesado, ele não pode ser reposicionado por ações de cartas de\nadversá\n\nmantêm firmes para guarm\no rei de Michrian e resistir a qualquer inv\n\nZ itor pia\nOoisea Cor Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_fe2e8e8770ca42d3bc89f6890b62cff3~mv2.png/v1/fill/w_342,h_97,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ODISSEIA-LOGO-NOMINAL%20(3).png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_369b6a219ef84209960d0d9588315812~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_369b6a219ef84209960d0d9588315812~mv2.png",
+        "texto_encontrado": "equipamento, não precisa pagar mana para reposicionar neste.\nturno,\n\nZ itor pisa\nOoisea Cor Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_246df329a09746b0a0377f0cb336a341~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_246df329a09746b0a0377f0cb336a341~mv2.png",
+        "texto_encontrado": "1 Equipamento Pesado - Torso\n\nOnion Reforçado\n\n[Passiva] O Portador recebe Resistência (1) a danos de Fogo.\n\no rubro das minas de Reuhtor tem propric\nrentes ao fogo, e desde o grande incêndio de 38\né empregado por todas as tropastdo reino.\n\n7 itor pino\nSats Cor Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_a05cde5c73be4736bc6524b36d3df5a7~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_a05cde5c73be4736bc6524b36d3df5a7~mv2.png",
+        "texto_encontrado": "[Passiva] O limite da sua Fonte de Mana aumenta em +1. Durante\nsua Etapa de Encerramento, ao sacar cartas, você pode sacar 3.\ncartas ao invés de 2, mas deve devolver 1 dessas 3 cartas para o\nfundo do baralho.\n\n“Algumas almas envolvidas na malha resolvem o problema\n\nda falta de mana, meu caro. - Ferri- Ya\n\nitor in PRL OSS\nSats Cor Game Prólogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_9e3bb81ceefc432da53248b01df44f11~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_9e3bb81ceefc432da53248b01df44f11~mv2.png",
+        "texto_encontrado": "Manto do Mago rauto\n\nA Equipamento Místico = Torso\n\n[Passiva] O Portador recebe Resistência (1) a danos de Água,\nFogo, Terra, Vento e Raio.\n\nQuando os elementos se curvam ¥sua vontade,\ntodo temor se desfiz\n\nStace\naisaa card Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_e663f87c348548188e86238d2631e3fd~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_e663f87c348548188e86238d2631e3fd~mv2.png",
+        "texto_encontrado": "Apenas Bruxos e Magos podem portar este equipamento.\n[Passiva] Durante sua Etapa Inicial, após recarregar, você recebe 1\n\nMana Vigorosa caso sua Fonte de Mana não tenha atingido\nlimite\n\n‘Uma pulseira ou munhequeira ser\nIpor Onde a energie lh do Corpo arc ponta dos eae\nguiando a mana e: ‘moldando- ssor Percival\n\n7 Nitor pia PRLOS6\n\nSaisain card Game Prólogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_812bc810a7884c75a03e19b7fb283ab0~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_812bc810a7884c75a03e19b7fb283ab0~mv2.png",
+        "texto_encontrado": "+ Equipamento Pesado - Braços À\nOn on\n\n6 [éfeito - Conversão: Luz] Ative ao declarar um ataque com o\nPortador (1º momento). Se acertar, o Dano infligido será tratado\ncomo luz\n\n[1$ Carga] Remova 1 condição de Confusão do portador.\n\nDizem que aqueles que buscam auxílio ainda\npodem sentir, nestas manoplas, 0 calor das\nmãos que um dia ampararam os necessitados.\n\n7 vitor pino\nSats Cor Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_037f2c545c724848bc117ffde0234dce~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_037f2c545c724848bc117ffde0234dce~mv2.png",
+        "texto_encontrado": "(ODISSEIA\n\nPRÉVIA\n\nLcd\n\n[Passiva] Durante a Etapa de Encerramei\ncartas, você pode olhar a carta do topo d\n\nPor que nele fica icônico e ci\n- Enkar (sobre o M\n\nvitor pin\n\nOoisea Cor Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_19bec89c2aa447f48d7ff1ae5dd7b4df~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_19bec89c2aa447f48d7ff1ae5dd7b4df~mv2.png",
+        "texto_encontrado": "[Passiva] Se o portador possuir apenas equipamentos Leves, ele\nrecebe Resistência (1) a danos Contundentes e Perfurantes.\n\nprincipalmente, er\nescamas nunca restringindo os movimentos.\n\nZ itor pia\nOoisea Cor Game",
+        "status": "sucesso_com_texto"
+    }
+]

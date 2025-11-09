@@ -1,0 +1,57 @@
+[
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_a77b9a9565fa4529acbdf965c383db60~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_a77b9a9565fa4529acbdf965c383db60~mv2.png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_cd304bb4bd5b43f7bf353df6fe25a573~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_cd304bb4bd5b43f7bf353df6fe25a573~mv2.png",
+        "texto_encontrado": "Seu Campeão só pode portar equipamentos leves e no início de\n\n|| cada um dos seus turnos recebe 1 Marcador de Raiva. Após.\natacar com sucesso com seu Campeão, você pode remover 3\nmarcadores de raiva para o curar 4 pontos de vida de seu\nCampeão. Além disso, seu Campeão não pode ser curado por\noutros efeitos que não o desta subclasse.\n\nYrs — SW",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_20079eea8ac14310823d0293e44de303~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_20079eea8ac14310823d0293e44de303~mv2.png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png/v1/fill/w_49,h_8,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_6b8b957a8b8a4318ac6c406938acfe77~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_6b8b957a8b8a4318ac6c406938acfe77~mv2.png",
+        "texto_encontrado": "Seu Campeão só pode portar equipamentos leves ou pesados.\nPersonagens adjacentes ao seu Campeão recebem bônus de\nDefesa +1. Durante sua Etapa Técnica, você pode, uma vez por\nturno, pagar 1Ô mana para Resgatar um personagem em seu\n| campo que não tenhassido invocado neste turno.\n\nAtenção! Personagens quando são resgatados não podem ||\nser invocados novamente nesse mesmo turno.\n\nA Vitor Ripinska, EN",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_8829f2c5b1e648b8808e8023e9dcad5d~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_8829f2c5b1e648b8808e8023e9dcad5d~mv2.png",
+        "texto_encontrado": "Seu Campeão só pode portar equipamentos místicos. As\nmagias de Defesa, Contra e Encantamento conjuradas pelo seu\n| Campeão custam Tê mana a menos (sendo custo mínimo 1).\nCartas encantadas pelo seu campeão recebem bônus de\nDefesa+1 enquanto durar o encantamento. O bônus de defesa\ndesta subclasse não é cumulativo, ou seja, não pode\nultrapassar 1, mesmo que o próprio personagem seja\n| encantado e/ou porte uma carta encantada.\n\nA Vitor Rins =",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_4aa33283bc0b4b988fcdddd70502906f~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_4aa33283bc0b4b988fcdddd70502906f~mv2.png",
+        "texto_encontrado": "[ Seu Campeão só pode portar equi\n| magias de Ataque e Efeito de Água, Fogo, Terra, Vento ou Raio\n| conjuradas pelo Campeão custam 1 Gmana a menos, (sendo\n| custo mínimo 1). Além disso, ataques mágicos realizados pelo\nCampeão que não possuem uma natureza específica podem.\n\nser tratados como Agua, Fogo, Terra, Vento ou Raio (sua ,\n(RR\n\n(Soom EN\nes PAL] >",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_9de792ff76174643ba6ed07215c09ac7~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_9de792ff76174643ba6ed07215c09ac7~mv2.png",
+        "texto_encontrado": "Seu Campeão só pode portar equipamentos leves e não é\nafetado por Confusão. Na Etapa de Guerra do adversário, o\n| personagem com maior valor de Ataque deve iniciar a Etapa\n\natacando ao menos uma vez o seu Campeão (se houver dois\npersonagens com maior valor de ataque, o oponente escolhe\nqual ataca). Uma vez por turno, se seu Campeão for atacado,\nadicione 1 Marcador de Raiva. Para cada 3 marcadores de\n|, raiva acumulados, seu Campeão recebe bônus de Dano +1.\n\n—— 3\n7 Vitor Ripinski DL",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_8ad90160ec414c9ca14ffdb518523e13~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_8ad90160ec414c9ca14ffdb518523e13~mv2.png",
+        "texto_encontrado": "Seu campeão só pode portar equipamentos leves ou pesados.\nAlém disso, seu campeão pode utilizar habilidades de Defesa\n| ou Contra da classe XX Cavaleiro uma segunda vez por turno.\n\nSe o seu Campeão estiver portando um escudo, ele recebe\nbônus de Defesa +1. Os Escudos portados pelo Campeão são\nconsiderados como Reforçados.\n\n|",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_fe2e8e8770ca42d3bc89f6890b62cff3~mv2.png/v1/fill/w_342,h_97,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ODISSEIA-LOGO-NOMINAL%20(3).png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_a84756866d714c1992996e0aff81713d~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_a84756866d714c1992996e0aff81713d~mv2.png",
+        "texto_encontrado": "Seu Campeão só pode portar Equipamentos Leve:\n\nafetado por Medo. Uma vez por turno, após seu Campeão\n| atacar com sucesso (4º momento), receba 1 marcador de\n\nRaiva. Durante sua Etapa de Guerra, você pode remover 3\n\nmarcadores de Raiva para que seu Campeão ganhe um Ataque\n\nExtra. Porém, este Ataque Extra deve ter como alvo um\n| personagem inimigo aleatório.\n\na a",
+        "status": "sucesso_com_texto"
+    }
+]

@@ -34,11 +34,10 @@ export default function Menu() {
 
   // Seu array de botões
   const botoes = [
-    { label: "Iniciar Jogo", route: "Game" },
     { label: "Marcador de Vida", route: "Game" },
     { label: "Deck", route: "Deck" },
+    { label: "Editor de Cartas", route: "Editor" }, 
     { label: "Jogar com os amigos", route: "Multiplayer" },
-    { label: "Modo Solo", route: "Game" },
   ];
 
   return (

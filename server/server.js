@@ -4,8 +4,10 @@ import dotenv from "dotenv";
 import cors from "cors";
 import http from "http";
 import { Server } from "socket.io";
+import jwt from 'jsonwebtoken';
 import usuariosRoutes from "./routes/usuariosRoutes.js";
-import db from "./database.js"; // 👈 sua conexão MySQL centralizada
+import cartasRoutes from "./routes/cartasRoute.js"; // 👈 1. IMPORTA AS NOVAS ROTAS
+import db from "./database.js"; 
 
 dotenv.config();
 
@@ -23,6 +25,7 @@ const io = new Server(server, {
 
 // 🔹 Importa as rotas MVC normais
 app.use("/usuarios", usuariosRoutes);
+app.use("/cartas", cartasRoutes); // 👈 2. USA AS NOVAS ROTAS
 
 // ===================================================================
 // 🎮 MULTIPLAYER — Socket.IO (modo Among Us / RPG online)
@@ -30,6 +33,7 @@ app.use("/usuarios", usuariosRoutes);
 const rooms = {};
 
 io.use((socket, next) => {
+  // ... (o resto do seu código de socket.io continua aqui) ...
   const token = socket.handshake.auth?.token;
 
   if (!token) {
@@ -39,7 +43,7 @@ io.use((socket, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    socket.user = decoded; // guarda info do usuário autenticado
+    socket.user = decoded; 
     next();
   } catch (err) {
     console.log("❌ Token inválido");
@@ -96,7 +100,10 @@ io.on("connection", (socket) => {
       const room = rooms[roomCode];
       room.players = room.players.filter((p) => p.id !== socket.id);
       io.to(roomCode).emit("roomUpdated", room);
-      if (room.players.length === 0) delete rooms[roomCode];
+      if (room.players.length === 0) {
+        delete rooms[roomCode];
+        console.log(`🗑️ Sala vazia ${roomCode} removida.`);
+      }
     }
     console.log(`🔴 Jogador desconectado: ${socket.id}`);
   });

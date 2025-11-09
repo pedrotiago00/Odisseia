@@ -1,0 +1,37 @@
+[
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_4782efffd056470d92147c29165799c0~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_4782efffd056470d92147c29165799c0~mv2.png",
+        "texto_encontrado": "Catapulta Ogra\n\nTER Cerco]\n\n[Controle] Uma vez por turno, er como controlador,\ncause 3 pontos de dano à um personagem ou 5 pontos de dano à\nAlém disso, se o alvo for uma estrutura,\n\ncorda, você\ndo próximo di\n\nA ito into enor (Ml\nSeia card Game Priore W",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_5a3d1b9ed6ce4566a734473862bd0287~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_5a3d1b9ed6ce4566a734473862bd0287~mv2.png",
+        "texto_encontrado": "Sempre que um personagem adversário for derrotado, até o fim\ndo seu próximo turno, seus personagens de Raça Ogro ou Goblin\nrecebem Regeneração (+1) e Resistência (1) a danos ísicos.\n\nq\nBES Zorra cam (fh\nasd Card Game Pro W",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_5712756ad13f49e48daaa46b3d238aed~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_5712756ad13f49e48daaa46b3d238aed~mv2.png",
+        "texto_encontrado": "Quando você reposicionar um aliado acoplado a esta estrutura,\npoderá mover a estrutura junto para a nova posição do aliado.\n\nEmpurrem até a muralha! Hoje,\n\nER / vitor pisa\nBN Gisela cord Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_fe2e8e8770ca42d3bc89f6890b62cff3~mv2.png/v1/fill/w_342,h_97,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ODISSEIA-LOGO-NOMINAL%20(3).png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png/v1/fill/w_49,h_8,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_f8babd7ce4ae4b40ab849e22063a0bb8~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_f8babd7ce4ae4b40ab849e22063a0bb8~mv2.png",
+        "texto_encontrado": "[Controle] Uma vez por turno, em troca de atacar com o\ncontrolador, cause 2 de dano perfurante a um personagem\nadversário, ou 3 de dano perfurante caso ele esteja na mesma\ncoluna que esta estrutura\n\nO clã está avançando... Di\n\n03\n\nPrólogo\n\nAN\nGERE / Vir ipi\nTSS Gail Cart Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_862864438ee3452aac32be8bbb98c70b~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_862864438ee3452aac32be8bbb98c70b~mv2.png",
+        "texto_encontrado": "Sen enn re er\nFonte da Vida\n\nEtapa Técnica, você pode pagar 6 e ati\nefeitos:\n\nEI Cure 3 de vida de um personagem emseu campo.\n\n[lRemova 1 marcador de Combustão, Envenenado ou\nSangramento de um personagem adjacente\n\nisa Card Game Prólogo WA",
+        "status": "sucesso_com_texto"
+    }
+]

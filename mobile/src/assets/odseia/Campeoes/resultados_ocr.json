@@ -1,0 +1,77 @@
+[
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_4b87b85ee17b4108b82a315f776b4dcd~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_4b87b85ee17b4108b82a315f776b4dcd~mv2.png",
+        "texto_encontrado": "Ataque dela a um personagem adjacente at\nUma vez por turno, se um ataque contra Dainora é bloqueado,\nsaque carta.\n\n73 61 03 NG\n\nSMA Wee\nwe Be",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_b345bc3141cf4765879665dec495c4de~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_b345bc3141cf4765879665dec495c4de~mv2.png",
+        "texto_encontrado": "usa\n\nDainora, a Lamina\n\nfy\nCavalei 8\n— oia Ea vao D.\nEm vez de atacar com Dainora, você pode adicionar o valor de _\n/ Ataque dela a um personagem adjacente até o fim deste turno.\n\nUma vez por turno, se um ataque contra Dainora é bloqueado,\nsaque 1 carta.\n\nF3",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_fe2e8e8770ca42d3bc89f6890b62cff3~mv2.png/v1/fill/w_342,h_97,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ODISSEIA-LOGO-NOMINAL%20(3).png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_7d696d20e72b48509a804c204e7c76f1~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_7d696d20e72b48509a804c204e7c76f1~mv2.png",
+        "texto_encontrado": "Enkar, Punhos de Fogo\n\nHerói Humano » Mago\n\n| O Limite de sua Fonte de Mana aumenta em +1. Todo ataque\nmágico de Enkar que não possua uma natureza é tratado como ||\n57 Fogo, além disso, magias de fogo tem seu custo reduzido em 1 7\nmana.\nq\n\no 73/42/02 d\nO) NS (6 A\n\nok",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_a97a37606ecd412ea6390a9f2a939398~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_a97a37606ecd412ea6390a9f2a939398~mv2.png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_d75274fdd81e43689a08ade931e5b05f~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_d75274fdd81e43689a08ade931e5b05f~mv2.png",
+        "texto_encontrado": "Toda vez que Thelgrun derrotar um personagem adversai\nrosa à sua fonte de mana. Thelgrun pode |\naprender 1 (e não mais que isto) perícia de Cavaleiro ou Clérigo.\n\n72 42103\n\nvor pin",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_9c7e400da6bc420eb697142c8144cdbc~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_9c7e400da6bc420eb697142c8144cdbc~mv2.png",
+        "texto_encontrado": "HOURK. Vilão Ogro= Barbaro\n\nVoghr recebe bonus de Ataque #1 para cada outro Hourk em seu\ncampo. Além disso, se Voghr possuir qualquer numero de\nmarcadores de raiva, ele recebe bonus de Dano +.\n\nF3\\ £2|\\|@2\n\nA itor Rips",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_e1259a3500694370bf845f49e5bea253~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_e1259a3500694370bf845f49e5bea253~mv2.png",
+        "texto_encontrado": "O Limite de sui e +1. Todo ataque\nmágico de Enkar que é tratado como |.\nFogo, além\n\n6",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_1ef67ea09f574b718101cc32c9b336e8~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_1ef67ea09f574b718101cc32c9b336e8~mv2.png",
+        "texto_encontrado": "por turno (seu), você pode causar 3 de dano a Elórael para\ndicionar 1 Mana Vigorosa à sua Fonte de Mana, desde que não",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_34f0e0f4c6cd421c802e263c555ad9f6~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_34f0e0f4c6cd421c802e263c555ad9f6~mv2.png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_ec5d070986b344efad92fca31057c8c5~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_ec5d070986b344efad92fca31057c8c5~mv2.png",
+        "texto_encontrado": "Resistência (1) a danos de Sombra\n“Zanael Corrompido recebe bônus de Ataque +2 até a conclusão\ndo ataque, se atacar um personagem pertencente a uma Facção\nqualquer.",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_6afb8f503a21431e8a966856bf3c3fff~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_6afb8f503a21431e8a966856bf3c3fff~mv2.png",
+        "texto_encontrado": "| Voghr recebe bônus de Ataque +1 para cada outro Hourk em seu\n| campo. Além disso, se Voghr possuir qualquer número de |:\nmarcadores de raiva, ele recebe bônus de Dano +1.",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_c834bf3646d4435bb1575609ae6ed353~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_c834bf3646d4435bb1575609ae6ed353~mv2.png",
+        "texto_encontrado": "Woghr recebe bônus de Ataque +1 para cada outro Hourkem sei a\n\nif campo. Além disso, se Voghr possuir qualquer número de\n[marcadores de raiva) ele recebe bonus de Dano.\n\nZ3 [41102 ZA\nge LG",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_2e96d6ae183c4b529cb9682f63d90ad8~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_2e96d6ae183c4b529cb9682f63d90ad8~mv2.png",
+        "texto_encontrado": "inora, a Lamina do Rei\n\nHeroina Elfa = Cavaleira\n\nsm vez de atacar com Dainora, você pode adicionar o valor de\nE) Ataque dela a um personagem adjacente até o fim deste turno. 4\nUma vez por turno, se um ataque contra Dainora é bloqueado,\nsaque 1 carta.",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png/v1/fill/w_49,h_8,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    }
+]

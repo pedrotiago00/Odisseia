@@ -1,0 +1,137 @@
+[
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png/v1/fill/w_49,h_8,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/83926d_ccab3f52dbd943d7b9b95514ee975d96~mv2.png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_fe2e8e8770ca42d3bc89f6890b62cff3~mv2.png/v1/fill/w_342,h_97,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ODISSEIA-LOGO-NOMINAL%20(3).png",
+        "texto_encontrado": "",
+        "status": "sucesso_sem_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_44adc148260f4afa873733ce69634723~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_44adc148260f4afa873733ce69634723~mv2.png",
+        "texto_encontrado": "Este item não pode ser portado por personagens que utilizem de\nataquesmágicos.\n[Manter] O Portador recebe bônus de Ataque +1 para cada\npersonagem que esteja adjacente a ele.\nVo reino dos cavalos, os familiares que ficam para tr\nguerra entalham amuletos de boa sorte para\nseus entes queridos que partem para 0 confronto.\n\n7 iunnyheo\naici Car Game Prólogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_6e66f032a29548c29a4c726b909d62e4~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_6e66f032a29548c29a4c726b909d62e4~mv2.png",
+        "texto_encontrado": "Egide da Tempestade\n+ Item - Acessório) PE\nUm campeão só pode portar uma Egide (item - acessório) por ve:\n[Manter] O Portador recebe Resistência (1) a danos de Raio. Toda\n\ncondição de Constrição causada contra o portador terá sua duração\nreduzida em 1 turno, se isto zerar sua duração, a condição é anulada.\n\nade, não temerei m:\n\n7 itor Rins PRUE\nDelicia Crd Game Prólogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_9cee439ce8ab4f77b5fc66d61fa86031~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_9cee439ce8ab4f77b5fc66d61fa86031~mv2.png",
+        "texto_encontrado": "+ Item - Pergaminho]\n\n‘Ao materializar, acople 1 magia de efeito ou encantamento das\nclasses Bruxo, Mago ou Oráculo a este pergaminho com requisito\ndeatributo até\n\n[Consumo] Retorne a magia acoplada ao grimório e a ative sem\nprecisar pagar seu custo de mana ou cumprir qualquer outra.\nrestrição.\n\nO poder da magia nas mãos de qualquer um que puder pagar!\n\nLane desu em\nOeiseia Card Game Prólogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_7b2f5b06e5ad45bfac55ae29f6803da7~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_7b2f5b06e5ad45bfac55ae29f6803da7~mv2.png",
+        "texto_encontrado": "ODISSÉIA\nma VI A\n\nDiário de Combate\nO so\n\n[Manter] Quando o portador batalhar (2º momento), adicione 1\nCarga a este livro. Quando este livro possuir 5 $ cargas, você\npode conceder ao portador um bônus permanente de +1 em um.\natributo à sua escolha (bônus só pode ser adquirido por este livro\numa única vez e por um único personagem).\n\nQuerido diário, hoje apunhalei um homem no meio das pernas\n\nA Karine PRLOTS\nSeis Cor Game preço",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_6ac124a5ec98488ba735529233c71959~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_6ac124a5ec98488ba735529233c71959~mv2.png",
+        "texto_encontrado": "[1$ Carga) Ative fora de Combate, durante seu turno e apenas\numa vez por turno. Adicione ao inventário do portador um.\nIngrediente À Comum de sua reserva.\n\nnais subestime um alquimista preparado. Até a menor bolsa\npode conter o próximo desastre engarrafado. - Zao\n\n7 itor pisa\nGaels Cra Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_be0a48fcc70e4b2d87b8dab8ebcccbd9~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_be0a48fcc70e4b2d87b8dab8ebcccbd9~mv2.png",
+        "texto_encontrado": "A Item - Acessório,\n\n[Manter] Cada vez que o portador derrota um personagem\nadversário, adicione 1 $ carga a esteitem.\n\n[x $Cargas) Ative no inicio de sua Etapa Técnica ou no início de\nsua Etapa de Guerra. Adicione à sua Fonte de Mana 1 Mana\nVigorosa para cada $ carga gasta. Além disso, o portador recebe\nbônus de Ataque +1 até o fim do turno.\n\n[Roubado de mer do Mediterrinco que atuam em Arrkirr\n\nZ aroina\nOeisea Card Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_a8ddb9c5496d4723abf51238b8264bb2~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_a8ddb9c5496d4723abf51238b8264bb2~mv2.png",
+        "texto_encontrado": "Frágil\n\n[consumo] Ative durante seu turno. Até o inicio do seu próximo\nturno, adicione a um Campeão da Classe Clérigo, Invocador ou Mago\numa magia de sua respectiva classe com requisito de @inteligéncia\n3 ou -, mesmo que ele não possua o atributo necessário. Além disso,\ndurante esta rodada, a magia adicionada por esta ação não possuirá\ncusto de mana para ser ativada.\n\nVocê não precisa decorar todos os feitiços. Anote alguns €\nencante o papel! Conjuração sob demanda! = Professor Percival\n\n7 Vitor pin\nesa card Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_7a3208f8fe744551a9b788d12c55969a~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_7a3208f8fe744551a9b788d12c55969a~mv2.png",
+        "texto_encontrado": "[Consumo] Ative fora de Combate e durante o seu turno. O\npersonagem que consumiu recebe Resistência (3) a danos de Fogo e\nnão é afetado por Combustão até o início de seu próximo tumo\n(também não recebe novas condições de Combustão). No entanto,\ntambém passa a receber Fraqueza (2) a danos de Água pelo mesmo\nperíodo.\n\nO preço é esse mesmo, sem negociação! Eu vim\nde Magnar até Arrkirr c estava um frio do djankol\n\nLiar Rins\nDelicia Crd Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_ffe548d448584fdeb08fa52043d6b657~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_ffe548d448584fdeb08fa52043d6b657~mv2.png",
+        "texto_encontrado": "+ Item - Acessório\nQu\nFrágil\n\n|[X$ Cargas] Ative quando portador estiver recebendo um ataque\n(22 momento). Durante este ataque, adicione um bônus de Defesa.\não portador igual ao número de cargas consumidas.\n\nDizem que dragões ê es como ferro; são um\nsímbolo de resiliência, do impenetrável! Arma mundana.\nalguma pode ferir um dragão! - Almond, Caçador de Dragões\n\n7 itor pino\nSats Cor Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_f8d090330b9747158a0f2e608a5b0270~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_f8d090330b9747158a0f2e608a5b0270~mv2.png",
+        "texto_encontrado": "_BR\n\nWZ\ny 1) 2\n\nODISBEIA\nRREWT A\n\n? Orhe\n\nA Arma Mística - Cajado (1M)\n\nMMS pe\n\n6 6léfeito (Caos) — Profecia de Fausto] Escolha um Campeão, O\ncontrolador desse Campeão deve revelar qual será a próxima Perícia.\nque pretende adicionar ao alvo. Enquanto não aprender essa Perícia,\no Campeão estará impedido de adquirir qualquer outra.\n\n[Passiva - Poder Instável) Se o Orbe Rúnico de Fausto for destruído,\nCause 1 de dano de caos irredutível a todos os personagens em\ncampo.\n\n7 vitor pinto Pros\nSats Cor Game tone",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_371d3f613ef540598ebe6f3715afb330~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_371d3f613ef540598ebe6f3715afb330~mv2.png",
+        "texto_encontrado": "Mapa de Exploração\n\n+ Item - Artefato É\n\n[Consumo] Ative fora de Combate e durante seu turno. Adicione\num Cenário de sua reserva para sua mão.\n\nEu andei de norte a sul p\n“mas não conheci nem metade de.\n\nitor pisa\nOoisea Cor Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_6b68c49dc7f742ac956247e4e4c0cb9d~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_6b68c49dc7f742ac956247e4e4c0cb9d~mv2.png",
+        "texto_encontrado": "[Manter] No início de sua Etapa de Encerramento, o portador\nrecebe 2 pontos de dano irredutíveis e irrecuperdveis.\n\ndo,\n‘eu corpo\nrecusaria seu próprio sangue. - Elorael\n\n(7 Karorine + Tomy PaLoss\nOeisea Card Game Prólogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_390666e333db446ca6c588b4070c9a28~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_390666e333db446ca6c588b4070c9a28~mv2.png",
+        "texto_encontrado": "[Manter] Ao materializar, opte por um dos seguintes bônus:\n\n[JO Portador recebe Ataque +1 e Dano +1, assim como a\npenalidade de Defesa-2.\n\n[O Portador recebe Defesa +1 e Resistência (1) a um tipo de dano\nfísico ou de uma natureza de sua escolha, assim como a\npenalidade de Ataque -1 e Dano-1.\n\n“7 Brno desu\n\nOeiseia Card Game\n\nPrlego",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_4e611d5c572f4a91a713efeaa149ce84~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_4e611d5c572f4a91a713efeaa149ce84~mv2.png",
+        "texto_encontrado": "+ Item - Artefato\n\n[Consumo] Ative durante seu turno. Inflja 2 de dano perfurante a\nUm personagem em qualquer campo.\n\nA Vitor pin\nesa card Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_97477e2834c649c6a061962ca0e554a8~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_97477e2834c649c6a061962ca0e554a8~mv2.png",
+        "texto_encontrado": "+ Item - Artefato\n\nFrágil\n[1$ Cargo] Ative durante sua Etapa Técnica. O Portador recebe\nRegeneração 1.\n\n12 Cargas] Se o portador for um Aliado e estiver prestes a receber\num dano que o reduziria a O de Vida durante um Combate (32\n'momento), ele não é derrotado e permanece com 1 de Vida após a\nconclusão do ataque.\n\nis! Regenerem esta forma decadente!\n\nOeisea Card Game Prólogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_10209674484649a4a45f9907771ef593~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_10209674484649a4a45f9907771ef593~mv2.png",
+        "texto_encontrado": "Frágil\n[23 Cargas] Ative quando o portador estiver prestes a receber\nqualquer quantia de dano por um ataque (3º momento). O Dano\ncausado neste ataque torna-se 1.\n\nOs Hourk ancestrais tran:\num amuleto de prote\ndo guardião dos conhecimentos ant\n\n7 itor pia\nGaels Cra Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_b23af6a300cd4912aa31f80f9d7bd4c3~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_b23af6a300cd4912aa31f80f9d7bd4c3~mv2.png",
+        "texto_encontrado": "[Consumo] Ative fora de Combate e durante seu turno. Adicione 1\nMana Vigorosa à sua Fonte de Mana OU Recupere 1 de Energia do\n\nAzul roxa como energia bruta, a base de todas as\n0 do comércio arcano\nQuem controla a erva controla o continente.\n\nitor int\nSats Cor Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_d781fdbed2114a90ae0402afe00bdd81~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_d781fdbed2114a90ae0402afe00bdd81~mv2.png",
+        "texto_encontrado": "[Manter] Enquanto o portador possuir\nrecebe bônus de Defesa +1\n\nerra me proce\num recruta! Acho que ela s\n‘om o tempo. = Thelgrun\n\n7 Vitor pino PRLOTL\n‘aise Card Game Prólogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_98c1c3ea3c1e405284113bfc169a6511~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_98c1c3ea3c1e405284113bfc169a6511~mv2.png",
+        "texto_encontrado": "[Manter] Cada vez que um personagem da facção Hourk é\nderrotado, adicione 1 $ cargaa este item.\n\n[2$ Cargas] Ative durante sua Etapa Técnica, adicione um\npersonagem Hourk do seu baralho ou reserva à sua mão.\n\nEdo alto da colina se ouvia aquele berro monstruoso,\nque, como um feitiço, fez o clã sé multiplicar,\nsurgindo de todos os cantos em uma emboscada.\n\nZ Voe pia PRLO6e\nSaisain card Game Prólogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_3b79d9ebcfc64132b431ebcd0becfd0b~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_3b79d9ebcfc64132b431ebcd0becfd0b~mv2.png",
+        "texto_encontrado": "Um campeão só pode portar uma Egide (item - acessório) por vez\n[Manter] O Portador recebe Resistência (1) a danos de Água. Toda\ncondição de Congelado causada contra o portador terá sua duração\nreduzida em 1 turno, se isto zerar sua duração, a condição é anulada.\n\nEm meio ao inverno mais frio, não temerei mal algum.\n\nvitor pin press\nOoisea Cor Game Prólogo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_fa95c875070c44eeb8ae75eeadc45804~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_fa95c875070c44eeb8ae75eeadc45804~mv2.png",
+        "texto_encontrado": "Frágil\n[consumo] Ative fora de Combate e durante seu turno. O\npersonagem que consumiu este item recebe bônus de Ataque +1 e\nDano #1 até o final deste turno. Durante a Etapa de Encerramento,\nele sofrerá 2 pontos de dano.\n\nEla não tem esse nome à toa. Cólera pode acelerar seu\ncoração, dar adrenalina e fizé-lo sentir-se mais force!\nAo custo de destruir seu sistema nervoso. = Herbalista Migan\n\n7 Karine\nSessa Card Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_d5bb6fe36b5a4649b375fe084ea6ae1e~mv2.png/v1/fit/w_480,h_638,q_90,enc_avif,quality_auto/83926d_d5bb6fe36b5a4649b375fe084ea6ae1e~mv2.png",
+        "texto_encontrado": "portador utilizar uma magia ou ataque\n\n[8$ Cargas) Ative ao declarar um ataque mágico com o portador\n(1º momento), utilizando uma magia de ataque. O cu\néreduzidoem1\n\naise Card Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_017d57945a1f4f5ba6afdd2b8c36ec50~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_017d57945a1f4f5ba6afdd2b8c36ec50~mv2.png",
+        "texto_encontrado": "A Item Ingrediente\n\nFrágil\n\n[Consumo] Ative fora de Combate e durante seu turno. O\npersonagem que consumiu este item recebe Regeneração 1. Além\ndisso, recebe bônus de «7 Destreza +1 até o início do seu próximo\nturno. A condição de Regeneração causada por este ingrediente cura.\n2 devida ao invés de 1.\n\nEficaz contra mordidas de lobos, ogros...¢ até zumbis\n\n7 itor pia PRLOT?\nisa card logo",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_8ece53945959453189c67ec14026b0c2~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_8ece53945959453189c67ec14026b0c2~mv2.png",
+        "texto_encontrado": "+ Item - Acess6ri\n\nQu\n\n[1$ Carga) Remova 1 condição de Silenciado do Portado!\n[Passiva] Condições de Regeneração apl s ao portador\nrecuperam 2 de Vida ao invés de 1 festa passiva não acumula com\n‘outros bônus aplicados à Regeneração).\n\nEstas ombreiras guardam em silêncio 6\no brilho desvanecido de uma glória hd muito perdida.\n\n7 Vitor pin\nDelicia Crd Game",
+        "status": "sucesso_com_texto"
+    },
+    {
+        "url_imagem": "https://static.wixstatic.com/media/83926d_eafa4f0969d0461bae95432da92bead7~mv2.png/v1/fit/w_480,h_641,q_90,enc_avif,quality_auto/83926d_eafa4f0969d0461bae95432da92bead7~mv2.png",
+        "texto_encontrado": "À Item - Poção.\n\n[2$ Carga] Ative fora de Combate e durante seu turno. O portador.\n\nrecebe bônus de Defesa +2 até o seu próximo turno, porém quando\n\neste bônus cessar, receberá durante 1 rodada penalidade de\nDestreza-1.\n\numa que: imia para que a pele seja\n\nrígida como uma árvore. - Alquimista da corte,\n7 Vier Rips Prosi\ndae ar Game Preço",
+        "status": "sucesso_com_texto"
+    }
+]
