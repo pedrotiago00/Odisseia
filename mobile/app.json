@@ -2,7 +2,7 @@
   "expo": {
     "name": "Odisseia",
     "slug": "mobile",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "jsEngine": "hermes",
     "orientation": "portrait",
     "icon": "./assets/AppIcon.png",
@@ -17,6 +17,7 @@
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/AppIcon.png",
         "backgroundColor": "#ffffff"

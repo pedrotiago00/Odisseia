@@ -6,7 +6,8 @@ import http from "http";
 import { Server } from "socket.io";
 import jwt from 'jsonwebtoken';
 import usuariosRoutes from "./routes/usuariosRoutes.js";
-import cartasRoutes from "./routes/cartasRoute.js"; // 👈 1. IMPORTA AS NOVAS ROTAS
+import cartasRoutes from "./routes/cartasRoute.js"; 
+import tagsRoutes from "./routes/tagsRoute.js";
 import db from "./database.js"; 
 
 dotenv.config();
@@ -14,6 +15,7 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -25,7 +27,8 @@ const io = new Server(server, {
 
 // 🔹 Importa as rotas MVC normais
 app.use("/usuarios", usuariosRoutes);
-app.use("/cartas", cartasRoutes); // 👈 2. USA AS NOVAS ROTAS
+app.use("/cartas", cartasRoutes); 
+app.use("/tags", tagsRoutes);
 
 // ===================================================================
 // 🎮 MULTIPLAYER — Socket.IO (modo Among Us / RPG online)

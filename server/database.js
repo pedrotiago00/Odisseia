@@ -1,10 +1,79 @@
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
+import { FILTROSTag } from "./tags.js";
 
 dotenv.config();
 
 // =================================================================
-// 1. DEFINA A FUNÇÃO PRIMEIRO
+// 1. DEFINA A LISTA MESTRA DE TAGS AQUI
+// (Note que removemos o 'Todos', pois ele é uma lógica do App,
+// e não uma tag real do banco)
+// =================================================================
+const tagsParaSeed = FILTROSTag;
+
+// =================================================================
+// 2. FUNÇÃO PARA POPULAR AS TAGS (NOVO)
+// =================================================================
+// =================================================================
+// 2. FUNÇÃO PARA POPULAR E SINCRONIZAR AS TAGS (ATUALIZADO)
+// =================================================================
+const seedTags = async (poolDeConexao) => {
+  console.log("Sincronizando tags...");
+  let connection;
+  try {
+    connection = await poolDeConexao.getConnection();
+    
+    // --- ETAPA 1: INSERIR/ATUALIZAR ---
+    
+    // 👇 MUDANÇA AQUI:
+    // Este comando tenta inserir. Se a 'tag' (UNIQUE) já existir,
+    // ele ATUALIZA o 'nome' para o novo valor.
+    const query = `
+      INSERT INTO tags (nome, tag) 
+      VALUES (?, ?) 
+      ON DUPLICATE KEY UPDATE nome = VALUES(nome)
+    `;
+    
+    for (const tagItem of tagsParaSeed) {
+      if (tagItem.tag !== 'all') { 
+        await connection.query(query, [tagItem.nome, tagItem.tag]);
+      }
+    }
+    console.log("Tags do arquivo .js inseridas/atualizadas.");
+
+    // --- ETAPA 2: LIMPAR (DELETE) ---
+    // (Esta parte continua idêntica à anterior)
+    const tagsValidas = tagsParaSeed
+      .map(t => t.tag)
+      .filter(t => t !== 'all');
+
+    if (tagsValidas.length > 0) {
+      const placeholders = tagsValidas.map(() => '?').join(',');
+      const deleteQuery = `DELETE FROM tags WHERE tag NOT IN (${placeholders})`;
+      
+      const [deleteResult] = await connection.query(deleteQuery, tagsValidas);
+      
+      if (deleteResult.affectedRows > 0) {
+        console.log(`${deleteResult.affectedRows} tags órfãs foram removidas do banco.`);
+      } else {
+        console.log("Nenhuma tag órfã encontrada para remover.");
+      }
+    } else {
+      console.log("Lista de tags do .js está vazia, pulando a remoção.");
+    }
+    
+    console.log("Sincronização de tags completa.");
+
+  } catch (error) {
+    console.error("Erro ao sincronizar tags:", error);
+  } finally {
+    if (connection) connection.release();
+  }
+};
+
+
+// =================================================================
+// 3. FUNÇÃO DE INICIALIZAÇÃO (ATUALIZADA)
 // =================================================================
 const inicializarTabelas = async (poolDeConexao) => {
   console.log("Verificando estrutura do banco de dados...");
@@ -40,21 +109,35 @@ const inicializarTabelas = async (poolDeConexao) => {
     await connection.query(createCartasTable);
     console.log("Tabela 'cartas' verificada/criada.");
 
+    // 3. Cria a tabela 'tags'
+    const createTagsTable = `
+      CREATE TABLE IF NOT EXISTS tags (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        nome VARCHAR(100) NOT NULL,
+        tag VARCHAR(100) NOT NULL UNIQUE
+      );
+    `;
+    await connection.query(createTagsTable);
+    console.log("Tabela 'tags' verificada/criada.");
+
     console.log("Verificação do banco de dados completa.");
+
+    // 4. CHAMA A FUNÇÃO DE SEMEAR TAGS (NOVO)
+    // Isso roda DEPOIS de garantir que a tabela existe.
+    await seedTags(poolDeConexao);
 
   } catch (error) {
     console.error("Erro fatal ao inicializar tabelas:", error);
-    process.exit(1); // Encerra a aplicação se não conseguir criar as tabelas
+    process.exit(1); 
   } finally {
-    if (connection) connection.release(); // Garante que a conexão será liberada
+    if (connection) connection.release(); 
   }
 };
 
 
 // =================================================================
-// 2. AGORA, CONECTE-SE E CHAME A FUNÇÃO
+// 4. CONEXÃO E INICIALIZAÇÃO (IGUAL A ANTES)
 // =================================================================
-
 const connectionString = process.env.MYSQL_URL;
 
 if (!connectionString) {
@@ -65,20 +148,19 @@ if (!connectionString) {
 let pool;
 
 try {
-  // Cria o pool
   pool = await mysql.createPool({
-    uri: connectionString, // A única fonte de conexão
+    uri: connectionString, 
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
   });
 
-  // Testa a conexão
   const connection = await pool.getConnection();
   console.log("Conexão com o banco (via MYSQL_URL) estabelecida com sucesso!");
   connection.release();
 
   // CHAMA A FUNÇÃO (que agora já existe)
+  // Ela por sua vez vai chamar o seedTags
   await inicializarTabelas(pool); 
 
 } catch (error) {
@@ -86,5 +168,5 @@ try {
   process.exit(1);
 }
 
-// 3. EXPORTA O POOL NO FINAL
+// 5. EXPORTA O POOL NO FINAL
 export default pool;

@@ -17,5 +17,5 @@ export const FILTROSTag = [
 
     { nome: 'Ataque', tag: 'ataque' },
     { nome: 'Suporte', tag: 'suporte' },
-    { nome: 'MessiCareca', tag: 'messicareca' },
+    { nome: 'Messi', tag: 'messicareca' },
 ];

@@ -8,18 +8,13 @@ import {
     StyleSheet,
     ActivityIndicator,
     TouchableOpacity,
-    Modal, // 1. Importamos o Modal
-    Button // 2. Importamos o Button (para fechar o modal)
+    Modal,
+    Button
 } from 'react-native';
 // 1. Importe o seu arquivo api.js
-// Ajuste o caminho (../..) se a pasta 'screens' estiver em 'src'
 import api from '../../servicers/api.js';
-import { FILTROSTag } from '../GerenciarCartas/tags.js';
 
-
-
-// Tags que vamos usar para filtrar
-const FILTROS = FILTROSTag
+// ❌ A importação do 'tags.js' FOI REMOVIDA
 
 // Componente para renderizar cada item do filtro (igual ao anterior)
 const FiltroItem = ({ filtro, selecionado, onPress }) => (
@@ -33,8 +28,7 @@ const FiltroItem = ({ filtro, selecionado, onPress }) => (
     </TouchableOpacity>
 );
 
-// --- COMPONENTE ATUALIZADO ---
-// Agora é um "ícone" clicável para a grade
+// Componente GridCardItem (igual ao anterior)
 const GridCardItem = ({ item, onPress }) => (
     <TouchableOpacity style={styles.gridItem} onPress={onPress}>
         <Image
@@ -50,10 +44,38 @@ const ListaCartasScreen = () => {
     const [filtroAtivo, setFiltroAtivo] = useState('all');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
-    // 3. Novo state para controlar o Modal e a carta selecionada
     const [selectedCard, setSelectedCard] = useState(null);
 
+    // --- MUDANÇAS AQUI ---
+    // 1. States para os filtros que vêm da API
+    const [filtros, setFiltros] = useState([]);
+    const [loadingFiltros, setLoadingFiltros] = useState(true);
+
+    // 2. Novo useEffect para BUSCAR OS FILTROS (TAGS)
+    useEffect(() => {
+        const fetchFiltros = async () => {
+            setLoadingFiltros(true);
+            try {
+                const response = await api.get('/tags'); // Busca na nova rota
+                
+                // Adiciona o filtro "Todos" manualmente no início da lista
+                const filtroTodos = { id: 0, nome: 'Todos', tag: 'all' };
+                
+                setFiltros([filtroTodos, ...response.data]);
+
+            } catch (err) {
+                console.error('Erro ao buscar filtros:', err);
+                // Se falhar, pelo menos o "Todos" aparece
+                setFiltros([{ id: 0, nome: 'Todos', tag: 'all' }]);
+            } finally {
+                setLoadingFiltros(false);
+            }
+        };
+
+        fetchFiltros();
+    }, []); // Roda só uma vez quando a tela é carregada
+
+    // useEffect para buscar AS CARTAS (este você já tinha)
     useEffect(() => {
         const fetchCartas = async () => {
             setLoading(true);
@@ -80,7 +102,7 @@ const ListaCartasScreen = () => {
         fetchCartas();
     }, [filtroAtivo]); 
 
-    // 4. Funções para abrir e fechar o modal
+    // Funções do Modal (sem mudança)
     const handleCardPress = (card) => {
         setSelectedCard(card);
     };
@@ -89,7 +111,7 @@ const ListaCartasScreen = () => {
         setSelectedCard(null);
     };
 
-
+    // renderConteudo (sem mudança)
     const renderConteudo = () => {
         if (loading) {
             return <ActivityIndicator size="large" color="#007AFF" style={styles.centered} />;
@@ -103,17 +125,15 @@ const ListaCartasScreen = () => {
         return (
             <FlatList
                 data={cartas}
-                // 5. Renderiza o novo item da grade
                 renderItem={({ item }) => (
                     <GridCardItem 
                         item={item} 
-                        onPress={() => handleCardPress(item)} // Passa a função de clique
+                        onPress={() => handleCardPress(item)}
                     />
                 )}
                 keyExtractor={(item) => item.id.toString()}
-                // 6. A MÁGICA DA GRADE: 4 colunas!
                 numColumns={4}
-                key={4} // Ajuda a FlatList a entender que mudamos o layout
+                key={4} 
                 contentContainerStyle={styles.listContainer}
             />
         );
@@ -124,40 +144,44 @@ const ListaCartasScreen = () => {
             <View style={styles.container}>
                 <Text style={styles.titulo}>Coleção de Cartas</Text>
 
+                {/* --- MUDANÇAS AQUI --- */}
+                {/* 3. FlatList de filtros atualizada */}
                 <View style={styles.filtroContainer}>
-                    <FlatList
-                        data={FILTROS}
-                        renderItem={({ item }) => (
-                            <FiltroItem
-                                filtro={item}
-                                selecionado={filtroAtivo === item.tag}
-                                onPress={setFiltroAtivo}
-                            />
-                        )}
-                        keyExtractor={(item) => item.tag}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                    />
+                    {loadingFiltros ? (
+                        <ActivityIndicator size="small" color="#007AFF" />
+                    ) : (
+                        <FlatList
+                            data={filtros} // Usa o state 'filtros'
+                            renderItem={({ item }) => (
+                                <FiltroItem
+                                    filtro={item}
+                                    selecionado={filtroAtivo === item.tag}
+                                    onPress={setFiltroAtivo}
+                                />
+                            )}
+                            keyExtractor={(item) => item.tag} // Usa a tag como key
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                        />
+                    )}
                 </View>
 
                 {renderConteudo()}
             </View>
 
-            {/* 7. O MODAL: Só aparece se 'selectedCard' não for nulo */}
+            {/* Modal (sem mudança) */}
             {selectedCard && (
                 <Modal
-                    animationType="fade" // Animação de fade
-                    transparent={true}    // Fundo transparente
-                    visible={!!selectedCard} // Controla a visibilidade
-                    onRequestClose={handleCloseModal} // Botão "Voltar" no Android
+                    animationType="fade"
+                    transparent={true}
+                    visible={!!selectedCard}
+                    onRequestClose={handleCloseModal}
                 >
-                    {/* Overlay escuro que fecha o modal ao ser clicado */}
                     <TouchableOpacity 
                         style={styles.modalOverlay} 
                         activeOpacity={1} 
-                        onPressOut={handleCloseModal} // Clicar fora fecha
+                        onPressOut={handleCloseModal}
                     >
-                        {/* Conteúdo do Modal (branco) */}
                         <View style={styles.modalContent} onStartShouldSetResponder={() => true}> 
                             <Image
                                 source={{ uri: selectedCard.imagem_url || 'https://placehold.co/300x450/ccc/fff?text=Sem+Img' }}
@@ -180,24 +204,20 @@ const ListaCartasScreen = () => {
     );
 };
 
-// --- ESTILOS ATUALIZADOS ---
+// Estilos (sem mudança)
 const styles = StyleSheet.create({
     safeArea: { flex: 1, backgroundColor: '#f5f5f5' },
     container: { flex: 1, paddingHorizontal: 16 },
     titulo: { fontSize: 28, fontWeight: 'bold', marginTop: 16, marginBottom: 8, color: '#222' },
-    filtroContainer: { marginBottom: 16 },
-    filtroBotao: { backgroundColor: '#e0e0e0', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 20, marginRight: 8 },
+    filtroContainer: { marginBottom: 16, height: 36 }, // Adicionei uma altura fixa para evitar "pulo"
+    filtroBotao: { backgroundColor: '#e0e0e0', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 20, marginRight: 8, height: 36 },
     filtroBotaoSelecionado: { backgroundColor: '#007AFF' },
     filtroTexto: { color: '#333', fontWeight: '500' },
     filtroTextoSelecionado: { color: '#fff' },
     listContainer: { paddingBottom: 16 },
-    
-    // --- ESTILOS ANTIGOS REMOVIDOS (card, cardImagem, etc) ---
-
-    // --- NOVOS ESTILOS PARA O GRID ---
     gridItem: {
-        flex: 1 / 4, // Garante 4 colunas
-        aspectRatio: 0.7, // Proporção de carta (largura/altura)
+        flex: 1 / 4, 
+        aspectRatio: 0.7, 
         margin: 4,
         borderRadius: 8,
         overflow: 'hidden',
@@ -212,14 +232,11 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    
     centered: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, textAlign: 'center' },
     errorText: { color: 'red', fontSize: 16 },
-
-    // --- NOVOS ESTILOS PARA O MODAL ---
     modalOverlay: {
         flex: 1,
-        backgroundColor: 'rgba(0, 0, 0, 0.75)', // Fundo mais escuro
+        backgroundColor: 'rgba(0, 0, 0, 0.75)', 
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
@@ -229,7 +246,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         padding: 20,
         width: '100%',
-        maxWidth: 400, // Limite de largura no tablet
+        maxWidth: 400, 
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 4 },
@@ -239,7 +256,7 @@ const styles = StyleSheet.create({
     },
     modalImage: {
         width: '80%',
-        aspectRatio: 0.7, // Proporção da carta
+        aspectRatio: 0.7, 
         marginBottom: 16,
         borderRadius: 8,
         backgroundColor: '#eee',

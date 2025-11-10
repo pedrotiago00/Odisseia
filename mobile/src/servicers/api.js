@@ -27,7 +27,7 @@ console.log(`[API] Conectando à base: ${baseURL}`);
 
 const api = axios.create({
   baseURL: 'https://odisseiaclone1-0.onrender.com'
-  //  baseURL: baseURL
+   // baseURL: baseURL
 });
 
 // Interceptor para enviar o token em todas as requisições

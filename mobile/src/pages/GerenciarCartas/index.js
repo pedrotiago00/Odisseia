@@ -10,29 +10,29 @@ import {
     Modal,
     TextInput,
     ScrollView,
-    Alert // Importa o Alert nativo
+    Alert 
 } from 'react-native';
 
-// 1. Importe sua API
-//    Usando o caminho que você especificou no erro
+// Importe sua API
 import api from '../../servicers/api';
 
-// Componente para renderizar cada carta na lista de gerenciamento
+// Componente ItemCartaAdmin (sem mudanças)
 const ItemCartaAdmin = ({ item, onEdit, onDelete }) => (
+    // ... (seu código aqui, sem mudanças)
     <View style={styles.card}>
-        <View style={styles.cardInfo}>
-            <Text style={styles.cardNome}>{item.nome}</Text>
-            <Text style={styles.cardTipo}>{item.tipo} (ID: {item.id})</Text>
-        </View>
-        <View style={styles.cardAcoes}>
-            <TouchableOpacity style={[styles.botaoAcao, styles.botaoEditar]} onPress={() => onEdit(item)}>
-                <Text style={styles.botaoTexto}>Editar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.botaoAcao, styles.botaoDeletar]} onPress={() => onDelete(item.id)}>
-                <Text style={styles.botaoTexto}>Deletar</Text>
-            </TouchableOpacity>
-        </View>
-    </View>
+         <View style={styles.cardInfo}>
+             <Text style={styles.cardNome}>{item.nome}</Text>
+             <Text style={styles.cardTipo}>{item.tipo} (ID: {item.id})</Text>
+         </View>
+         <View style={styles.cardAcoes}>
+             <TouchableOpacity style={[styles.botaoAcao, styles.botaoEditar]} onPress={() => onEdit(item)}>
+                 <Text style={styles.botaoTexto}>Editar</Text>
+             </TouchableOpacity>
+             <TouchableOpacity style={[styles.botaoAcao, styles.botaoDeletar]} onPress={() => onDelete(item.id)}>
+                 <Text style={styles.botaoTexto}>Deletar</Text>
+             </TouchableOpacity>
+         </View>
+     </View>
 );
 
 // Tela Principal
@@ -40,18 +40,22 @@ const GerenciarCartasScreen = () => {
     const [cartas, setCartas] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [refreshing, setRefreshing] = useState(false); // Para o "pull-to-refresh"
+    const [refreshing, setRefreshing] = useState(false);
 
     // --- Estado do Modal e Formulário ---
     const [modalVisivel, setModalVisivel] = useState(false);
-    const [cartaEmEdicao, setCartaEmEdicao] = useState(null); // Guarda a carta inteira
+    const [cartaEmEdicao, setCartaEmEdicao] = useState(null); 
     
-    // Campos do formulário
+    // --- NOVO STATE ---
+    // 1. Guarda todas as tags disponíveis vindas do BD
+    const [todasAsTags, setTodasAsTags] = useState([]);
+
+    // Campos do formulário (sem mudanças)
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
     const [imagemUrl, setImagemUrl] = useState('');
     const [tipo, setTipo] = useState('');
-    const [tags, setTags] = useState('');
+    const [tags, setTags] = useState(''); // Continua sendo uma string "tag1,tag2,tag3"
 
     // --- Funções de API ---
     const fetchCartas = async () => {
@@ -69,71 +73,102 @@ const GerenciarCartasScreen = () => {
         }
     };
 
-    // Roda o fetchCartas na primeira vez que a tela carrega
+    // --- NOVA FUNÇÃO ---
+    // 2. Busca todas as tags da API
+    const fetchTags = async () => {
+        try {
+            const response = await api.get('/tags');
+            setTodasAsTags(response.data);
+        } catch (err) {
+            console.error('Erro ao buscar tags:', err);
+            Alert.alert('Erro', 'Não foi possível carregar as tags para o formulário.');
+        }
+    };
+
+    // --- ATUALIZADO ---
+    // 3. Roda ambas as buscas quando a tela carrega
     useEffect(() => {
         fetchCartas();
+        fetchTags(); // Busca as tags também
     }, []);
 
     const handleRefresh = () => {
         setRefreshing(true);
         fetchCartas();
+        // Opcional: buscar tags de novo se elas puderem mudar
+        // fetchTags(); 
     };
 
-    // --- Funções de Abertura do Modal ---
+    // --- Funções de Abertura do Modal (sem mudanças) ---
+    // Elas já limpam ou preenchem o state 'tags' (string),
+    // o que é perfeito para o nosso novo seletor.
     const abrirModalCriar = () => {
         setCartaEmEdicao(null);
-        // Limpa os campos
         setNome('');
         setDescricao('');
         setImagemUrl('');
         setTipo('');
-        setTags('');
+        setTags(''); // Limpa a string de tags
         setModalVisivel(true);
     };
 
     const abrirModalEditar = (carta) => {
         setCartaEmEdicao(carta);
-        // Preenche os campos com os dados da carta
         setNome(carta.nome);
         setDescricao(carta.descricao || '');
         setImagemUrl(carta.imagem_url || '');
         setTipo(carta.tipo || '');
-        setTags(carta.tags || '');
+        setTags(carta.tags || ''); // Preenche a string de tags (ex: "ataque,suporte")
         setModalVisivel(true);
     };
 
     // --- Funções de Ação (Submit e Delete) ---
+
+    // --- NOVA FUNÇÃO ---
+    // 4. Lógica para adicionar/remover uma tag da string de tags
+    const handleToggleTag = (tag) => {
+        // Converte a string "tag1,tag2" em um array ["tag1", "tag2"]
+        // Filtra tags vazias caso a string seja "" ou "tag1,,tag2"
+        const tagsArray = tags ? tags.split(',').filter(Boolean) : [];
+        
+        let newTagsArray;
+
+        if (tagsArray.includes(tag)) {
+            // Se já tem, remove
+            newTagsArray = tagsArray.filter(t => t !== tag);
+        } else {
+            // Se não tem, adiciona
+            newTagsArray = [...tagsArray, tag];
+        }
+
+        // Converte o array ["tag1", "tag2"] de volta para a string "tag1,tag2"
+        setTags(newTagsArray.join(','));
+    };
+
+    // handleSalvar (sem NENHUMA mudança)
+    // A lógica de salvar já pega o state 'tags', que
+    // agora é controlado pelos botões.
     const handleSalvar = async () => {
         if (!nome || !tipo) {
             Alert.alert('Erro', 'Nome e Tipo são obrigatórios.');
             return;
         }
 
-        // --- ✨ SUA ATUALIZAÇÃO ESTÁ AQUI ---
-
-        // 1. Defina sua URL padrão aqui
         const URL_PADRAO = 'https://i.pinimg.com/736x/78/d9/6a/78d96aee53fbd6b6afba38a029070e25.jpg';
-        // 2. Verifica se o campo 'imagemUrl' (do state) está vazio ou só tem espaços
-        //    Se estiver vazio, usa a URL_PADRAO. Senão, usa a que o usuário digitou.
         const urlFinal = imagemUrl.trim() ? imagemUrl : URL_PADRAO;
 
-        // --- Fim da Atualização ---
-
-        // 3. Monta o objeto com a 'urlFinal'
         const dadosCarta = { 
             nome, 
             descricao, 
-            imagem_url: urlFinal, // 👈 Usamos a urlFinal aqui
+            imagem_url: urlFinal,
             tipo, 
-            tags 
+            tags // 👈 Esta string é atualizada pelos botões
         };
 
         try {
             if (cartaEmEdicao) {
-                // ATUALIZAR (PUT)
                 await api.put(`/cartas/${cartaEmEdicao.id}`, dadosCarta);
             } else {
-                // CRIAR (POST)
                 await api.post('/cartas', dadosCarta);
             }
             
@@ -145,56 +180,61 @@ const GerenciarCartasScreen = () => {
         }
     };
 
+    // Funções de Delete (sem mudanças)
     const confirmarDelete = (id) => {
+        // ... (seu código aqui, sem mudanças)
         Alert.alert(
-            'Confirmar Exclusão',
-            'Tem certeza que deseja deletar esta carta?',
-            [
-                { text: 'Cancelar', style: 'cancel' },
-                { text: 'Deletar', style: 'destructive', onPress: () => handleDeletar(id) }
-            ]
-        );
+            'Confirmar Exclusão',
+            'Tem certeza que deseja deletar esta carta?',
+            [
+                { text: 'Cancelar', style: 'cancel' },
+                { text: 'Deletar', style: 'destructive', onPress: () => handleDeletar(id) }
+            ]
+        );
     };
 
     const handleDeletar = async (id) => {
+        // ... (seu código aqui, sem mudanças)
         try {
-            await api.delete(`/cartas/${id}`);
-            fetchCartas(); // Recarrega a lista
-        } catch (err) {
-            console.error('Erro ao deletar carta:', err);
-            Alert.alert('Erro', 'Não foi possível deletar a carta.');
-        }
+            await api.delete(`/cartas/${id}`);
+            fetchCartas(); // Recarrega a lista
+        } catch (err) {
+            console.error('Erro ao deletar carta:', err);
+            Alert.alert('Erro', 'Não foi possível deletar a carta.');
+        }
     };
 
     // --- Renderização ---
     const renderConteudo = () => {
+        // ... (seu código aqui, sem mudanças)
         if (loading && !refreshing) {
-            return <ActivityIndicator size="large" color="#007AFF" style={styles.centered} />;
-        }
-        if (error) {
-            return <Text style={[styles.centered, styles.errorText]}>{error}</Text>;
-        }
-        return (
-            <FlatList
-                data={cartas}
-                renderItem={({ item }) => (
-                    <ItemCartaAdmin 
-                        item={item} 
-                        onEdit={abrirModalEditar} 
-                        onDelete={confirmarDelete}
-                    />
-                )}
-                keyExtractor={(item) => item.id.toString()}
-                contentContainerStyle={styles.listContainer}
-                onRefresh={handleRefresh}
-                refreshing={refreshing}
-                ListEmptyComponent={<Text style={styles.centered}>Nenhuma carta cadastrada.</Text>}
-            />
-        );
+            return <ActivityIndicator size="large" color="#007AFF" style={styles.centered} />;
+        }
+        if (error) {
+            return <Text style={[styles.centered, styles.errorText]}>{error}</Text>;
+        }
+        return (
+            <FlatList
+                data={cartas}
+                renderItem={({ item }) => (
+                    <ItemCartaAdmin 
+                        item={item} 
+                        onEdit={abrirModalEditar} 
+                        onDelete={confirmarDelete}
+                    />
+                )}
+                keyExtractor={(item) => item.id.toString()}
+                contentContainerStyle={styles.listContainer}
+                onRefresh={handleRefresh}
+                refreshing={refreshing}
+                ListEmptyComponent={<Text style={styles.centered}>Nenhuma carta cadastrada.</Text>}
+            />
+        );
     };
 
     return (
         <SafeAreaView style={styles.safeArea}>
+            {/* Header (sem mudanças) */}
             <View style={styles.container}>
                 <View style={styles.header}>
                     <Text style={styles.titulo}>Gerenciar Cartas</Text>
@@ -202,7 +242,6 @@ const GerenciarCartasScreen = () => {
                         <Text style={styles.botaoAdicionarTexto}>+</Text>
                     </TouchableOpacity>
                 </View>
-
                 {renderConteudo()}
             </View>
 
@@ -228,9 +267,31 @@ const GerenciarCartasScreen = () => {
                         <Text style={styles.label}>URL da Imagem</Text>
                         <TextInput style={styles.input} value={imagemUrl} onChangeText={setImagemUrl} placeholder="https://exemplo.com/imagem.png" />
                         
+                        {/* --- ATUALIZADO --- */}
+                        {/* 5. Substituímos o TextInput de Tags por este bloco */}
                         <Text style={styles.label}>Tags</Text>
-                        <TextInput style={styles.input} value={tags} onChangeText={setTags} placeholder="ataque,magia,suporte" />
-                        
+                        <View style={styles.tagsContainer}>
+                            {todasAsTags.map(tagItem => {
+                                // Verifica se a tag (ex: "ataque") está na string "ataque,suporte"
+                                const isSelected = tags ? tags.split(',').includes(tagItem.tag) : false;
+                                
+                                return (
+                                    <TouchableOpacity
+                                        key={tagItem.id}
+                                        // Aplica estilo de selecionado
+                                        style={[styles.tagBotao, isSelected && styles.tagBotaoSelecionado]}
+                                        // Chama a função de toggle
+                                        onPress={() => handleToggleTag(tagItem.tag)}
+                                    >
+                                        <Text style={[styles.tagTexto, isSelected && styles.tagTextoSelecionado]}>
+                                            {tagItem.nome}
+                                        </Text>
+                                    </TouchableOpacity>
+                                );
+                            })}
+                        </View>
+                        {/* Fim da atualização */}
+
                         <Text style={styles.label}>Descrição</Text>
                         <TextInput style={[styles.input, styles.textarea]} value={descricao} onChangeText={setDescricao} placeholder="Descrição da carta..." multiline />
                         
@@ -250,7 +311,6 @@ const GerenciarCartasScreen = () => {
 };
 
 // --- Estilos ---
-// Voltando a usar StyleSheet.create
 const styles = StyleSheet.create({
     safeArea: { flex: 1, backgroundColor: '#f5f5f5' },
     container: { flex: 1 },
@@ -279,7 +339,35 @@ const styles = StyleSheet.create({
     label: { fontSize: 16, fontWeight: '500', color: '#444', marginBottom: 6, marginTop: 10 },
     input: { backgroundColor: '#fff', borderWidth: 1, borderColor: '#ccc', paddingVertical: 10, paddingHorizontal: 8, fontSize: 16, borderRadius: 4, marginBottom: 10 },
     textarea: { minHeight: 100, textAlignVertical: 'top' },
-    modalBotoes: { flexDirection: 'row', justifyContent: 'space-around', marginTop: 30 }
+    modalBotoes: { flexDirection: 'row', justifyContent: 'space-around', marginTop: 30, marginBottom: 50 },
+
+    // --- NOVOS ESTILOS PARA AS TAGS ---
+    tagsContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 4,
+        padding: 5,
+    },
+    tagBotao: {
+        backgroundColor: '#e0e0e0',
+        paddingVertical: 6,
+        paddingHorizontal: 12,
+        borderRadius: 15,
+        margin: 4,
+    },
+    tagBotaoSelecionado: {
+        backgroundColor: '#007AFF',
+    },
+    tagTexto: {
+        color: '#333',
+        fontWeight: '500',
+    },
+    tagTextoSelecionado: {
+        color: '#fff',
+    }
 });
 
 export default GerenciarCartasScreen;
