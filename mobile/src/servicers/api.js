@@ -1,10 +1,14 @@
 import axios from "axios";
-// REMOVIDO: import * as SecureStore from 'expo-secure-store';
 import Constants from 'expo-constants';
 // IMPORTADO: Nosso novo adaptador de armazenamento
-import storage from './storage'; // Garanta que 'storage.js' esteja na mesma pasta
+import storage from './storage'; 
 
-// --- Detecção de IP ---
+// --- A MUDANÇA CRÍTICA É AQUI ---
+// Defina a URL base como o endereço público do Render.
+// Isso ignora toda a lógica de detecção de IP local, que não é mais necessária.
+//const baseURL = "https://odisseiaclone1-0.onrender.com"; 
+
+
 let baseURL = "http://localhost:3000"; // Padrão para web
 try {
   const debuggerHost = Constants.manifest2 ? Constants.manifest2.extra.expoGo?.debuggerHost : Constants.manifest?.debuggerHost;
@@ -18,12 +22,13 @@ try {
   console.warn("Não foi possível detectar o IP automaticamente:", e);
 }
 
-// Log para sabermos qual IP está sendo usado
 console.log(`[API] Conectando à base: ${baseURL}`);
-// --- Fim da Detecção de IP ---
 
 
-const api = axios.create({ baseURL });
+const api = axios.create({
+  //baseURL: 'https://odisseiaclone1-0.onrender.com'
+    baseURL: baseURL
+});
 
 // Interceptor para enviar o token em todas as requisições
 api.interceptors.request.use(
