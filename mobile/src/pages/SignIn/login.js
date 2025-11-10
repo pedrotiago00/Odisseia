@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-// REMOVIDO: import * as SecureStore from 'expo-secure-store'; 
-// IMPORTADO: Nosso adaptador de storage
-import storage from "../../servicers/storage"; 
+// IMPORTADO: Nosso adaptador de storage universal (Web/Mobile)
+import storage from "../../servicers/storage";
 
+// Importa o 'api' (axios)
 import api from "../../servicers/api";
 
 import * as Animatable from 'react-native-animatable';
@@ -19,33 +19,42 @@ import { useNavigation } from "@react-navigation/native";
 export default function SignIn() {
   const navigation = useNavigation();
 
+  // --- Estados do Formulário ---
   const [email, setEmail] = React.useState("");
   const [senha, setSenha] = React.useState("");
 
+  /**
+   * Função chamada ao pressionar "Entrar".
+   * Valida, envia para a API, e salva o token se tiver sucesso.
+   */
   const handleLogin = async () => {
+    // 1. Validação simples para não enviar requisição à toa
     if (!email || !senha) {
         alert("Por favor, preencha o email e a senha.");
         return;
     }
     try {
+      // 2. Tenta fazer o POST para a rota de login
       const response = await api.post("/usuarios/login", {
         email,
         senha,
       });
       console.log("Login bem-sucedido:", response.data);
 
+      // 3. Pega o token e os dados do usuário da resposta
       const { token, usuario } = response.data;
 
-      // CORRIGIDO: Salva o token e os dados usando o 'storage'
+      // 4. Salva o token e o usuário no storage universal
       await storage.setItem('token', token);
-      await storage.setItem('usuario', JSON.stringify(usuario)); // Salva o usuário como texto
+      await storage.setItem('usuario', JSON.stringify(usuario)); // Salva o objeto do usuário como string
       
-      // 4. SÓ DEPOIS DE SALVAR, NAVEGUE PARA O MENU
+      // 5. SÓ DEPOIS DE SALVAR, navega para o Menu principal
       navigation.navigate('Menu');
 
     } catch (error) {
+      // 6. Se der erro (ex: senha errada)
       console.error("Erro ao logar:", error.response?.data || error.message);
-      // Informa o erro específico do backend (ex: "Email ou senha inválidos")
+      // Mostra a mensagem de erro específica vinda do backend (ex: "Email ou senha inválidos")
       alert(`Falha no login: ${error.response?.data?.message || 'Verifique suas credenciais.'}`);
     }
   };
@@ -64,7 +73,7 @@ export default function SignIn() {
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
-          autoCapitalize="none" // Desativa o auto-capitalize
+          autoCapitalize="none" // Facilita a digitação de email
         />
         <Text style={styles.title}>Senha</Text>
         <TextInput 
@@ -72,15 +81,17 @@ export default function SignIn() {
           style={styles.input}
           value={senha}
           onChangeText={setSenha}
-          secureTextEntry={true}
+          secureTextEntry={true} // Esconde a senha
         />
 
+        {/* Botão de Login */}
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
 
+        {/* Botão para ir ao Cadastro */}
         <TouchableOpacity style={styles.buttonRegister} onPress={ () => navigation.navigate('Cadastro') }>
-          {/* Este Text estava com o estilo errado, corrigi */}
+          {/* Corrigido: O estilo aqui deve ser 'buttonRegisterText' */}
           <Text style={styles.buttonRegisterText}>Não possui uma conta? Cadastre-se</Text>
         </TouchableOpacity>
 
@@ -89,6 +100,7 @@ export default function SignIn() {
   );
 }
 
+// Estilos
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -139,7 +151,7 @@ const styles = StyleSheet.create({
     marginTop: 14,
     alignSelf: 'center',
   },
-  // Corrigido: Havia dois 'buttonText', renomeei este
+  // Corrigido: Nome do estilo para o texto de cadastro
   buttonRegisterText: {
     color: '#a1a1a1',
   }

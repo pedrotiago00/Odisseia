@@ -1,40 +1,46 @@
 import axios from "axios";
 import Constants from 'expo-constants';
-// IMPORTADO: Nosso novo adaptador de armazenamento
+// Importa nosso adaptador de armazenamento universal
 import storage from './storage'; 
 
-// --- A MUDANÇA CRÍTICA É AQUI ---
-// Defina a URL base como o endereço público do Render.
-// Isso ignora toda a lógica de detecção de IP local, que não é mais necessária.
-//const baseURL = "https://odisseiaclone1-0.onrender.com"; 
-
-
-let baseURL = "http://localhost:3000"; // Padrão para web
+// --- Lógica de detecção de IP (para testes locais) ---
+let localBaseURL = "http://localhost:3000"; // Padrão
 try {
+  // Tenta pegar o IP da máquina que está rodando o Expo Go
   const debuggerHost = Constants.manifest2 ? Constants.manifest2.extra.expoGo?.debuggerHost : Constants.manifest?.debuggerHost;
   if (debuggerHost) {
     const ip = debuggerHost.split(':').shift();
     if (ip) {
-        baseURL = `http://${ip}:3000`;
+        localBaseURL = `http://${ip}:3000`; // IP local encontrado
     }
   }
 } catch (e) {
-  console.warn("Não foi possível detectar o IP automaticamente:", e);
+  console.warn("Não foi possível detectar o IP local:", e);
 }
+// ----------------------------------------------------
 
-console.log(`[API] Conectando à base: ${baseURL}`);
 
-
+// Cria a instância central do Axios
 const api = axios.create({
+  // Define a URL base da API (neste caso, a de produção no Render)
   baseURL: 'https://odisseiaclone1-0.onrender.com'
-   // baseURL: baseURL
+  // OBS: Se quisesse usar o IP local para testes, usaria:
+  // baseURL: localBaseURL
 });
 
-// Interceptor para enviar o token em todas as requisições
+/**
+ * INTERCEPTOR DE REQUISIÇÃO (Request)
+ * Roda ANTES de CADA requisição ser enviada.
+ *
+ * Objetivo: Pegar o token salvo no 'storage' e
+ * injetá-lo no cabeçalho (Header) 'Authorization'.
+ */
 api.interceptors.request.use(
   async (config) => {
-    // CORRIGIDO: Usa nosso 'storage' universal
+    // Usa nosso 'storage' universal
     const token = await storage.getItem('token');
+    
+    // Se o token existir, anexa ele na requisição
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
@@ -43,23 +49,31 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Interceptor para tratar erro 401 (Sessão Expirada)
+/**
+ * INTERCEPTOR DE RESPOSTA (Response)
+ * Roda DEPOIS que uma resposta (com erro) é recebida.
+ *
+ * Objetivo: Lidar com erros de "Sessão Expirada" (Erro 401).
+ */
 api.interceptors.response.use(
-  (response) => response,
+  (response) => response, // Se for sucesso, não faz nada
   async (error) => {
     const originalRequest = error.config;
 
-    // CORREÇÃO: Verifica se o erro 401 NÃO VEIO da tela de login
+    // Verifica se o erro é 401 (Não Autorizado) E
+    // se o erro NÃO VEIO da própria tela de login (evita loop)
     const isLoginRoute = originalRequest.url.endsWith('/usuarios/login');
 
     if (error.response?.status === 401 && !isLoginRoute) {
-      console.log("Erro 401: Token expirado ou inválido. Fazendo logout.");
+      console.log("Erro 401: Sessão expirada. Deslogando...");
       
-      // CORRIGIDO: Usa nosso 'storage' universal para limpar os dados
+      // Limpa os dados do usuário (logout)
       await storage.deleteItem('token');
       await storage.deleteItem('usuario');
       
+      // Avisa o usuário para fazer login novamente
       alert("Sua sessão expirou. Por favor, faça login novamente.");
+      
     }
     return Promise.reject(error);
   }

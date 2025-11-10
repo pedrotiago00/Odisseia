@@ -2,25 +2,24 @@ import { Platform } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 
 /**
- * Adaptador de armazenamento universal (Web/Mobile).
- * Usa localStorage na web e SecureStore no mobile.
+ * Adaptador de Armazenamento Universal (Web/Mobile).
+ * O objetivo é ter uma forma única (setItem, getItem, deleteItem)
+ * de salvar dados, independentemente da plataforma.
  */
 const storage = {
     /**
-     * Salva um item no armazenamento.
-     * @param {string} key A chave.
-     * @param {string} value O valor.
+     * Salva um item (chave + valor).
      */
     async setItem(key, value) {
         if (Platform.OS === 'web') {
+            // Web: Usa localStorage
             try {
-                // Na web, usa localStorage
                 localStorage.setItem(key, value);
             } catch (e) {
                 console.error('Erro ao salvar no localStorage:', e);
             }
         } else {
-            // No mobile, usa SecureStore
+            // Mobile: Usa SecureStore (que é criptografado)
             try {
                 await SecureStore.setItemAsync(key, value);
             } catch (e) {
@@ -30,21 +29,19 @@ const storage = {
     },
 
     /**
-     * Pega um item do armazenamento.
-     * @param {string} key A chave.
-     * @returns {Promise<string | null>} O valor.
+     * Pega um item pela chave.
      */
     async getItem(key) {
         if (Platform.OS === 'web') {
+            // Web: Lê do localStorage
             try {
-                // Na web, lê do localStorage
                 return localStorage.getItem(key);
             } catch (e) {
                 console.error('Erro ao ler do localStorage:', e);
                 return null;
             }
         } else {
-            // No mobile, lê do SecureStore
+            // Mobile: Lê do SecureStore
             try {
                 return await SecureStore.getItemAsync(key);
             } catch (e) {
@@ -55,17 +52,18 @@ const storage = {
     },
 
     /**
-     * Remove um item do armazenamento.
-     * @param {string} key A chave.
+     * Remove um item pela chave.
      */
     async deleteItem(key) {
         if (Platform.OS === 'web') {
+            // Web: Remove do localStorage
             try {
                 localStorage.removeItem(key);
             } catch (e) {
                 console.error('Erro ao remover do localStorage:', e);
             }
         } else {
+            // Mobile: Remove do SecureStore
             try {
                 await SecureStore.deleteItemAsync(key);
             } catch (e) {

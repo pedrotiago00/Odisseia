@@ -13,51 +13,67 @@ import {
     Alert 
 } from 'react-native';
 
-// Importe sua API
 import api from '../../servicers/api';
 
-// Componente ItemCartaAdmin (sem mudanças)
+// --- Componente de Item da Lista (Admin) ---
+// Apenas exibe a carta e os botões de "Editar" e "Deletar"
 const ItemCartaAdmin = ({ item, onEdit, onDelete }) => (
-    // ... (seu código aqui, sem mudanças)
     <View style={styles.card}>
-         <View style={styles.cardInfo}>
-             <Text style={styles.cardNome}>{item.nome}</Text>
-             <Text style={styles.cardTipo}>{item.tipo} (ID: {item.id})</Text>
-         </View>
-         <View style={styles.cardAcoes}>
-             <TouchableOpacity style={[styles.botaoAcao, styles.botaoEditar]} onPress={() => onEdit(item)}>
-                 <Text style={styles.botaoTexto}>Editar</Text>
-             </TouchableOpacity>
-             <TouchableOpacity style={[styles.botaoAcao, styles.botaoDeletar]} onPress={() => onDelete(item.id)}>
-                 <Text style={styles.botaoTexto}>Deletar</Text>
-             </TouchableOpacity>
-         </View>
-     </View>
+ 
+        <View style={styles.cardInfo}>
+ 
+            <Text style={styles.cardNome}>{item.nome}</Text>
+ 
+            <Text style={styles.cardTipo}>{item.tipo} (ID: {item.id})</Text>
+ 
+        </View>
+ 
+        <View style={styles.cardAcoes}>
+ 
+            <TouchableOpacity style={[styles.botaoAcao, styles.botaoEditar]} onPress={() => onEdit(item)}>
+ 
+                <Text style={styles.botaoTexto}>Editar</Text>
+ 
+            </TouchableOpacity>
+ 
+            <TouchableOpacity style={[styles.botaoAcao, styles.botaoDeletar]} onPress={() => onDelete(item.id)}>
+ 
+                <Text style={styles.botaoTexto}>Deletar</Text>
+ 
+            </TouchableOpacity>
+ 
+        </View>
+ 
+    </View>
 );
 
-// Tela Principal
+// --- Tela Principal ---
 const GerenciarCartasScreen = () => {
-    const [cartas, setCartas] = useState([]);
+    // --- Estados da Tela ---
+    const [cartas, setCartas] = useState([]); // Lista de cartas
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [refreshing, setRefreshing] = useState(false);
 
     // --- Estado do Modal e Formulário ---
     const [modalVisivel, setModalVisivel] = useState(false);
-    const [cartaEmEdicao, setCartaEmEdicao] = useState(null); 
+    // Guarda a carta original ao editar (ou null se for 'Criar')
+    const [cartaEmEdicao, setCartaEmEdicao] = useState(null);
     
     // --- NOVO STATE ---
-    // 1. Guarda todas as tags disponíveis vindas do BD
+    // Guarda todas as tags *disponíveis* vindas do BD (ex: [{id: 1, nome: "Fogo", tag: "fogo"}, ...])
     const [todasAsTags, setTodasAsTags] = useState([]);
 
-    // Campos do formulário (sem mudanças)
+    // --- Estados dos campos do formulário ---
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
     const [imagemUrl, setImagemUrl] = useState('');
     const [tipo, setTipo] = useState('');
-    const [tags, setTags] = useState(''); // Continua sendo uma string "tag1,tag2,tag3"
+    // Este state continua sendo uma string (ex: "fogo,agua,suporte")
+    const [tags, setTags] = useState('');
 
     // --- Funções de API ---
+    /** Busca a lista de cartas da API */
     const fetchCartas = async () => {
         try {
             setLoading(true);
@@ -74,7 +90,7 @@ const GerenciarCartasScreen = () => {
     };
 
     // --- NOVA FUNÇÃO ---
-    // 2. Busca todas as tags da API
+    /** 2. Busca todas as tags *disponíveis* da API (rota /tags) */
     const fetchTags = async () => {
         try {
             const response = await api.get('/tags');
@@ -86,12 +102,13 @@ const GerenciarCartasScreen = () => {
     };
 
     // --- ATUALIZADO ---
-    // 3. Roda ambas as buscas quando a tela carrega
+    /** 3. Roda ambas as buscas quando a tela carrega */
     useEffect(() => {
         fetchCartas();
         fetchTags(); // Busca as tags também
     }, []);
 
+    /** Recarrega a lista ao "puxar para baixo" */
     const handleRefresh = () => {
         setRefreshing(true);
         fetchCartas();
@@ -99,21 +116,24 @@ const GerenciarCartasScreen = () => {
         // fetchTags(); 
     };
 
-    // --- Funções de Abertura do Modal (sem mudanças) ---
-    // Elas já limpam ou preenchem o state 'tags' (string),
-    // o que é perfeito para o nosso novo seletor.
+    // --- Funções de Abertura do Modal ---
+    
+    /** Abre o modal para CRIAR uma nova carta */
     const abrirModalCriar = () => {
-        setCartaEmEdicao(null);
+        setCartaEmEdicao(null); // Define o modo como "Criar"
+        // Limpa todos os campos
         setNome('');
         setDescricao('');
         setImagemUrl('');
         setTipo('');
-        setTags(''); // Limpa a string de tags
+        setTags(''); // Limpa a string de tags selecionadas
         setModalVisivel(true);
     };
 
+    /** Abre o modal para EDITAR uma carta existente */
     const abrirModalEditar = (carta) => {
-        setCartaEmEdicao(carta);
+        setCartaEmEdicao(carta); // Define o modo como "Editar"
+        // Preenche os campos com os dados da carta
         setNome(carta.nome);
         setDescricao(carta.descricao || '');
         setImagemUrl(carta.imagem_url || '');
@@ -125,50 +145,54 @@ const GerenciarCartasScreen = () => {
     // --- Funções de Ação (Submit e Delete) ---
 
     // --- NOVA FUNÇÃO ---
-    // 4. Lógica para adicionar/remover uma tag da string de tags
-    const handleToggleTag = (tag) => {
-        // Converte a string "tag1,tag2" em um array ["tag1", "tag2"]
-        // Filtra tags vazias caso a string seja "" ou "tag1,,tag2"
+    /** 4. Lógica para adicionar/remover uma tag da string 'tags' */
+    const handleToggleTag = (tag) => { // ex: tag = "fogo"
+        // Converte a string "fogo,agua" em um array ["fogo", "agua"]
+        // Filtra tags vazias caso a string seja ""
         const tagsArray = tags ? tags.split(',').filter(Boolean) : [];
         
         let newTagsArray;
 
         if (tagsArray.includes(tag)) {
-            // Se já tem, remove
+            // Se já tem, remove (filtra)
             newTagsArray = tagsArray.filter(t => t !== tag);
         } else {
             // Se não tem, adiciona
             newTagsArray = [...tagsArray, tag];
         }
 
-        // Converte o array ["tag1", "tag2"] de volta para a string "tag1,tag2"
+        // Converte o array ["fogo", "agua"] de volta para a string "fogo,agua"
         setTags(newTagsArray.join(','));
     };
 
-    // handleSalvar (sem NENHUMA mudança)
-    // A lógica de salvar já pega o state 'tags', que
-    // agora é controlado pelos botões.
+    /** Salva a carta (seja Criar ou Editar) */
+    // NOTA: Esta função NÃO PRECISA MUDAR. Ela já pega o state 'tags' (string),
+    // que agora é controlado pelos botões de toggle.
     const handleSalvar = async () => {
         if (!nome || !tipo) {
             Alert.alert('Erro', 'Nome e Tipo são obrigatórios.');
             return;
         }
 
+        // Define uma URL padrão se o campo estiver vazio
         const URL_PADRAO = 'https://i.pinimg.com/736x/78/d9/6a/78d96aee53fbd6b6afba38a029070e25.jpg';
         const urlFinal = imagemUrl.trim() ? imagemUrl : URL_PADRAO;
 
+        // Monta o objeto de dados para enviar
         const dadosCarta = { 
             nome, 
             descricao, 
             imagem_url: urlFinal,
             tipo, 
-            tags // 👈 Esta string é atualizada pelos botões
+            tags // 👈 Esta é a string "fogo,agua" atualizada pelo 'handleToggleTag'
         };
 
         try {
             if (cartaEmEdicao) {
+                // Modo Edição: usa PUT
                 await api.put(`/cartas/${cartaEmEdicao.id}`, dadosCarta);
             } else {
+                // Modo Criação: usa POST
                 await api.post('/cartas', dadosCarta);
             }
             
@@ -180,68 +204,69 @@ const GerenciarCartasScreen = () => {
         }
     };
 
-    // Funções de Delete (sem mudanças)
+    /** Pede confirmação antes de deletar */
     const confirmarDelete = (id) => {
-        // ... (seu código aqui, sem mudanças)
         Alert.alert(
-            'Confirmar Exclusão',
-            'Tem certeza que deseja deletar esta carta?',
-            [
-                { text: 'Cancelar', style: 'cancel' },
-                { text: 'Deletar', style: 'destructive', onPress: () => handleDeletar(id) }
-            ]
-        );
+            'Confirmar Exclusão',
+            'Tem certeza que deseja deletar esta carta?',
+            [
+                { text: 'Cancelar', style: 'cancel' },
+                { text: 'Deletar', style: 'destructive', onPress: () => handleDeletar(id) }
+            ]
+        );
     };
 
+    /** Deleta a carta da API */
     const handleDeletar = async (id) => {
-        // ... (seu código aqui, sem mudanças)
         try {
-            await api.delete(`/cartas/${id}`);
-            fetchCartas(); // Recarrega a lista
-        } catch (err) {
-            console.error('Erro ao deletar carta:', err);
-            Alert.alert('Erro', 'Não foi possível deletar a carta.');
-        }
+            await api.delete(`/cartas/${id}`);
+            fetchCartas(); // Recarrega a lista
+        } catch (err) {
+            console.error('Erro ao deletar carta:', err);
+            Alert.alert('Erro', 'Não foi possível deletar a carta.');
+        }
     };
 
     // --- Renderização ---
+    /** Renderiza o conteúdo principal (Loading, Erro ou Lista) */
     const renderConteudo = () => {
-        // ... (seu código aqui, sem mudanças)
         if (loading && !refreshing) {
-            return <ActivityIndicator size="large" color="#007AFF" style={styles.centered} />;
-        }
-        if (error) {
-            return <Text style={[styles.centered, styles.errorText]}>{error}</Text>;
-        }
-        return (
-            <FlatList
-                data={cartas}
-                renderItem={({ item }) => (
-                    <ItemCartaAdmin 
-                        item={item} 
-                        onEdit={abrirModalEditar} 
-                        onDelete={confirmarDelete}
-                    />
-                )}
-                keyExtractor={(item) => item.id.toString()}
-                contentContainerStyle={styles.listContainer}
-                onRefresh={handleRefresh}
-                refreshing={refreshing}
-                ListEmptyComponent={<Text style={styles.centered}>Nenhuma carta cadastrada.</Text>}
-            />
-        );
+            return <ActivityIndicator size="large" color="#007AFF" style={styles.centered} />;
+        }
+        if (error) {
+            return <Text style={[styles.centered, styles.errorText]}>{error}</Text>;
+        }
+        return (
+            <FlatList
+                data={cartas}
+                renderItem={({ item }) => (
+                    <ItemCartaAdmin 
+                        item={item} 
+                        onEdit={abrirModalEditar} 
+                        onDelete={confirmarDelete}
+                    />
+                )}
+                keyExtractor={(item) => item.id.toString()}
+                contentContainerStyle={styles.listContainer}
+                onRefresh={handleRefresh}
+                refreshing={refreshing}
+                ListEmptyComponent={<Text style={styles.centered}>Nenhuma carta cadastrada.</Text>}
+            />
+        );
     };
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            {/* Header (sem mudanças) */}
+            {/* Header */}
             <View style={styles.container}>
                 <View style={styles.header}>
                     <Text style={styles.titulo}>Gerenciar Cartas</Text>
+                    {/* Botão "+" para abrir o modal de Criar */}
                     <TouchableOpacity style={styles.botaoAdicionar} onPress={abrirModalCriar}>
                         <Text style={styles.botaoAdicionarTexto}>+</Text>
                     </TouchableOpacity>
                 </View>
+                {/* Lista de cartas */}
                 {renderConteudo()}
             </View>
 
@@ -258,6 +283,7 @@ const GerenciarCartasScreen = () => {
                             {cartaEmEdicao ? 'Editar Carta' : 'Criar Nova Carta'}
                         </Text>
                         
+                        {/* Campos de Texto */}
                         <Text style={styles.label}>Nome*</Text>
                         <TextInput style={styles.input} value={nome} onChangeText={setNome} placeholder="Nome da Carta" />
                         
@@ -271,8 +297,9 @@ const GerenciarCartasScreen = () => {
                         {/* 5. Substituímos o TextInput de Tags por este bloco */}
                         <Text style={styles.label}>Tags</Text>
                         <View style={styles.tagsContainer}>
+                            {/* Mapeia o array 'todasAsTags' (vindas da API) */}
                             {todasAsTags.map(tagItem => {
-                                // Verifica se a tag (ex: "ataque") está na string "ataque,suporte"
+                                // Verifica se a tag (ex: "fogo") está na string "fogo,agua"
                                 const isSelected = tags ? tags.split(',').includes(tagItem.tag) : false;
                                 
                                 return (
@@ -295,6 +322,7 @@ const GerenciarCartasScreen = () => {
                         <Text style={styles.label}>Descrição</Text>
                         <TextInput style={[styles.input, styles.textarea]} value={descricao} onChangeText={setDescricao} placeholder="Descrição da carta..." multiline />
                         
+                        {/* Botões de Ação do Modal */}
                         <View style={styles.modalBotoes}>
                             <TouchableOpacity style={[styles.botaoAcao, styles.botaoCancelar]} onPress={() => setModalVisivel(false)}>
                                 <Text style={styles.botaoTexto}>Cancelar</Text>
@@ -344,7 +372,7 @@ const styles = StyleSheet.create({
     // --- NOVOS ESTILOS PARA AS TAGS ---
     tagsContainer: {
         flexDirection: 'row',
-        flexWrap: 'wrap',
+        flexWrap: 'wrap', // Permite que as tags quebrem a linha
         backgroundColor: '#fff',
         borderWidth: 1,
         borderColor: '#ccc',
@@ -359,14 +387,14 @@ const styles = StyleSheet.create({
         margin: 4,
     },
     tagBotaoSelecionado: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#007AFF', // Cor de destaque
     },
     tagTexto: {
         color: '#333',
         fontWeight: '500',
     },
     tagTextoSelecionado: {
-        color: '#fff',
+        color: '#fff', // Texto branco quando selecionado
     }
 });
 
