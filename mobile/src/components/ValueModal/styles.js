@@ -1,94 +1,91 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  // Fundo escuro e semi-transparente que cobre a tela inteira
-  modalBackdrop: {
+  // O fundo escuro (overlay)
+  modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
   },
-  // A "caixa" branca central que segura o conteúdo
+  // O conteúdo (caixa branca)
   modalContent: {
-    backgroundColor: '#ffffff',
-    borderRadius: 16,
-    padding: 24,
-    width: '100%',
+    width: '90%',
     maxWidth: 400,
+    backgroundColor: '#0d2731ff',
+    borderRadius: 12,
+    padding: 24,
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: '#000000ff',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
   },
-  // O título, ex: "Definir Novo Valor"
   modalTitle: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 20,
     color: '#333',
+    marginBottom: 20,
   },
-  // O campo de entrada de texto para o número (ex: "20")
-  modalInput: {
-    fontSize: 48,
+  // O campo de input do número
+  input: {
+    width: '100%',
+    backgroundColor: '#b9e4f1ff',
+    borderBottomWidth: 2,
+    borderColor: '#007AFF',
+    borderRadius: 8,
+    padding: 16,
+    fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#1d4ed8', // Cor azul
-    borderBottomWidth: 2,
-    borderColor: '#d1d5db', // Borda cinza
-    width: '80%',
+    color: '#333',
     marginBottom: 20,
-    paddingVertical: 8,
   },
-  // A linha que segura os botões de ajuste rápido (-5, -1, +1, +5)
-  modalAdjustRow: {
+  // Container para os botões +1, +5, etc.
+  shortcutContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    marginBottom: 24,
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginBottom: 20,
   },
-  // Estilo para um botão de ajuste rápido
-  modalAdjustButton: {
+  shortcutButton: {
+    backgroundColor: '#b9e4f1ff',
+    paddingVertical: 10,
     paddingHorizontal: 16,
-    paddingVertical: 8,
-    backgroundColor: '#f3f4f6', // Cinza claro
-    borderRadius: 8,
+    borderRadius: 20,
+    margin: 4,
   },
-  // Texto dentro do botão de ajuste (ex: "-5")
-  modalAdjustText: {
+  shortcutText: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: '#555',
+    fontWeight: '600',
+    color: '#444',
   },
-  // A linha que segura os botões "Cancelar" e "Confirmar"
-  modalActionRow: {
+  // Container para os botões Cancelar/Confirmar
+  actionContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     width: '100%',
   },
-  // Estilo base para os botões de ação
-  modalButton: {
+  actionButton: {
     flex: 1,
-    paddingVertical: 12,
-    borderRadius: 8,
+    paddingVertical: 14,
+    borderRadius: 10,
     alignItems: 'center',
   },
-  // Estilo específico do botão "Cancelar"
-  modalButtonCancel: {
-    backgroundColor: '#f3f4f6', // Cinza claro
+  cancelButton: {
+    backgroundColor: '#f1b9beff',
     marginRight: 8,
   },
-  // Estilo específico do botão "Confirmar"
-  modalButtonConfirm: {
-    backgroundColor: '#1d4ed8', // Azul
+  confirmButton: {
+    backgroundColor: '#007AFF',
     marginLeft: 8,
   },
-  // Texto dos botões de ação ("Cancelar", "Confirmar")
-  modalButtonText: {
-    fontSize: 16,
+  actionButtonText: {
+    fontSize: 18,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#fff',
+  },
+  cancelButtonText: {
+    color: '#555',
   },
 });

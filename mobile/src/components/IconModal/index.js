@@ -4,7 +4,7 @@ import {
   View,
   Text,
   FlatList,
-  TouchableOpacity,
+  TouchableOpacity, // Importante que esteja aqui
   Image,
   SafeAreaView,
 } from 'react-native';
@@ -41,11 +41,22 @@ export default function IconModal({
       transparent={true}
       visible={visible}
       onRequestClose={onClose}
+      statusBarTranslucent={true} 
     >
-      {/* Overlay escuro */}
-      <View style={styles.modalOverlay}>
-        {/* Conteúdo do Modal (com fundo) */}
-        <SafeAreaView style={[styles.modalContent, modalRotation]}>
+      {/* 2. O FUNDO ESCURO (OVERLAY) AGORA É O BOTÃO DE FECHAR */}
+      <TouchableOpacity
+        style={styles.modalOverlay}
+        activeOpacity={1}
+        onPress={onClose} // Clicar aqui fecha
+      >
+        
+        {/* 3. O CONTEÚDO "PARA" O CLIQUE E NÃO DEIXA FECHAR */}
+        <SafeAreaView 
+          style={[styles.modalContent, modalRotation]}
+          onStartShouldSetResponder={() => true} // "Para" o clique
+        >
+          {/* O TouchableOpacity que você adicionou foi REMOVIDO daqui */}
+          
           <Text style={styles.modalTitle}>Selecione um Ícone</Text>
           
           <FlatList
@@ -60,7 +71,8 @@ export default function IconModal({
             <Text style={styles.closeButtonText}>Fechar</Text>
           </TouchableOpacity>
         </SafeAreaView>
-      </View>
+        
+      </TouchableOpacity>
     </Modal>
   );
 }

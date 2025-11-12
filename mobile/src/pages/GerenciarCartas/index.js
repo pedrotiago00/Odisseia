@@ -12,7 +12,7 @@ import {
     ScrollView,
     Alert 
 } from 'react-native';
-
+import { useNavigation } from "@react-navigation/native";
 import api from '../../servicers/api';
 
 // --- Componente de Item da Lista (Admin) ---
@@ -72,6 +72,7 @@ const GerenciarCartasScreen = () => {
     // Este state continua sendo uma string (ex: "fogo,agua,suporte")
     const [tags, setTags] = useState('');
 
+    const navigation = useNavigation();
     // --- Funções de API ---
     /** Busca a lista de cartas da API */
     const fetchCartas = async () => {
@@ -265,11 +266,18 @@ const GerenciarCartasScreen = () => {
                     <TouchableOpacity style={styles.botaoAdicionar} onPress={abrirModalCriar}>
                         <Text style={styles.botaoAdicionarTexto}>+</Text>
                     </TouchableOpacity>
+
+                    <TouchableOpacity 
+                    style={styles.backButton} 
+                            onPress={() => navigation.navigate('Menu')}
+                    >
+                    <Text style={styles.botaoVoltar}>Voltar</Text>
+                    </TouchableOpacity>
+                                {         }
                 </View>
                 {/* Lista de cartas */}
                 {renderConteudo()}
-            </View>
-
+            </View>                 
             {/* --- Modal de Edição/Criação --- */}
             <Modal
                 visible={modalVisivel}
@@ -345,6 +353,7 @@ const styles = StyleSheet.create({
     header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 16 },
     titulo: { fontSize: 28, fontWeight: 'bold', color: '#222' },
     botaoAdicionar: { backgroundColor: '#007AFF', width: 40, height: 40, borderRadius: 20, justifyContent: 'center', alignItems: 'center' },
+    botaoVoltar: { backgroundColor: 'rgba(255, 0, 0, 1)', width: 40, height: 40, borderRadius: 20, justifyContent: 'center', alignItems: 'center', flex : 1, },
     botaoAdicionarTexto: { color: '#fff', fontSize: 24, fontWeight: 'bold' },
     listContainer: { paddingHorizontal: 16, paddingBottom: 16 },
     card: { backgroundColor: '#fff', borderRadius: 8, marginBottom: 12, shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 2, elevation: 2, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 12 },

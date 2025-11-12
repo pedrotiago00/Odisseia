@@ -1,17 +1,35 @@
 import pool from '../database.js';
 
-// Função para LISTAR todas as cartas (com filtro de tag)
+// Função para LISTAR todas as cartas (COM FILTRO MÚLTIPLO)
 export const listarCartas = async (req, res) => {
-    const { tag } = req.query; // Pega a tag da URL (ex: /cartas?tag=magia)
+    // 1. MUDANÇA: de 'tag' (singular) para 'tags' (plural)
+    const { tags } = req.query; // Pega as tags (ex: /cartas?tags=elfa,guerreira)
 
     try {
         let query = "SELECT * FROM cartas";
         const params = [];
 
-        if (tag) {
-            query += " WHERE tags LIKE ?";
-            params.push(`%${tag}%`);
+        // 2. MUDANÇA: Lógica para filtros múltiplos
+        if (tags && tags.trim() !== '') {
+            // 3. Divide a string "elfa,guerreira" em um array ['elfa', 'guerreira']
+            const listaDeTags = tags.split(',');
+
+            if (listaDeTags.length > 0) {
+                // 4. Cria uma condição "LIKE" para CADA tag no array
+                //    (ex: ["tags LIKE ?", "tags LIKE ?"])
+                const condicoes = listaDeTags.map(tag => "tags LIKE ?");
+                
+                // 5. Junta todas as condições com "AND"
+                //    (ex: "WHERE (tags LIKE ? AND tags LIKE ?)")
+                query += ` WHERE (${condicoes.join(' AND ')})`;
+                
+                // 6. Adiciona cada tag (com '%') aos parâmetros
+                listaDeTags.forEach(tag => {
+                    params.push(`%${tag.trim()}%`); // .trim() para limpar espaços
+                });
+            }
         }
+        // Se 'tags' não for fornecido, a query continua "SELECT * FROM cartas"
 
         const [rows] = await pool.query(query, params);
         res.status(200).json(rows);
@@ -22,9 +40,9 @@ export const listarCartas = async (req, res) => {
     }
 };
 
-// Função para BUSCAR UMA CARTA por ID
+// Função para BUSCAR UMA CARTA por ID (Sem alterações)
 export const buscarCartaPorId = async (req, res) => {
-    const { id } = req.params; // Pega o ID da URL
+    const { id } = req.params; 
 
     try {
         const [rows] = await pool.query("SELECT * FROM cartas WHERE id = ?", [id]);
@@ -33,7 +51,7 @@ export const buscarCartaPorId = async (req, res) => {
             return res.status(404).json({ error: "Carta não encontrada." });
         }
         
-        res.status(200).json(rows[0]); // Retorna o primeiro (e único) resultado
+        res.status(200).json(rows[0]); 
 
     } catch (error) {
         console.error("Erro ao buscar carta por ID:", error);
@@ -41,7 +59,7 @@ export const buscarCartaPorId = async (req, res) => {
     }
 };
 
-// Função para ADICIONAR uma nova carta
+// Função para ADICIONAR uma nova carta (Sem alterações)
 export const inserirCarta = async (req, res) => {
     const { nome, descricao, imagem_url, tipo, tags } = req.body;
 
@@ -61,7 +79,7 @@ export const inserirCarta = async (req, res) => {
     }
 };
 
-// Função para ATUALIZAR uma carta existente
+// Função para ATUALIZAR uma carta existente (Sem alterações)
 export const atualizarCarta = async (req, res) => {
     const { id } = req.params;
     const { nome, descricao, imagem_url, tipo, tags } = req.body;
@@ -88,7 +106,7 @@ export const atualizarCarta = async (req, res) => {
     }
 };
 
-// Função para DELETAR uma carta
+// Função para DELETAR uma carta (Sem alterações)
 export const deletarCarta = async (req, res) => {
     const { id } = req.params;
 

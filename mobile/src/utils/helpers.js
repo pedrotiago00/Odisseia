@@ -29,7 +29,7 @@ const iconCategories = {
  */
 export const getInitialPlayerState = () => ({
   life: 30,
-  timer: 900, // <-- CORREÇÃO: 15 minutos * 60 segundos
+  timer: 900, 
   lifeIcon: TIPO_VIDA_PADRAO, 
   stats: [
     { value: 5, category: 'Ataque', icon: iconCategories['Ataque'][0].icon },

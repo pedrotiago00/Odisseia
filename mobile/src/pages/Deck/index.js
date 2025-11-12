@@ -6,34 +6,26 @@ import {
     FlatList,
     Image,
     StyleSheet,
-    ActivityIndicator, // "Rodinha" de loading
-    TouchableOpacity, // Botão clicável
-    Modal, // Pop-up
-    Button
+    ActivityIndicator, 
+    TouchableOpacity, 
+    Modal, 
+    ScrollView,
+    ImageBackground 
 } from 'react-native';
-// 1. Importe o seu arquivo de configuração do axios
+import { LinearGradient } from 'expo-linear-gradient'; 
 import api from '../../servicers/api.js';
+import useTelaCheia from '../../hooks/TelaCheia.js';
 
-// --- Componentes de Apresentação Locais ---
 
-/** Um único botão de filtro (ex: "Todos", "Fogo", "Água") */
-const FiltroItem = ({ filtro, selecionado, onPress }) => (
-    <TouchableOpacity
-        // Aplica o estilo 'selecionado' condicionalmente
-        style={[styles.filtroBotao, selecionado && styles.filtroBotaoSelecionado]}
-        onPress={() => onPress(filtro.tag)} // Chama a função com a 'tag' (ex: 'all', 'fire')
-    >
-        <Text style={[styles.filtroTexto, selecionado && styles.filtroTextoSelecionado]}>
-            {filtro.nome} {/* Ex: "Todos" */}
-        </Text>
-    </TouchableOpacity>
-);
+
+const screenBackground = require('../../assets/Background.jpeg'); 
+
+// --- (Componentes GridCardItem e FiltroCheckbox não mudam) ---
 
 /** Uma única carta no grid (grade) */
 const GridCardItem = ({ item, onPress }) => (
     <TouchableOpacity style={styles.gridItem} onPress={onPress}>
         <Image
-            // Se não tiver imagem_url, usa um placeholder
             source={{ uri: item.imagem_url || 'https://placehold.co/100x150/ccc/fff?text=Sem+Img' }}
             style={styles.gridItemImage}
             resizeMode="cover"
@@ -41,263 +33,444 @@ const GridCardItem = ({ item, onPress }) => (
     </TouchableOpacity>
 );
 
+/** Um item (checkbox) no Modal de Filtro */
+const FiltroCheckbox = ({ filtro, selecionado, onPress }) => (
+    <TouchableOpacity 
+        style={styles.filtroModalItem} 
+        onPress={() => onPress(filtro.tag)}
+    >
+        <View style={styles.checkbox}>
+            {selecionado && <View style={styles.checkboxMarcado} />}
+        </View>
+        <Text style={styles.filtroModalTexto}>{filtro.nome}</Text>
+    </TouchableOpacity>
+);
+
 // --- Componente Principal da Tela ---
-const ListaCartasScreen = () => {
-    // --- Estados ---
-    const [cartas, setCartas] = useState([]); // Array de cartas vindo da API
-    const [filtroAtivo, setFiltroAtivo] = useState('all'); // Filtro selecionado (inicia com 'all')
-    const [loading, setLoading] = useState(true); // Controla o loading das CARTAS
-    const [error, setError] = useState(null); // Mensagem de erro
-    const [selectedCard, setSelectedCard] = useState(null); // Carta selecionada para o modal
+const ListaCartasScreen = ({ navigation }) => {
+    // --- (Todos os 'useState' e 'useEffect' continuam os mesmos) ---
+    const [cartas, setCartas] = useState([]); 
+    const [loading, setLoading] = useState(true); 
+    const [error, setError] = useState(null); 
+    const [selectedCard, setSelectedCard] = useState(null); 
+    const [todosOsFiltros, setTodosOsFiltros] = useState([]); 
+    const [filtrosAtivos, setFiltrosAtivos] = useState([]); 
+    const [loadingFiltros, setLoadingFiltros] = useState(true);
+    const [modalFiltroVisivel, setModalFiltroVisivel] = useState(false);
 
-    // States para os filtros que vêm da API
-    const [filtros, setFiltros] = useState([]); // Array de filtros (tags)
-    const [loadingFiltros, setLoadingFiltros] = useState(true); // Controla o loading dos FILTROS
+    useTelaCheia();
 
-    /**
-     * Efeito 1: Busca os FILTROS (TAGS) da API.
-     * Roda apenas UMA VEZ quando a tela é carregada (note o `[]` no final).
-     */
     useEffect(() => {
         const fetchFiltros = async () => {
             setLoadingFiltros(true);
             try {
-                const response = await api.get('/tags'); // 1. Busca na rota /tags
-                
-                // 2. Adiciona manualmente o filtro "Todos" no início da lista
-                const filtroTodos = { id: 0, nome: 'Todos', tag: 'all' };
-                
-                // 3. Salva no state: [Todos, ...filtrosDaApi]
-                setFiltros([filtroTodos, ...response.data]);
-
+                const response = await api.get('/tags'); 
+                setTodosOsFiltros(response.data); 
             } catch (err) {
                 console.error('Erro ao buscar filtros:', err);
-                // Se falhar, pelo menos o "Todos" aparece
-                setFiltros([{ id: 0, nome: 'Todos', tag: 'all' }]);
             } finally {
                 setLoadingFiltros(false);
             }
         };
+        fetchFiltros(); 
+    }, []); 
 
-        fetchFiltros(); // Executa a função
-    }, []); // `[]` = Roda só uma vez
-
-    /**
-     * Efeito 2: Busca as CARTAS da API.
-     * Roda toda vez que o `filtroAtivo` mudar.
-     */
     useEffect(() => {
         const fetchCartas = async () => {
-            setLoading(true); // Começa o loading
+            setLoading(true); 
             setError(null);
-            
             try {
-                // Prepara os parâmetros da requisição
                 const params = {};
-                if (filtroAtivo !== 'all') {
-                    params.tag = filtroAtivo; // Ex: { tag: 'fire' }
+                if (filtrosAtivos.length > 0) {
+                    params.tags = filtrosAtivos.join(','); 
                 }
-                
-                // Busca na rota /cartas, passando os params
-                // Se filtroAtivo for 'all', params será {} e a API trará tudo
                 const response = await api.get('/cartas', { params });
-                setCartas(response.data); // Salva as cartas no state
-
+                setCartas(response.data); 
             } catch (err) {
                 console.error('Erro ao buscar cartas:', err);
-                // Ignora o erro 401 (sessão expirada) que o 'api.js' já trata
                 if (err.response?.status !== 401) {
                    setError('Não foi possível carregar as cartas.');
                 }
             } finally {
-                setLoading(false); // Termina o loading
+                setLoading(false); 
             }
         };
+        fetchCartas(); 
+    }, [filtrosAtivos]); 
 
-        fetchCartas(); // Executa a função
-    }, [filtroAtivo]); // `[filtroAtivo]` = Roda de novo sempre que 'filtroAtivo' mudar
-
-    // --- Funções do Modal de Detalhes ---
+    // --- (Funções de handler não mudam) ---
     const handleCardPress = (card) => {
-        setSelectedCard(card); // Salva a carta clicada no state
+        setSelectedCard(card);
     };
-
-    const handleCloseModal = () => {
-        setSelectedCard(null); // Limpa o state, fechando o modal
+    const handleCloseZoomModal = () => {
+        setSelectedCard(null);
     };
-
-    /**
-     * Função auxiliar para renderizar o conteúdo principal
-     * (Loading, Erro, Lista Vazia ou a Grade de Cartas)
-     */
+    const handleToggleFiltro = (tag) => {
+        setFiltrosAtivos(prev => {
+            const jaExiste = prev.includes(tag);
+            if (jaExiste) {
+                return prev.filter(t => t !== tag); 
+            } else {
+                return [...prev, tag]; 
+            }
+        });
+    };
+    const limparFiltros = () => {
+        setFiltrosAtivos([]);
+        setModalFiltroVisivel(false);
+    };
     const renderConteudo = () => {
-        // 1. Se estiver carregando
+        // ... (código do renderConteudo não muda)
         if (loading) {
-            return <ActivityIndicator size="large" color="#007AFF" style={styles.centered} />;
+            return <ActivityIndicator size="large" color="#FFF" style={styles.centered} />;
         }
-        // 2. Se deu erro
         if (error) {
             return <Text style={[styles.centered, styles.errorText]}>{error}</Text>;
         }
-        // 3. Se não tem cartas
         if (cartas.length === 0) {
-            return <Text style={styles.centered}>Nenhuma carta encontrada.</Text>;
+            return <Text style={[styles.centered, styles.textoBranco]}>Nenhuma carta encontrada.</Text>;
         }
-        // 4. Se tudo deu certo
         return (
             <FlatList
                 data={cartas}
                 renderItem={({ item }) => (
                     <GridCardItem 
                         item={item} 
-                        onPress={() => handleCardPress(item)} // Abre o modal ao clicar
+                        onPress={() => handleCardPress(item)}
                     />
                 )}
                 keyExtractor={(item) => item.id.toString()}
-                numColumns={4} // Define a grade com 4 colunas
-                key={4} // Força a re-renderização se o numColumns mudar
+                numColumns={4} 
+                key={4} 
                 contentContainerStyle={styles.listContainer}
             />
         );
     };
 
+
     // --- Renderização Principal (JSX) ---
     return (
-        <SafeAreaView style={styles.safeArea}>
-            <View style={styles.container}>
-                <Text style={styles.titulo}>Coleção de Cartas</Text>
+        // 1. Usamos um Fragmento <> para "agrupar" a tela e os modais
+        <>
+            {/* FUNDO DA TELA INTEIRA */}
+            <ImageBackground source={screenBackground} style={styles.screenBackground}>
+                <SafeAreaView style={styles.safeArea}>
+                    <View style={styles.container}>
+                        
+                        {/* Header (TÍTULO + BOTÃO VOLTAR) */}
+                        <View style={styles.headerContainer}>
+                            <Text style={styles.titulo}>Coleção</Text>
+                            <TouchableOpacity 
+                                style={styles.backButton} 
+                                onPress={() => navigation.goBack()}
+                            >
+                                <Text style={styles.backButtonText}>Voltar</Text>
+                            </TouchableOpacity>
+                        </View>
 
-                {/* Seção 1: Lista de Filtros */}
-                <View style={styles.filtroContainer}>
-                    {loadingFiltros ? (
-                        // Mostra loading SÓ para os filtros
-                        <ActivityIndicator size="small" color="#007AFF" />
-                    ) : (
-                        // Renderiza a lista horizontal de filtros
-                        <FlatList
-                            data={filtros} // Usa o state 'filtros'
-                            renderItem={({ item }) => (
-                                <FiltroItem
-                                    filtro={item}
-                                    selecionado={filtroAtivo === item.tag} // Destaca o ativo
-                                    onPress={setFiltroAtivo} // Clicar muda o 'filtroAtivo'
-                                />
-                            )}
-                            keyExtractor={(item) => item.tag} // Usa a 'tag' como ID
-                            horizontal // Lista horizontal
-                            showsHorizontalScrollIndicator={false}
-                        />
-                    )}
-                </View>
+                        {/* Botão de Filtro */}
+                        <TouchableOpacity 
+                            style={styles.filtroBotaoPrincipal} 
+                            onPress={() => setModalFiltroVisivel(true)}
+                        >
+                            <Text style={styles.filtroBotaoTexto}>
+                                Filtrar ({filtrosAtivos.length > 0 ? `${filtrosAtivos.length} aplicados` : "Todos"})
+                            </Text>
+                        </TouchableOpacity>
 
-                {/* Seção 2: Conteúdo Principal (Grid de Cartas) */}
-                {renderConteudo()}
-            </View>
+                        {/* Grid de Cartas */}
+                        {renderConteudo()}
+                    </View>
+                </SafeAreaView>
+            </ImageBackground>
 
-            {/* Seção 3: Modal de Detalhes (só aparece se 'selectedCard' não for null) */}
+            {/* --- Seção 3: Modal de ZOOM (MOVEMOS PARA FORA) --- */}
             {selectedCard && (
                 <Modal
                     animationType="fade"
-                    transparent={true} // Fundo transparente
-                    visible={!!selectedCard} // Converte 'selectedCard' para booleano
-                    onRequestClose={handleCloseModal} // Botão "voltar" do Android
+                    transparent={true} 
+                    visible={!!selectedCard} 
+                    onRequestClose={handleCloseZoomModal}
+                    statusBarTranslucent={true} // <-- ADICIONADO AQUI
                 >
-                    {/* Overlay escuro clicável para fechar */}
                     <TouchableOpacity 
                         style={styles.modalOverlay} 
                         activeOpacity={1} 
-                        onPressOut={handleCloseModal} // Clicar fora do conteúdo fecha
+                        onPress={handleCloseZoomModal} 
                     >
-                        {/* Conteúdo branco (impede o clique de "vazar" para o overlay) */}
-                        <View style={styles.modalContent} onStartShouldSetResponder={() => true}> 
-                            <Image
-                                source={{ uri: selectedCard.imagem_url || 'https://placehold.co/300x450/ccc/fff?text=Sem+Img' }}
-                                style={styles.modalImage}
-                                resizeMode="contain"
-                            />
-                            {/* Detalhes da carta */}
-                            <Text style={styles.modalNome}>{selectedCard.nome}</Text>
-                            <Text style={styles.modalTipo}>{selectedCard.tipo}</Text>
-                            <Text style={styles.modalDescricao}>{selectedCard.descricao}</Text>
-                            <Text style={styles.modalTags}>Tags: {selectedCard.tags}</Text>
-                            
-                            <View style={styles.buttonContainer}>
-                                <Button title="Fechar" onPress={handleCloseModal} color="#007AFF" />
+                        <View onStartShouldSetResponder={() => true}>
+                            <View style={styles.zoomImageContainer}>
+                                <ImageBackground
+                                    source={{ uri: selectedCard.imagem_url || 'https://placehold.co/300x450/ccc/fff?text=Sem+Img' }}
+                                    style={styles.zoomImage}
+                                    resizeMode="contain"
+                                >
+                                    <LinearGradient
+                                        colors={['rgba(0,0,0,1)', 'rgba(0,0,0,0.8)', 'transparent']}
+                                        style={styles.textOverlay}
+                                    >
+                                        <Text style={styles.modalNome}>{selectedCard.nome}</Text>
+                                        <Text style={styles.modalTipo}>{selectedCard.tipo}</Text>
+                                        <Text style={styles.modalTags}>Tags: {selectedCard.tags}</Text>
+                                    </LinearGradient>
+                                </ImageBackground>
                             </View>
                         </View>
                     </TouchableOpacity>
                 </Modal>
             )}
-        </SafeAreaView>
+
+            {/* --- Seção 4: Modal de FILTROS (MOVEMOS PARA FORA) --- */}
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalFiltroVisivel}
+                onRequestClose={() => setModalFiltroVisivel(false)}
+                statusBarTranslucent={true} // <-- ADICIONADO AQUI
+            >
+                <TouchableOpacity 
+                    style={styles.filtroModalContainer}
+                    activeOpacity={1}
+                    onPressOut={() => setModalFiltroVisivel(false)} 
+                >
+                    <View 
+                        style={styles.filtroModalContent}
+                        onStartShouldSetResponder={() => true}
+                    >
+                        <Text style={styles.filtroModalTitulo}>Filtrar</Text>
+                        
+                        {loadingFiltros ? (
+                            <ActivityIndicator size="small" />
+                        ) : (
+                            <ScrollView style={styles.filtroModalScroll}>
+                                {todosOsFiltros.map(filtro => (
+                                    <FiltroCheckbox
+                                        key={filtro.tag}
+                                        filtro={filtro}
+                                        selecionado={filtrosAtivos.includes(filtro.tag)}
+                                        onPress={handleToggleFiltro}
+                                    />
+                                ))}
+                            </ScrollView>
+                        )}
+                        
+                        <View style={styles.filtroModalBotoes}>
+                            <TouchableOpacity 
+                                style={[styles.filtroModalBotao, styles.botaoLimpar]} 
+                                onPress={limparFiltros}
+                            >
+                                <Text style={[styles.filtroModalBotaoTexto, styles.textoLimpar]}>Limpar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity 
+                                style={[styles.filtroModalBotao, styles.botaoAplicar]} 
+                                onPress={() => setModalFiltroVisivel(false)}
+                            >
+                                <Text style={styles.filtroModalBotaoTexto}>Aplicar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            </Modal>
+        </> // 2. Fechamos o Fragmento
     );
 };
 
 // --- Estilos ---
-// (Os estilos são os mesmos do arquivo, não vou comentar linha por linha
-// pois são autoexplicativos e não foram o foco da mudança)
 const styles = StyleSheet.create({
-    safeArea: { flex: 1, backgroundColor: '#f5f5f5' },
+    screenBackground: {
+        flex: 1,
+    },
+    safeArea: { 
+        flex: 1, 
+        
+        backgroundColor: 'transparent' 
+    },
     container: { flex: 1, paddingHorizontal: 16 },
-    titulo: { fontSize: 28, fontWeight: 'bold', marginTop: 16, marginBottom: 8, color: '#222' },
-    filtroContainer: { marginBottom: 16, height: 36 },
-    filtroBotao: { backgroundColor: '#e0e0e0', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 20, marginRight: 8, height: 36 },
-    filtroBotaoSelecionado: { backgroundColor: '#007AFF' },
-    filtroTexto: { color: '#333', fontWeight: '500' },
-    filtroTextoSelecionado: { color: '#fff' },
+
+    headerContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: 8,
+        marginBottom: 8,
+    },
+    titulo: { 
+        fontSize: 48, 
+        fontWeight: 'bold', 
+        color: '#FFFFFF', 
+        flex: 1, 
+        textShadowColor: 'rgba(0, 0, 0, 0.75)', 
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 3
+    },
+    backButton: {
+        backgroundColor: '#f0f0f0', 
+        paddingVertical: 8,
+        paddingHorizontal: 16,
+        borderRadius: 20,
+        opacity: 0.9, 
+    },
+    backButtonText: {
+        color: '#333',
+        fontWeight: '500',
+        fontSize: 16,
+    },
+    
+    filtroBotaoPrincipal: {
+        backgroundColor: '#007AFF',
+        paddingVertical: 10,
+        paddingHorizontal: 16,
+        borderRadius: 20,
+        alignSelf: 'flex-start',
+        marginBottom: 16,
+        opacity: 0.9,
+    },
+    filtroBotaoTexto: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 16,
+    },
     listContainer: { paddingBottom: 16 },
+    
+    // (Mantido)
     gridItem: {
-        flex: 1 / 4, 
+        flex: 1/4, 
         aspectRatio: 0.7, 
-        margin: 4,
-        borderRadius: 8,
-        overflow: 'hidden',
-        backgroundColor: '#eee',
-        elevation: 3,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.1,
-        shadowRadius: 2,
+        padding: 4, 
+        backgroundColor: 'transparent',
     },
     gridItemImage: {
         width: '100%',
         height: '100%',
+        borderRadius: 8, 
     },
+
     centered: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, textAlign: 'center' },
     errorText: { color: 'red', fontSize: 16 },
+    textoBranco: { color: 'white', fontSize: 16 }, 
+
+    // Estilos do MODAL DE ZOOM (Mantido)
     modalOverlay: {
-        flex: 1,
-        backgroundColor: 'rgba(0, 0, 0, 0.75)', 
+        flex: 1, 
+        backgroundColor: 'rgba(0, 0, 0, 0.85)', 
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
     },
-    modalContent: {
-        backgroundColor: '#fff',
-        borderRadius: 12,
-        padding: 20,
-        width: '100%',
-        maxWidth: 400, 
-        alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.3,
-        shadowRadius: 6,
-        elevation: 10,
-    },
-    modalImage: {
-        width: '80%',
+    zoomImageContainer: {
+        width: '100%', // (Mantido 100%)
         aspectRatio: 0.7, 
-        marginBottom: 16,
-        borderRadius: 8,
-        backgroundColor: '#eee',
+        borderRadius: 16, 
+        overflow: 'hidden', 
+        backgroundColor: '#ffe2b4ff', 
     },
-    modalNome: { fontSize: 24, fontWeight: 'bold', color: '#333', textAlign: 'center', marginBottom: 4 },
-    modalTipo: { fontSize: 16, fontStyle: 'italic', color: '#666', marginTop: 4, textAlign: 'center', marginBottom: 12 },
-    modalDescricao: { fontSize: 16, color: '#444', marginTop: 8, textAlign: 'center' },
-    modalTags: { fontSize: 14, color: '#007AFF', marginTop: 12, fontWeight: '600', textAlign: 'center', marginBottom: 20 },
-    buttonContainer: {
+    zoomImage: {
+        flex: 1,
         width: '100%',
-        marginTop: 10,
+        height: '100%',
+        justifyContent: 'flex-start', 
+    },
+    textOverlay: {
+        paddingTop: 1, 
+        paddingHorizontal: 16,
+        paddingBottom: 32, 
+    },
+    modalNome: { 
+        fontSize: 22, 
+        fontWeight: 'bold', 
+        color: '#FFF', 
+        textAlign: 'left',
+    },
+    modalTipo: { 
+        fontSize: 16, 
+        fontStyle: 'italic', 
+        color: '#CCC', 
+        textAlign: 'left', 
+        marginTop: 4 
+    },
+    modalTags: { 
+        fontSize: 14, 
+        color: '#00AFFF', 
+        fontWeight: '600', 
+        textAlign: 'left', 
+        marginTop: 8 
+    },
+
+    // --- Estilos do MODAL DE FILTRO (Mantido) ---
+    filtroModalContainer: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        backgroundColor: 'rgba(0,0,0,0.4)',
+    },
+    filtroModalContent: {
+        backgroundColor: '#404040', 
+        maxHeight: '70%',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        padding: 24,
+    },
+    filtroModalTitulo: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: 20,
+        color: '#FFFFFF', 
+    },
+    filtroModalScroll: {
+        maxHeight: 300, 
+    },
+    filtroModalItem: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 12,
+        borderBottomWidth: 1,
+        borderBottomColor: '#555', 
+    },
+    checkbox: {
+        width: 24,
+        height: 24,
+        borderWidth: 2,
+        borderColor: '#007AFF',
+        borderRadius: 4,
+        marginRight: 16,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    checkboxMarcado: {
+        width: 16,
+        height: 16,
+        backgroundColor: '#007AFF',
+        borderRadius: 2,
+    },
+    filtroModalTexto: {
+        fontSize: 18,
+        color: '#FFFFFF', 
+    },
+    filtroModalBotoes: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 24,
+    },
+    filtroModalBotao: {
+        flex: 1,
+        paddingVertical: 14,
+        borderRadius: 10,
+        alignItems: 'center',
+    },
+    botaoLimpar: {
+        backgroundColor: '#f0f0f0',
+        marginRight: 8,
+    },
+    botaoAplicar: {
+        backgroundColor: '#007AFF',
+        marginLeft: 8,
+    },
+    filtroModalBotaoTexto: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'white',
+    },
+    textoLimpar: {
+        color: '#555',
     }
 });
 

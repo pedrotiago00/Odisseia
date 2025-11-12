@@ -35,17 +35,11 @@ export default function Menu() {
    */
   const handleLogout = async () => {
     try {
-      // --- CORREÇÃO NECESSÁRIA AQUI ---
-      // 1. Apaga os dados salvos.
-      // Você deve substituir as duas linhas abaixo por:
-      // await storage.deleteItem('token');
-      // await storage.deleteItem('usuario');
-      await SecureStore.deleteItemAsync('token'); // <-- Mudar
-      await SecureStore.deleteItemAsync('usuario'); // <-- Mudar
+    
+      await SecureStore.deleteItemAsync('token'); 
+      await SecureStore.deleteItemAsync('usuario'); 
       
-      // 2. Manda o usuário de volta para o Login.
-      // 'replace' é o método correto, pois impede o usuário
-      // de "voltar" para o menu após deslogar.
+      
       navigation.replace('SignIn'); 
     } catch (error) {
       console.error("Erro ao fazer logout:", error);
@@ -58,7 +52,7 @@ export default function Menu() {
     { label: "Marcador de Vida", route: "Game" }, // Rota para o contador
     { label: "Deck", route: "Deck" }, // Rota para a lista de cartas
     { label: "Editor de Cartas", route: "Editor" }, // Rota para o CRUD de Admin
-    { label: "Jogar com os amigos", route: "Multiplayer" }, // Rota futura
+    //{ label: "Jogar com os amigos", route: "Multiplayer" }, // Rota futura
   ];
 
   return (

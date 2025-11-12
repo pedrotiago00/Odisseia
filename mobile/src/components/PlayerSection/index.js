@@ -25,7 +25,7 @@ export default function PlayerSection({
   isActive, 
   onLifeChange,
   onPassTurn,
-  onOpenModal, // <--- Esta função é passada pelo GameScreen
+  onOpenModal, //  Esta função é passada pelo GameScreen
   onOpenStatIconModal, 
   onOpenLifeIconModal, 
 }) {
@@ -60,7 +60,7 @@ export default function PlayerSection({
               life={life}
               lifeIcon={lifeIcon}
               onLifeChange={onLifeChange}
-              onOpenModal={() => onOpenModal('life', null, life)} // <--- Esta chamada está correta (3 args)
+              onOpenModal={() => onOpenModal('life', null, life)} 
               onOpenLifeIconModal={onOpenLifeIconModal} 
               playerNum={playerNum}
             />
@@ -78,8 +78,8 @@ export default function PlayerSection({
                   <CircularCounters
                     counters={counters}
                     icons={sealIcons}
-                    // --- CORREÇÃO AQUI ---
-                    // Removemos o 'playerNum' do início
+                   
+                  
                     onOpenModal={(index, value) => onOpenModal('counter', index, value)}
                   />
                 </View>
@@ -88,8 +88,7 @@ export default function PlayerSection({
               <View style={styles.statsRow}>
                 <StatCounters
                   stats={stats}
-                  // --- CORREÇÃO AQUI ---
-                  // Removemos o 'playerNum' do início
+                  
                   onOpenModal={(index, value) => onOpenModal('stat', index, value)}
                   onOpenIconModal={onOpenStatIconModal}
                 />

@@ -2,9 +2,9 @@ import express from 'express';
 import {
     listarCartas,
     inserirCarta,
-    buscarCartaPorId, // 👈 Adicionado
-    atualizarCarta,   // 👈 Adicionado
-    deletarCarta      // 👈 Adicionado
+    buscarCartaPorId, 
+    atualizarCarta,   
+    deletarCarta      
 } from '../controllers/cartasController.js';
 
 const router = express.Router();

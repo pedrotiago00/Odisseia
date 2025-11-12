@@ -7,6 +7,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  
   modalContent: {
     width: '90%',
     maxHeight: '70%',

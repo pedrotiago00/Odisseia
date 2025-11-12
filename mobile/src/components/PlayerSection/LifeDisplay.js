@@ -20,7 +20,7 @@ export default function LifeDisplay({
       {/* Imagem de Fundo (Coração/Ícone) */}
       <ImageBackground 
         source={iconesVida[lifeIcon]} 
-        style={styles.lifeIconBackground} // <-- Estilo alterado
+        style={styles.lifeIconBackground} //  Estilo alterado
         resizeMode="contain"
       >
         <TouchableOpacity 
@@ -59,12 +59,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16, 
   },
   lifeButton: {
-    paddingHorizontal: 14, // <-- Diminuído
+    paddingHorizontal: 14, //  Diminuído
     paddingVertical: 10,
     
   },
   lifeButtonText: {
-    fontSize: 28, // <-- Diminuído de 32
+    fontSize: 28, //  Diminuído de 32
     fontWeight: 'bold',
     color: '#FFF',
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
@@ -72,18 +72,18 @@ const styles = StyleSheet.create({
     textShadowRadius: 10
   },
   lifeIconBackground: {
-    width: 90, // <-- Diminuído de 120
-    height: 90, // <-- Diminuído de 120
+    width: 90, //  Diminuído de 120
+    height: 90, //  Diminuído de 120
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 5, // <-- Adicionado para dar espaço
+    marginHorizontal: 5, //  Adicionado para dar espaço
   },
   lifeValueWrapper: {
     alignItems: 'center',
     justifyContent: 'center',
   },
   lifeText: {
-    fontSize: 40, // <-- Diminuído de 48
+    fontSize: 40, //  Diminuído de 48
     fontWeight: 'bold',
     color: '#FFF',
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
@@ -91,16 +91,16 @@ const styles = StyleSheet.create({
     textShadowRadius: 6
   },
   maxContainer: {
-    marginLeft: 8, // <-- Diminuído de 10
+    marginLeft: 8, //  Diminuído de 10
     alignItems: 'center',
   },
   maxText: {
-    fontSize: 14, // <-- Diminuído de 16
+    fontSize: 14, //  Diminuído de 16
     color: 'white',
     fontWeight: 'bold',
   },
   maxLabel: {
-    fontSize: 10, // <-- Diminuído de 12
+    fontSize: 10, //  Diminuído de 12
     color: 'white',
   }
 });

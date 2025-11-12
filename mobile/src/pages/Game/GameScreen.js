@@ -12,45 +12,34 @@ import ValueModal from '../../components/ValueModal';
 import IconModal from '../../components/IconModal';
 
 import { colors, iconCategories } from '../../constants/gameData';
-import { iconesVida } from '../../constants/iconesVida';
+// 'iconesVida' não é mais necessário se o coração for fixo
 import { getInitialPlayerState } from '../../utils/helpers';
 import styles from './styles';
 import * as NavigationBar from 'expo-navigation-bar';
+import useTelaCheia from '../../hooks/TelaCheia';
+
+// --- Constantes para os limites ---
+const MAX_LIFE = 99;
+const MAX_STAT_COUNTER = 99; // Limite para Atributos e Counters
 
 export default function GameScreen({ navigation }) {
   
   const [player1, setPlayer1] = useState(getInitialPlayerState());
-  // --- CORREÇÃO AQUI ---
   const [player2, setPlayer2] = useState(getInitialPlayerState()); 
-  // ---------------------
   const [activePlayer, setActivePlayer] = useState(2);
 
-  // Estados dos Modais
+  // --- Estados dos Modais ---
   const [isModalVisible, setModalVisible] = useState(false);
   const [modalInputValue, setModalInputValue] = useState('');
   const [modalTarget, setModalTarget] = useState(null); 
+  
   const [isStatIconModalVisible, setStatIconModalVisible] = useState(false);
   const [statIconModalTarget, setStatIconModalTarget] = useState(null);
   const [statIconData, setStatIconData] = useState([]); 
-  const [isLifeIconModalVisible, setLifeIconModalVisible] = useState(false);
-  const [lifeIconModalTarget, setLifeIconModalTarget] = useState(null);
-  const [lifeIconData, setLifeIconData] = useState([]);
+  
+  // (Código do isLifeIconModalVisible removido)
 
-  useEffect(() => {
-    // Função para esconder a barra
-    const hideNavigationBar = async () => {
-      await NavigationBar.setVisibilityAsync("hidden");
-      await NavigationBar.setBehaviorAsync("inset-swipe");
-    };
-
-    hideNavigationBar();
-
-    // Função de "limpeza" que roda quando a tela é desmontada
-    return () => {
-      // Mostra a barra de navegação novamente
-      NavigationBar.setVisibilityAsync("visible");
-    };
-  }, [])
+  useTelaCheia();
 
   // --- Efeito do Cronômetro (Timer) ---
   useEffect(() => {
@@ -80,7 +69,7 @@ export default function GameScreen({ navigation }) {
     const setPlayer = playerNum === 1 ? setPlayer1 : setPlayer2;
     setPlayer((prev) => {
       const newLife = prev.life + amount;
-      if (newLife > 99) return { ...prev, life: 99 };
+      if (newLife > MAX_LIFE) return { ...prev, life: MAX_LIFE }; // Usa o limite
       if (newLife < 0) return { ...prev, life: 0 };
       return { ...prev, life: newLife };
     });
@@ -108,23 +97,33 @@ export default function GameScreen({ navigation }) {
     setModalVisible(true);
   };
 
+  
   const handleModalConfirm = () => {
     if (!modalTarget) return; 
     const { player, type, key } = modalTarget;
+    
     let newValue = parseInt(modalInputValue, 10); 
     if (isNaN(newValue) || newValue < 0) newValue = 0; 
 
     const setPlayer = player === 1 ? setPlayer1 : setPlayer2;
 
     if (type === 'life') {
-      setPlayer((prev) => ({ ...prev, life: newValue > 99 ? 99 : newValue }));
+      // Aplica o limite de vida
+      if (newValue > MAX_LIFE) newValue = MAX_LIFE;
+      setPlayer((prev) => ({ ...prev, life: newValue }));
+    
     } else if (type === 'stat') {
+      // Aplica o limite de stat
+      if (newValue > MAX_STAT_COUNTER) newValue = MAX_STAT_COUNTER;
       setPlayer((prev) => {
         const newStats = prev.stats.map(s => ({ ...s })); 
         newStats[key].value = newValue; 
         return { ...prev, stats: newStats };
       });
+
     } else if (type === 'counter') {
+      // Aplica o limite de counter
+      if (newValue > MAX_STAT_COUNTER) newValue = MAX_STAT_COUNTER;
       setPlayer((prev) => {
         const newCounters = [...prev.counters]; 
         newCounters[key] = newValue; 
@@ -140,10 +139,17 @@ export default function GameScreen({ navigation }) {
     setModalTarget(null);
   };
 
+  
   const adjustModalValue = (amount) => {
+    // Descobre qual limite aplicar
+    const type = modalTarget?.type; 
+    const limit = (type === 'life') ? MAX_LIFE : MAX_STAT_COUNTER;
+
     setModalInputValue((prev) => {
-      const newValue = (parseInt(prev, 10) || 0) + amount;
-      return String(newValue >= 0 ? newValue : 0);
+      let newValue = (parseInt(prev, 10) || 0) + amount;
+      if (newValue < 0) newValue = 0;
+      if (newValue > limit) newValue = limit; // Aplica o limite
+      return String(newValue);
     });
   };
 
@@ -170,28 +176,7 @@ export default function GameScreen({ navigation }) {
     setStatIconModalTarget(null);
   };
 
-  // --- Funções do Modal de ÍCONE DE VIDA ---
-
-  const openLifeIconModal = (playerNum) => {
-    setLifeIconModalTarget({ player: playerNum });
-    const lifeIconArray = Object.keys(iconesVida).map(key => ({
-      name: key,
-      icon: iconesVida[key],
-    }));
-    setLifeIconData(lifeIconArray);
-    setLifeIconModalVisible(true);
-  };
-
-  const handleLifeIconSelect = (selectedIconObject) => {
-    if (!lifeIconModalTarget) return;
-    const { player } = lifeIconModalTarget;
-    const setPlayer = player === 1 ? setPlayer1 : setPlayer2;
-
-    setPlayer((prev) => ({ ...prev, lifeIcon: selectedIconObject.name }));
-
-    setLifeIconModalVisible(false);
-    setLifeIconModalTarget(null);
-  };
+  // (Funções do Modal de Ícone de Vida removidas)
 
 
   // --- Renderização Principal (JSX) ---
@@ -210,7 +195,7 @@ export default function GameScreen({ navigation }) {
             onPassTurn={handlePassTurn}
             onOpenModal={(type, key, val) => openModal(1, type, key, val)}
             onOpenStatIconModal={(index) => openStatIconModal(1, index, player1.stats[index].category)}
-            onOpenLifeIconModal={() => openLifeIconModal(1)} 
+            // onOpenLifeIconModal removido
           />
         </View>
 
@@ -233,7 +218,7 @@ export default function GameScreen({ navigation }) {
           onPassTurn={handlePassTurn}
           onOpenModal={(type, key, val) => openModal(2, type, key, val)}
           onOpenStatIconModal={(index) => openStatIconModal(2, index, player2.stats[index].category)}
-          onOpenLifeIconModal={() => openLifeIconModal(2)} 
+          // onOpenLifeIconModal removido
         />
       </View>
 
@@ -256,13 +241,7 @@ export default function GameScreen({ navigation }) {
         iconData={statIconData} 
       />
 
-      <IconModal
-        visible={isLifeIconModalVisible}
-        onClose={() => setLifeIconModalVisible(false)}
-        onSelect={handleLifeIconSelect}
-        targetPlayer={lifeIconModalTarget?.player}
-        iconData={lifeIconData} 
-      />
+      {/* O segundo IconModal (para a vida) foi removido */}
     </SafeAreaView>
   );
 }

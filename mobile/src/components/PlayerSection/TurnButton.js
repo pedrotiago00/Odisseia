@@ -7,7 +7,7 @@ import styles from './styles';
 export default function TurnButton({ onPress, disabled }) { 
   return (
     <TouchableOpacity 
-      style={styles.turnButton} // <-- Estilo simples, sem lógica
+      style={styles.turnButton} //  Estilo simples, sem lógica
       onPress={onPress}
       disabled={disabled} // Recebe o 'disabled'
     >

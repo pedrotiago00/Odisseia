@@ -6,13 +6,13 @@ export default StyleSheet.create({
     width: '100%',
   },
 
-  // --- CORREÇÃO AQUI ---
+  
   gradientOverlay: {
     ...StyleSheet.absoluteFillObject,
     opacity: 0,
-    zIndex: 0, // <-- MUDADO DE 1 PARA 0 (Agora fica atrás)
+    zIndex: 0, //
   },
-  // ---------------------
+ 
 
   contentContainer: {
     ...StyleSheet.absoluteFillObject, 

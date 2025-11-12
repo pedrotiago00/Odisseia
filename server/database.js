@@ -72,9 +72,7 @@ const seedTags = async (poolDeConexao) => {
 };
 
 
-// =================================================================
-// 3. FUNÇÃO DE INICIALIZAÇÃO (ATUALIZADA)
-// =================================================================
+
 const inicializarTabelas = async (poolDeConexao) => {
   console.log("Verificando estrutura do banco de dados...");
   let connection;
@@ -122,8 +120,7 @@ const inicializarTabelas = async (poolDeConexao) => {
 
     console.log("Verificação do banco de dados completa.");
 
-    // 4. CHAMA A FUNÇÃO DE SEMEAR TAGS (NOVO)
-    // Isso roda DEPOIS de garantir que a tabela existe.
+   
     await seedTags(poolDeConexao);
 
   } catch (error) {
@@ -135,9 +132,7 @@ const inicializarTabelas = async (poolDeConexao) => {
 };
 
 
-// =================================================================
-// 4. CONEXÃO E INICIALIZAÇÃO (IGUAL A ANTES)
-// =================================================================
+
 const connectionString = process.env.MYSQL_URL;
 
 if (!connectionString) {
@@ -159,8 +154,7 @@ try {
   console.log("Conexão com o banco (via MYSQL_URL) estabelecida com sucesso!");
   connection.release();
 
-  // CHAMA A FUNÇÃO (que agora já existe)
-  // Ela por sua vez vai chamar o seedTags
+  
   await inicializarTabelas(pool); 
 
 } catch (error) {
@@ -168,5 +162,6 @@ try {
   process.exit(1);
 }
 
-// 5. EXPORTA O POOL NO FINAL
+
+
 export default pool;

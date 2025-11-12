@@ -4,23 +4,18 @@ import * as NavigationBar from 'expo-navigation-bar';
 
 export default function useTelaCheia() {
   useEffect(() => {
-    // Oculta a status bar em ambos
-    StatusBar.setHidden(true, 'fade');
-
-    if (Platform.OS === 'android') {
-      // Android: oculta os botoes de ação.
-      NavigationBar.setVisibilityAsync('hidden');
-      
-    }
-
-    return () => {
-      // Restaura quando sair da tela
-      StatusBar.setHidden(false, 'fade');
-
-      if (Platform.OS === 'android') {
-        NavigationBar.setVisibilityAsync('visible');
-        
-      }
+    // Função para esconder a barra
+    const hideNavigationBar = async () => {
+      await NavigationBar.setVisibilityAsync("hidden");
+      await NavigationBar.setBehaviorAsync("inset-swipe");
     };
-  }, []);
+
+    hideNavigationBar();
+
+    // Função de "limpeza" que roda quando a tela é desmontada
+    return () => {
+      // Mostra a barra de navegação novamente
+      NavigationBar.setVisibilityAsync("visible");
+    };
+  }, [])
 }
