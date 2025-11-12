@@ -3,6 +3,7 @@
 // Arquivo central para exportar os ícones de marcadores de vida.
 // Objeto que mapeia um ID (ex: 'vidatipo1') para a imagem correspondente.
 export const iconesVida = {
+    coracao: require('../assets/Icones/ICONE_VIDA.png'),
     vidatipo1: require('../assets/MarcadoresDeVida/TokenConfuso.png'),
     vidatipo2: require('../assets/MarcadoresDeVida/TokenDanificado.png'),
     vidatipo3: require('../assets/MarcadoresDeVida/TokenFogo.png'),
