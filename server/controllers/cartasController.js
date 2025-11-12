@@ -21,7 +21,7 @@ export const listarCartas = async (req, res) => {
                 
                 // 5. Junta todas as condições com "AND"
                 //    (ex: "WHERE (tags LIKE ? AND tags LIKE ?)")
-                query += ` WHERE (${condicoes.join(' AND ')})`;
+                query += ` WHERE (${condicoes.join(' OR ')})`;
                 
                 // 6. Adiciona cada tag (com '%') aos parâmetros
                 listaDeTags.forEach(tag => {
