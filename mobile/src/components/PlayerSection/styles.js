@@ -5,14 +5,18 @@ export default StyleSheet.create({
     flex: 1,
     width: '100%',
   },
+
+  // --- CORREÇÃO AQUI ---
   gradientOverlay: {
     ...StyleSheet.absoluteFillObject,
     opacity: 0,
-    zIndex: 1, 
+    zIndex: 0, // <-- MUDADO DE 1 PARA 0 (Agora fica atrás)
   },
+  // ---------------------
+
   contentContainer: {
     ...StyleSheet.absoluteFillObject, 
-    zIndex: 1, 
+    zIndex: 1, // (Agora fica na frente)
   },
   inactiveContent: {
     opacity: 0.4, 
@@ -22,13 +26,10 @@ export default StyleSheet.create({
   playerContainer: {
     flex: 1, 
     paddingBottom: 70, // "Zona segura"
-    
-    // --- CORREÇÃO AQUI ---
-    justifyContent: 'center', // MUDADO DE 'space-around' PARA 'center'
-    // ---------------------
+    justifyContent: 'center', 
   },
   
-  // Layout com Flex Proporcional
+  // Layout com Flex Proporcional (Suas mudanças)
   timerWrapper: {
     flex: 1, 
     justifyContent: 'center', 

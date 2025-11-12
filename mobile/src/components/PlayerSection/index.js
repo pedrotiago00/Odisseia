@@ -25,7 +25,7 @@ export default function PlayerSection({
   isActive, 
   onLifeChange,
   onPassTurn,
-  onOpenModal,
+  onOpenModal, // <--- Esta função é passada pelo GameScreen
   onOpenStatIconModal, 
   onOpenLifeIconModal, 
 }) {
@@ -51,7 +51,6 @@ export default function PlayerSection({
       >
         <View style={styles.playerContainer}>
         
-          {/* Wrappers com Flex Proporcional */}
           <View style={styles.timerWrapper}>
             <Timer time={timer} />
           </View>
@@ -61,7 +60,7 @@ export default function PlayerSection({
               life={life}
               lifeIcon={lifeIcon}
               onLifeChange={onLifeChange}
-              onOpenModal={() => onOpenModal('life', null, life)}
+              onOpenModal={() => onOpenModal('life', null, life)} // <--- Esta chamada está correta (3 args)
               onOpenLifeIconModal={onOpenLifeIconModal} 
               playerNum={playerNum}
             />
@@ -70,7 +69,6 @@ export default function PlayerSection({
           <View style={styles.mainContentWrapper}>
             <View style={styles.mainContent}>
             
-              {/* FUNDO DE MADEIRA PARA OS SELOS (Mantido) */}
               <ImageBackground 
                 source={woodPlank} 
                 style={styles.plankBackground}
@@ -80,16 +78,19 @@ export default function PlayerSection({
                   <CircularCounters
                     counters={counters}
                     icons={sealIcons}
-                    onOpenModal={(index, value) => onOpenModal(playerNum, 'counter', index, value)}
+                    // --- CORREÇÃO AQUI ---
+                    // Removemos o 'playerNum' do início
+                    onOpenModal={(index, value) => onOpenModal('counter', index, value)}
                   />
                 </View>
               </ImageBackground>
 
-              {/* FUNDO DE MADEIRA REMOVIDO DOS STATS */}
               <View style={styles.statsRow}>
                 <StatCounters
                   stats={stats}
-                  onOpenModal={(index, value) => onOpenModal(playerNum, 'stat', index, value)}
+                  // --- CORREÇÃO AQUI ---
+                  // Removemos o 'playerNum' do início
+                  onOpenModal={(index, value) => onOpenModal('stat', index, value)}
                   onOpenIconModal={onOpenStatIconModal}
                 />
               </View>
