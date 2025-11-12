@@ -54,7 +54,7 @@ export default function ValueModal({
 
           {/* Botões de Atalho */}
           <View style={styles.shortcutContainer}>
-            <TouchableOpacity onPress={() => onAdjustValue(1)} style={styles.shortcutButton}><Text style={styles.shortcutText}>1</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => onAdjustValue(1)} style={styles.shortcutButton}><Text style={styles.shortcutText}>+1</Text></TouchableOpacity>
             <TouchableOpacity onPress={() => onAdjustValue(-1)} style={styles.shortcutButton}><Text style={styles.shortcutText}>-1</Text></TouchableOpacity>
            
             <TouchableOpacity onPress={() => onAdjustValue(-5)} style={styles.shortcutButton}><Text style={styles.shortcutText}>-5</Text></TouchableOpacity>
